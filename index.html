@@ -369,9 +369,12 @@
     gap: 14px;
     flex-wrap: wrap;
   }
-  footer .doc-links { display: flex; gap: 16px; }
+  footer .doc-links { display: flex; gap: 22px; flex-wrap: wrap; }
+  footer .doc-group { display: flex; align-items: baseline; gap: 8px; }
+  footer .doc-group .app-name { font-weight: 700; color: var(--footer-strong, var(--ink)); opacity: 0.7; }
   footer .doc-links a { color: var(--muted); text-decoration: none; }
   footer .doc-links a:hover { color: var(--ink); text-decoration: underline; }
+  footer .doc-links .sep { color: var(--line); }
 
   @media (prefers-reduced-motion: reduce) {
     .blob-1, .blob-2 { animation: none; }
@@ -475,8 +478,18 @@
   <footer>
     <div>© 2026 알찬랩스. All rights reserved. · 사업자등록번호 453-03-03842</div>
     <div class="doc-links">
-      <a href="https://sites.google.com/view/work-schedule-privacy-kr" target="_blank" rel="noopener">개인정보처리방침</a>
-      <a href="https://sites.google.com/view/work-schedule-notes-kr" target="_blank" rel="noopener">고객지원</a>
+      <div class="doc-group">
+        <span class="app-name">갈피록</span>
+        <a href="https://sites.google.com/view/galpirok-privacy-kr-ios" target="_blank" rel="noopener">개인정보처리방침</a>
+        <span class="sep">·</span>
+        <a href="https://sites.google.com/view/galpirok-notes-ios" target="_blank" rel="noopener">고객지원</a>
+      </div>
+      <div class="doc-group">
+        <span class="app-name">근무일정 달력</span>
+        <a href="https://sites.google.com/view/work-schedule-privacy-kr" target="_blank" rel="noopener">개인정보처리방침</a>
+        <span class="sep">·</span>
+        <a href="https://sites.google.com/view/work-schedule-notes-kr" target="_blank" rel="noopener">고객지원</a>
+      </div>
     </div>
   </footer>
 
