@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>알찬랩스</title>
+<!--
+  구글 서치 콘솔 소유권 확인용 meta 태그를 여기 <head> 안에 붙여넣으세요.
+  예: <meta name="google-site-verification" content="여기에_발급받은_값" />
+-->
+<style>
+  :root {
+    --bg: #f7f8fb;
+    --card-bg: #ffffff;
+    --text: #1a2233;
+    --muted: #5b6472;
+    --accent: #2A4365;
+    --border: #e3e7ee;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 20px 80px;
+  }
+  header {
+    margin-bottom: 40px;
+  }
+  header .brand {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+  header p {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 15px;
+  }
+  h2 {
+    font-size: 18px;
+    margin: 40px 0 16px;
+    color: var(--text);
+  }
+  .app-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 14px;
+  }
+  .app-card .name {
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+  .app-card .desc {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  .app-card .links a {
+    display: inline-block;
+    font-size: 13px;
+    color: var(--accent);
+    text-decoration: none;
+    margin-right: 14px;
+    font-weight: 600;
+  }
+  .app-card .links a:hover {
+    text-decoration: underline;
+  }
+  .contact {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    font-size: 14px;
+  }
+  .contact a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  footer {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  footer .doc-links a {
+    color: var(--muted);
+    text-decoration: underline;
+    margin-right: 12px;
+  }
+  footer .biz-info {
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">알찬랩스</div>
+      <p>일하는 사람들의 하루를 더 편하게 만드는 앱을 만듭니다.</p>
+    </header>
+
+    <h2>만든 앱</h2>
+
+    <div class="app-card">
+      <div class="name">근무일정 달력</div>
+      <div class="desc">교대 근무 팀을 위한 근무표 관리 앱. 관리자가 근무표를 짜고 팀원과 공유하면, 변경 사항이 실시간으로 전달됩니다. iOS·Android 모두 지원합니다.</div>
+      <div class="links">
+        <a href="#">App Store에서 보기</a>
+        <a href="#">Google Play에서 보기</a>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="name">갈피록</div>
+      <div class="desc">[여기에 갈피록 앱 소개 한두 줄을 넣어주세요.]</div>
+      <div class="links">
+        <a href="#">App Store에서 보기</a>
+      </div>
+    </div>
+
+    <h2>문의</h2>
+    <div class="contact">
+      제품 문의, 오류 신고, 개인정보 관련 문의는 아래 이메일로 보내주세요.<br>
+      <a href="mailto:alchanlabs.dev@gmail.com">alchanlabs.dev@gmail.com</a>
+    </div>
+
+    <footer>
+      <div class="doc-links">
+        <a href="https://sites.google.com/view/work-schedule-privacy-kr" target="_blank" rel="noopener">개인정보처리방침 (근무일정 달력)</a>
+        <a href="https://sites.google.com/view/work-schedule-notes-kr" target="_blank" rel="noopener">고객지원 (근무일정 달력)</a>
+      </div>
+      <div class="biz-info">
+        상호: 알찬랩스 &nbsp;·&nbsp; 사업자등록번호: 453-03-03842
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
