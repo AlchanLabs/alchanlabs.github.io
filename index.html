@@ -13,19 +13,32 @@
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
 <style>
   :root {
-    --bg: #0a0f0d;
-    --bg-glow: #10201a;
-    --surface: #101815;
-    --surface-border: #223028;
-    --text: #f2f5f3;
-    --muted: #93a19a;
-    --footer-muted: #5d6b64;
-    --accent-a: #c8f24b;   /* 갈피록 */
-    --accent-a-ink: #17210a;
-    --accent-b: #7fe3c4;   /* 근무일정 달력 */
-    --accent-b-ink: #0a2119;
-    --radius-lg: 20px;
+    --bg: #fbf7ef;
+    --surface: #ffffff;
+    --ink: #1c2230;
+    --muted: #6b7280;
+    --line: #ece5d8;
+    --navy: #2a4365;
+    --navy-soft: #e9edf5;
+    --coral: #ec6a45;
+    --coral-soft: #fdeae3;
+    --sage: #4f7a68;
+    --sage-soft: #e6efe9;
+    --radius-lg: 22px;
     --radius-md: 14px;
+    --ease: cubic-bezier(.22,1,.36,1);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14171c;
+      --surface: #1b1f26;
+      --ink: #f2efe8;
+      --muted: #98a0ad;
+      --line: #2a2f38;
+      --navy-soft: #232c3d;
+      --coral-soft: #33241f;
+      --sage-soft: #1e2c26;
+    }
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -33,148 +46,250 @@
     margin: 0;
     font-family: "Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
     background: var(--bg);
-    color: var(--text);
+    color: var(--ink);
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
   a { color: inherit; }
 
+  /* 스크롤 진행률 바 */
+  .progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--navy), var(--coral));
+    z-index: 50;
+    transition: width 0.1s linear;
+  }
+
   .nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 22px 24px;
-    max-width: 860px;
+    padding: 18px 28px;
+    max-width: 920px;
     margin: 0 auto;
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: blur(10px);
   }
   .nav .brand {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     font-weight: 800;
     font-size: 16px;
     letter-spacing: -0.01em;
   }
-  .nav .mark {
-    width: 30px;
-    height: 30px;
-    border-radius: 9px;
-    background: var(--accent-a);
-    color: var(--accent-a-ink);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-    font-size: 15px;
+  .mark {
+    position: relative;
+    width: 26px;
+    height: 26px;
+    flex: none;
   }
+  .mark::before, .mark::after {
+    content: '';
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+  }
+  .mark::before { background: var(--navy); top: 0; left: 0; }
+  .mark::after { background: var(--coral); bottom: 0; right: 0; opacity: 0.92; }
   .nav .tagline {
-    font-size: 13px;
-    color: var(--footer-muted);
+    font-size: 12.5px;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+  .nav ul {
+    display: none;
+  }
+  @media (min-width: 620px) {
+    .nav ul {
+      display: flex;
+      gap: 26px;
+      list-style: none;
+      margin: 0; padding: 0;
+    }
+    .nav ul a {
+      position: relative;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--muted);
+      padding-bottom: 2px;
+    }
+    .nav ul a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -2px;
+      width: 0%; height: 1.5px;
+      background: var(--coral);
+      transition: width 0.25s var(--ease);
+    }
+    .nav ul a:hover { color: var(--ink); }
+    .nav ul a:hover::after { width: 100%; }
+    .nav .tagline { display: none; }
   }
 
+  /* 히어로 배경 블롭 */
   .hero {
-    padding: 64px 24px 56px;
-    max-width: 860px;
+    position: relative;
+    padding: 88px 28px 64px;
+    max-width: 920px;
     margin: 0 auto;
-    background:
-      radial-gradient(55% 70% at 15% 0%, var(--bg-glow), transparent 70%);
+    overflow: hidden;
   }
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(50px);
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .blob-1 {
+    width: 340px; height: 340px;
+    background: var(--navy-soft);
+    top: -140px; right: -60px;
+    animation: drift1 22s ease-in-out infinite alternate;
+  }
+  .blob-2 {
+    width: 260px; height: 260px;
+    background: var(--coral-soft);
+    top: 60px; left: -100px;
+    animation: drift2 26s ease-in-out infinite alternate;
+  }
+  @keyframes drift1 {
+    0%   { transform: translate(0,0) scale(1); }
+    100% { transform: translate(-30px, 40px) scale(1.12); }
+  }
+  @keyframes drift2 {
+    0%   { transform: translate(0,0) scale(1); }
+    100% { transform: translate(24px, -26px) scale(1.08); }
+  }
+
+  .hero-inner { position: relative; z-index: 1; }
   .hero .eyebrow {
-    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
     font-weight: 800;
-    letter-spacing: 0.12em;
-    color: var(--accent-b);
-    margin-bottom: 18px;
+    letter-spacing: 0.14em;
+    color: var(--sage);
+    background: var(--sage-soft);
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 26px;
   }
   .hero h1 {
-    font-size: clamp(32px, 6vw, 46px);
+    font-size: clamp(34px, 6.4vw, 52px);
     font-weight: 800;
     letter-spacing: -0.03em;
-    line-height: 1.25;
-    margin: 0 0 20px;
+    line-height: 1.28;
+    margin: 0 0 22px;
+    max-width: 640px;
   }
-  .hero h1 .accent { color: var(--accent-a); }
+  .hero h1 span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(14px);
+    animation: rise 0.7s var(--ease) forwards;
+  }
+  .hero h1 .line2 { color: var(--coral); animation-delay: 0.12s; }
+  @keyframes rise { to { opacity: 1; transform: translateY(0); } }
   .hero p {
     color: var(--muted);
-    font-size: 16px;
-    max-width: 480px;
+    font-size: 16.5px;
+    max-width: 460px;
+    opacity: 0;
+    animation: rise 0.7s var(--ease) forwards;
+    animation-delay: 0.24s;
   }
 
   .wrap {
-    max-width: 860px;
+    max-width: 920px;
     margin: 0 auto;
-    padding: 0 24px 100px;
+    padding: 0 28px 110px;
+    position: relative;
+    z-index: 1;
   }
 
-  section { margin-top: 72px; }
-  section .section-head { margin-bottom: 28px; }
+  /* 스크롤 리빌 */
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+  }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  section { margin-top: 88px; }
+  section .section-head { margin-bottom: 30px; }
+  section .section-head .kicker {
+    font-size: 12.5px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    color: var(--coral);
+    margin-bottom: 10px;
+  }
   section .section-head h2 {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 800;
     letter-spacing: -0.02em;
     margin: 0 0 8px;
   }
-  section .section-head p {
-    color: var(--muted);
-    font-size: 14px;
-    margin: 0;
-  }
+  section .section-head p { color: var(--muted); font-size: 14.5px; margin: 0; }
 
-  .apps { display: grid; gap: 16px; }
+  .apps { display: grid; gap: 18px; }
+  @media (min-width: 720px) { .apps { grid-template-columns: 1fr 1fr; } }
+
   .app-card {
     background: var(--surface);
-    border: 1px solid var(--surface-border);
+    border: 1px solid var(--line);
     border-radius: var(--radius-lg);
-    padding: 28px;
-    transition: transform 0.15s ease, border-color 0.15s ease;
+    padding: 30px;
+    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
   }
   .app-card:hover {
-    transform: translateY(-2px);
-    border-color: var(--card-accent, var(--accent-b));
+    transform: translateY(-5px) rotate(-0.3deg);
+    box-shadow: 0 20px 40px -20px color-mix(in srgb, var(--ink) 18%, transparent);
+    border-color: var(--card-accent);
   }
   .app-card .top-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
   }
   .app-card .icon {
-    width: 46px;
-    height: 46px;
+    width: 46px; height: 46px;
     border-radius: var(--radius-md);
-    background: var(--card-accent, var(--accent-b));
-    color: var(--card-accent-ink, var(--accent-b-ink));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-    font-size: 17px;
+    background: var(--card-accent-soft);
+    color: var(--card-accent);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.35s var(--ease);
   }
+  .app-card .icon svg { width: 22px; height: 22px; }
+  .app-card:hover .icon { transform: scale(1.08) rotate(-4deg); }
   .app-card .status {
-    font-size: 12px;
+    font-size: 11.5px;
     font-weight: 700;
     color: var(--muted);
-    border: 1px solid var(--surface-border);
+    border: 1px solid var(--line);
     border-radius: 999px;
-    padding: 6px 12px;
+    padding: 5px 11px;
   }
-  .app-card .name {
-    font-weight: 800;
-    font-size: 19px;
-    margin-bottom: 8px;
-    letter-spacing: -0.01em;
-  }
-  .app-card .desc {
-    color: var(--muted);
-    font-size: 14px;
-    margin-bottom: 18px;
-  }
-  .app-card .links {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
+  .app-card .name { font-weight: 800; font-size: 18px; margin-bottom: 8px; letter-spacing: -0.01em; }
+  .app-card .desc { color: var(--muted); font-size: 14px; margin-bottom: 20px; min-height: 62px; }
+  .app-card .links { display: flex; gap: 10px; flex-wrap: wrap; }
   .app-card .links a {
+    position: relative;
+    overflow: hidden;
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -183,78 +298,72 @@
     text-decoration: none;
     padding: 9px 16px;
     border-radius: 999px;
-    background: var(--card-accent, var(--accent-b));
-    color: var(--card-accent-ink, var(--accent-b-ink));
+    background: var(--card-accent);
+    color: #fff;
+    transition: transform 0.2s var(--ease), opacity 0.2s var(--ease);
   }
-  .app-card .links a:hover { opacity: 0.85; }
+  .app-card .links a:hover { transform: translateY(-1px); opacity: 0.92; }
+  .app-card .links a .arrow { display: inline-block; transition: transform 0.25s var(--ease); }
+  .app-card .links a:hover .arrow { transform: translateX(3px); }
 
-  .app-card.galpirok { --card-accent: var(--accent-a); --card-accent-ink: var(--accent-a-ink); }
-  .app-card.shift-calendar { --card-accent: var(--accent-b); --card-accent-ink: var(--accent-b-ink); }
+  .app-card.galpirok  { --card-accent: var(--coral); --card-accent-soft: var(--coral-soft); }
+  .app-card.calendar   { --card-accent: var(--navy);  --card-accent-soft: var(--navy-soft); }
 
-  .mission {
-    border-top: 1px solid var(--surface-border);
-    padding-top: 56px;
+  .principles {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: 1fr;
   }
-  .mission h2 {
-    font-size: clamp(22px, 4vw, 28px);
+  @media (min-width: 720px) { .principles { grid-template-columns: repeat(3, 1fr); } }
+  .principle {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 22px;
+  }
+  .principle .num {
+    font-size: 12px;
     font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1.4;
-    margin: 0 0 16px;
-  }
-  .mission p {
     color: var(--muted);
-    font-size: 15px;
-    max-width: 520px;
-    margin: 0;
+    margin-bottom: 12px;
   }
+  .principle h3 { font-size: 15.5px; font-weight: 800; margin: 0 0 8px; letter-spacing: -0.01em; }
+  .principle p { font-size: 13.5px; color: var(--muted); margin: 0; }
 
   .contact-card {
-    margin-top: 72px;
-    background: var(--surface);
-    border: 1px solid var(--surface-border);
+    margin-top: 88px;
+    background: linear-gradient(135deg, var(--navy), color-mix(in srgb, var(--navy) 70%, var(--coral)));
     border-radius: var(--radius-lg);
-    padding: 32px;
+    padding: 40px;
+    color: #fdf9f2;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
+    gap: 24px;
     flex-wrap: wrap;
   }
-  .contact-card .label {
-    font-weight: 800;
-    font-size: 16px;
-    margin-bottom: 4px;
-  }
-  .contact-card p {
-    color: var(--muted);
-    font-size: 14px;
-    margin: 0;
-  }
+  .contact-card .label { font-weight: 800; font-size: 19px; margin-bottom: 6px; }
+  .contact-card p { color: color-mix(in srgb, #fdf9f2 78%, transparent); font-size: 14px; margin: 0; }
   .contact-card .mail-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    font-weight: 800;
-    font-size: 14px;
-    color: var(--accent-b-ink);
-    background: var(--accent-b);
-    padding: 12px 20px;
+    display: inline-flex; align-items: center; gap: 8px;
+    text-decoration: none; font-weight: 800; font-size: 14px;
+    color: var(--navy);
+    background: #fdf9f2;
+    padding: 13px 22px;
     border-radius: 999px;
     white-space: nowrap;
+    transition: transform 0.2s var(--ease);
   }
-  .contact-card .mail-btn:hover { opacity: 0.88; }
+  .contact-card .mail-btn:hover { transform: translateY(-2px); }
 
   footer {
-    margin-top: 56px;
-    padding: 28px 24px 40px;
-    max-width: 860px;
-    margin-left: auto;
-    margin-right: auto;
-    border-top: 1px solid var(--surface-border);
+    margin-top: 64px;
+    padding: 26px 28px 40px;
+    max-width: 920px;
+    margin-left: auto; margin-right: auto;
+    border-top: 1px solid var(--line);
     font-size: 12px;
-    color: var(--footer-muted);
+    color: var(--muted);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -262,69 +371,105 @@
     flex-wrap: wrap;
   }
   footer .doc-links { display: flex; gap: 16px; }
-  footer .doc-links a { color: var(--footer-muted); text-decoration: none; }
-  footer .doc-links a:hover { color: var(--muted); text-decoration: underline; }
+  footer .doc-links a { color: var(--muted); text-decoration: none; }
+  footer .doc-links a:hover { color: var(--ink); text-decoration: underline; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .blob-1, .blob-2 { animation: none; }
+    .hero h1 span, .hero p { animation: none; opacity: 1; transform: none; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
 </style>
 </head>
 <body>
+  <div class="progress" id="progress"></div>
+
   <nav class="nav">
     <div class="brand">
-      <span class="mark">A</span>
+      <span class="mark"></span>
       알찬랩스
     </div>
+    <ul>
+      <li><a href="#apps">만든 앱</a></li>
+      <li><a href="#principles">방식</a></li>
+      <li><a href="#contact">문의</a></li>
+    </ul>
     <div class="tagline">Apps for everyday life</div>
   </nav>
 
   <div class="hero">
-    <div class="eyebrow">ALCHAN LABS</div>
-    <h1>매일 쓰는 순간을<br><span class="accent">더 알차게.</span></h1>
-    <p>알찬랩스는 복잡한 일상을 가볍게 정리할 수 있는 모바일 앱을 만들고 운영합니다.</p>
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <div class="hero-inner">
+      <div class="eyebrow">● ALCHAN LABS</div>
+      <h1><span>매일 쓰는 순간을</span><br><span class="line2">더 알차게.</span></h1>
+      <p>알찬랩스는 복잡한 일상을 가볍게 정리할 수 있는 모바일 앱을 만들고 운영합니다.</p>
+    </div>
   </div>
 
   <div class="wrap">
-    <section id="apps">
+    <section id="apps" class="reveal">
       <div class="section-head">
-        <h2>Our apps</h2>
-        <p>알찬랩스가 만들고 있는 모바일 앱입니다.</p>
+        <div class="kicker">OUR APPS</div>
+        <h2>만든 앱</h2>
+        <p>하나씩 순서대로 다듬어서 내보내고 있습니다.</p>
       </div>
       <div class="apps">
         <div class="app-card galpirok">
           <div class="top-row">
-            <div class="icon">갈</div>
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 3.5h12a.5.5 0 0 1 .5.5v16.2a.5.5 0 0 1-.77.42L12 16.8l-5.73 3.82A.5.5 0 0 1 5.5 20.2V4a.5.5 0 0 1 .5-.5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+            </div>
             <div class="status">iOS 출시 · Android 준비 중</div>
           </div>
           <div class="name">갈피록</div>
-          <div class="desc">[여기에 갈피록 앱 소개를 한두 줄 넣어주세요.] iOS 버전은 출시되어 있으며, Android 버전은 별도로 개발이 끝나 출시를 준비하고 있습니다. 두 플랫폼은 서로 독립적으로 운영됩니다.</div>
-          <div class="links">
-            <a href="#">App Store →</a>
-          </div>
+          <div class="desc">[여기에 갈피록 앱 소개를 한두 줄 넣어주세요.] iOS 버전은 App Store에 출시되어 있으며, Android 버전은 개발이 끝나 별도로 출시를 준비하고 있습니다. 두 플랫폼은 서로 독립적으로 운영됩니다.</div>
         </div>
-        <div class="app-card shift-calendar">
+        <div class="app-card calendar">
           <div class="top-row">
-            <div class="icon">근</div>
-            <div class="status">iOS · Android</div>
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5" width="17" height="15.5" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><rect x="7.3" y="11.8" width="4" height="4" rx="1" fill="currentColor"/></svg>
+            </div>
+            <div class="status">iOS·Android 출시 준비 중</div>
           </div>
           <div class="name">근무일정 달력</div>
           <div class="desc">교대 근무 팀을 위한 근무표 관리 앱입니다. 관리자가 짠 근무표가 팀원에게 실시간으로 공유되고, 변경 사항도 바로 전달됩니다. iOS와 Android에서 서로 호환됩니다.</div>
-          <div class="links">
-            <a href="#">App Store →</a>
-            <a href="#">Google Play →</a>
-          </div>
         </div>
       </div>
     </section>
 
-    <section class="mission">
-      <h2>알찬랩스는<br>작게 만들고, 꾸준히 개선합니다.</h2>
-      <p>누구나 부담 없이 쓸 수 있는 도구를 고민합니다. 사용자의 하루에 자연스럽게 스며드는 앱을 만들고, 필요한 기능을 정성껏 더해 갑니다.</p>
+    <section id="principles" class="reveal">
+      <div class="section-head">
+        <div class="kicker">HOW WE WORK</div>
+        <h2>알찬랩스가 일하는 방식</h2>
+        <p>작은 팀이라 지킬 수 있는 원칙을 지킵니다.</p>
+      </div>
+      <div class="principles">
+        <div class="principle">
+          <div class="num">01</div>
+          <h3>작게 만든다</h3>
+          <p>한 번에 다 하려 하지 않고, 꼭 필요한 기능부터 제대로 만듭니다.</p>
+        </div>
+        <div class="principle">
+          <div class="num">02</div>
+          <h3>꾸준히 고친다</h3>
+          <p>실제로 써 보면서 나온 문제를 그때그때 다듬어 갑니다.</p>
+        </div>
+        <div class="principle">
+          <div class="num">03</div>
+          <h3>무리하지 않는다</h3>
+          <p>필요 없는 데이터는 모으지 않고, 부담 없이 쓸 수 있게 합니다.</p>
+        </div>
+      </div>
     </section>
 
-    <div class="contact-card">
+    <div id="contact" class="contact-card reveal">
       <div>
         <div class="label">문의하기</div>
         <p>제품 문의, 오류 신고, 개인정보 관련 문의를 받습니다.</p>
       </div>
-      <a class="mail-btn" href="mailto:alchanlabs.dev@gmail.com">✉️ alchanlabs.dev@gmail.com</a>
+      <a class="mail-btn" href="mailto:alchanlabs.dev@gmail.com">✉ alchanlabs.dev@gmail.com</a>
     </div>
   </div>
 
@@ -335,5 +480,33 @@
       <a href="https://sites.google.com/view/work-schedule-notes-kr" target="_blank" rel="noopener">고객지원</a>
     </div>
   </footer>
+
+  <script>
+    // 스크롤 진행률 바
+    var progressEl = document.getElementById('progress');
+    function updateProgress() {
+      var h = document.documentElement;
+      var scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+      progressEl.style.width = (scrolled || 0) + '%';
+    }
+    document.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    // 스크롤 리빌
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    } else {
+      document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
+    }
+  </script>
 </body>
 </html>
