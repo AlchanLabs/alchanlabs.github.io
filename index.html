@@ -4,149 +4,336 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>알찬랩스</title>
+<meta name="description" content="알찬랩스 — 매일 쓰는 순간을 더 알차게. 갈피록, 근무일정 달력을 만듭니다.">
 <!--
   구글 서치 콘솔 소유권 확인용 meta 태그를 여기 <head> 안에 붙여넣으세요.
   예: <meta name="google-site-verification" content="여기에_발급받은_값" />
 -->
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
 <style>
   :root {
-    --bg: #f7f8fb;
-    --card-bg: #ffffff;
-    --text: #1a2233;
-    --muted: #5b6472;
-    --accent: #2A4365;
-    --border: #e3e7ee;
+    --bg: #0a0f0d;
+    --bg-glow: #10201a;
+    --surface: #101815;
+    --surface-border: #223028;
+    --text: #f2f5f3;
+    --muted: #93a19a;
+    --footer-muted: #5d6b64;
+    --accent-a: #c8f24b;   /* 갈피록 */
+    --accent-a-ink: #17210a;
+    --accent-b: #7fe3c4;   /* 근무일정 달력 */
+    --accent-b-ink: #0a2119;
+    --radius-lg: 20px;
+    --radius-md: 14px;
   }
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     margin: 0;
-    font-family: -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    font-family: "Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
     background: var(--bg);
     color: var(--text);
-    line-height: 1.6;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
   }
-  .wrap {
-    max-width: 720px;
+  a { color: inherit; }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 24px;
+    max-width: 860px;
     margin: 0 auto;
-    padding: 48px 20px 80px;
   }
-  header {
-    margin-bottom: 40px;
+  .nav .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: -0.01em;
   }
-  header .brand {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--accent);
-    letter-spacing: -0.02em;
-  }
-  header p {
-    margin-top: 12px;
-    color: var(--muted);
+  .nav .mark {
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    background: var(--accent-a);
+    color: var(--accent-a-ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
     font-size: 15px;
   }
-  h2 {
-    font-size: 18px;
-    margin: 40px 0 16px;
-    color: var(--text);
+  .nav .tagline {
+    font-size: 13px;
+    color: var(--footer-muted);
   }
+
+  .hero {
+    padding: 64px 24px 56px;
+    max-width: 860px;
+    margin: 0 auto;
+    background:
+      radial-gradient(55% 70% at 15% 0%, var(--bg-glow), transparent 70%);
+  }
+  .hero .eyebrow {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    color: var(--accent-b);
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: clamp(32px, 6vw, 46px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.25;
+    margin: 0 0 20px;
+  }
+  .hero h1 .accent { color: var(--accent-a); }
+  .hero p {
+    color: var(--muted);
+    font-size: 16px;
+    max-width: 480px;
+  }
+
+  .wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px 100px;
+  }
+
+  section { margin-top: 72px; }
+  section .section-head { margin-bottom: 28px; }
+  section .section-head h2 {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 0 0 8px;
+  }
+  section .section-head p {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 0;
+  }
+
+  .apps { display: grid; gap: 16px; }
   .app-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 14px;
+    background: var(--surface);
+    border: 1px solid var(--surface-border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+  .app-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--card-accent, var(--accent-b));
+  }
+  .app-card .top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .app-card .icon {
+    width: 46px;
+    height: 46px;
+    border-radius: var(--radius-md);
+    background: var(--card-accent, var(--accent-b));
+    color: var(--card-accent-ink, var(--accent-b-ink));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 17px;
+  }
+  .app-card .status {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--muted);
+    border: 1px solid var(--surface-border);
+    border-radius: 999px;
+    padding: 6px 12px;
   }
   .app-card .name {
-    font-weight: 700;
-    font-size: 16px;
-    margin-bottom: 6px;
+    font-weight: 800;
+    font-size: 19px;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
   }
   .app-card .desc {
     color: var(--muted);
     font-size: 14px;
-    margin-bottom: 12px;
+    margin-bottom: 18px;
+  }
+  .app-card .links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
   }
   .app-card .links a {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     font-size: 13px;
-    color: var(--accent);
+    font-weight: 700;
     text-decoration: none;
-    margin-right: 14px;
-    font-weight: 600;
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: var(--card-accent, var(--accent-b));
+    color: var(--card-accent-ink, var(--accent-b-ink));
   }
-  .app-card .links a:hover {
-    text-decoration: underline;
+  .app-card .links a:hover { opacity: 0.85; }
+
+  .app-card.galpirok { --card-accent: var(--accent-a); --card-accent-ink: var(--accent-a-ink); }
+  .app-card.shift-calendar { --card-accent: var(--accent-b); --card-accent-ink: var(--accent-b-ink); }
+
+  .mission {
+    border-top: 1px solid var(--surface-border);
+    padding-top: 56px;
   }
-  .contact {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 20px;
+  .mission h2 {
+    font-size: clamp(22px, 4vw, 28px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.4;
+    margin: 0 0 16px;
+  }
+  .mission p {
+    color: var(--muted);
+    font-size: 15px;
+    max-width: 520px;
+    margin: 0;
+  }
+
+  .contact-card {
+    margin-top: 72px;
+    background: var(--surface);
+    border: 1px solid var(--surface-border);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .contact-card .label {
+    font-weight: 800;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  .contact-card p {
+    color: var(--muted);
     font-size: 14px;
+    margin: 0;
   }
-  .contact a {
-    color: var(--accent);
+  .contact-card .mail-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 800;
+    font-size: 14px;
+    color: var(--accent-b-ink);
+    background: var(--accent-b);
+    padding: 12px 20px;
+    border-radius: 999px;
+    white-space: nowrap;
   }
+  .contact-card .mail-btn:hover { opacity: 0.88; }
+
   footer {
     margin-top: 56px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
+    padding: 28px 24px 40px;
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
+    border-top: 1px solid var(--surface-border);
     font-size: 12px;
-    color: var(--muted);
+    color: var(--footer-muted);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
   }
-  footer .doc-links a {
-    color: var(--muted);
-    text-decoration: underline;
-    margin-right: 12px;
-  }
-  footer .biz-info {
-    margin-top: 10px;
-  }
+  footer .doc-links { display: flex; gap: 16px; }
+  footer .doc-links a { color: var(--footer-muted); text-decoration: none; }
+  footer .doc-links a:hover { color: var(--muted); text-decoration: underline; }
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand">알찬랩스</div>
-      <p>일하는 사람들의 하루를 더 편하게 만드는 앱을 만듭니다.</p>
-    </header>
-
-    <h2>만든 앱</h2>
-
-    <div class="app-card">
-      <div class="name">근무일정 달력</div>
-      <div class="desc">교대 근무 팀을 위한 근무표 관리 앱. 관리자가 근무표를 짜고 팀원과 공유하면, 변경 사항이 실시간으로 전달됩니다. iOS·Android 모두 지원합니다.</div>
-      <div class="links">
-        <a href="#">App Store에서 보기</a>
-        <a href="#">Google Play에서 보기</a>
-      </div>
+  <nav class="nav">
+    <div class="brand">
+      <span class="mark">A</span>
+      알찬랩스
     </div>
+    <div class="tagline">Apps for everyday life</div>
+  </nav>
 
-    <div class="app-card">
-      <div class="name">갈피록</div>
-      <div class="desc">[여기에 갈피록 앱 소개 한두 줄을 넣어주세요.]</div>
-      <div class="links">
-        <a href="#">App Store에서 보기</a>
-      </div>
-    </div>
-
-    <h2>문의</h2>
-    <div class="contact">
-      제품 문의, 오류 신고, 개인정보 관련 문의는 아래 이메일로 보내주세요.<br>
-      <a href="mailto:alchanlabs.dev@gmail.com">alchanlabs.dev@gmail.com</a>
-    </div>
-
-    <footer>
-      <div class="doc-links">
-        <a href="https://sites.google.com/view/work-schedule-privacy-kr" target="_blank" rel="noopener">개인정보처리방침 (근무일정 달력)</a>
-        <a href="https://sites.google.com/view/work-schedule-notes-kr" target="_blank" rel="noopener">고객지원 (근무일정 달력)</a>
-      </div>
-      <div class="biz-info">
-        상호: 알찬랩스 &nbsp;·&nbsp; 사업자등록번호: 453-03-03842
-      </div>
-    </footer>
+  <div class="hero">
+    <div class="eyebrow">ALCHAN LABS</div>
+    <h1>매일 쓰는 순간을<br><span class="accent">더 알차게.</span></h1>
+    <p>알찬랩스는 복잡한 일상을 가볍게 정리할 수 있는 모바일 앱을 만들고 운영합니다.</p>
   </div>
+
+  <div class="wrap">
+    <section id="apps">
+      <div class="section-head">
+        <h2>Our apps</h2>
+        <p>알찬랩스가 만들고 있는 모바일 앱입니다.</p>
+      </div>
+      <div class="apps">
+        <div class="app-card galpirok">
+          <div class="top-row">
+            <div class="icon">갈</div>
+            <div class="status">iOS 출시 · Android 준비 중</div>
+          </div>
+          <div class="name">갈피록</div>
+          <div class="desc">[여기에 갈피록 앱 소개를 한두 줄 넣어주세요.] iOS 버전은 출시되어 있으며, Android 버전은 별도로 개발이 끝나 출시를 준비하고 있습니다. 두 플랫폼은 서로 독립적으로 운영됩니다.</div>
+          <div class="links">
+            <a href="#">App Store →</a>
+          </div>
+        </div>
+        <div class="app-card shift-calendar">
+          <div class="top-row">
+            <div class="icon">근</div>
+            <div class="status">iOS · Android</div>
+          </div>
+          <div class="name">근무일정 달력</div>
+          <div class="desc">교대 근무 팀을 위한 근무표 관리 앱입니다. 관리자가 짠 근무표가 팀원에게 실시간으로 공유되고, 변경 사항도 바로 전달됩니다. iOS와 Android에서 서로 호환됩니다.</div>
+          <div class="links">
+            <a href="#">App Store →</a>
+            <a href="#">Google Play →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mission">
+      <h2>알찬랩스는<br>작게 만들고, 꾸준히 개선합니다.</h2>
+      <p>누구나 부담 없이 쓸 수 있는 도구를 고민합니다. 사용자의 하루에 자연스럽게 스며드는 앱을 만들고, 필요한 기능을 정성껏 더해 갑니다.</p>
+    </section>
+
+    <div class="contact-card">
+      <div>
+        <div class="label">문의하기</div>
+        <p>제품 문의, 오류 신고, 개인정보 관련 문의를 받습니다.</p>
+      </div>
+      <a class="mail-btn" href="mailto:alchanlabs.dev@gmail.com">✉️ alchanlabs.dev@gmail.com</a>
+    </div>
+  </div>
+
+  <footer>
+    <div>© 2026 알찬랩스. All rights reserved. · 사업자등록번호 453-03-03842</div>
+    <div class="doc-links">
+      <a href="https://sites.google.com/view/work-schedule-privacy-kr" target="_blank" rel="noopener">개인정보처리방침</a>
+      <a href="https://sites.google.com/view/work-schedule-notes-kr" target="_blank" rel="noopener">고객지원</a>
+    </div>
+  </footer>
 </body>
 </html>
