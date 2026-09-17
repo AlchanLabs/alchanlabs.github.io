@@ -22,6 +22,7 @@
     --navy-soft: #e9edf5;
     --coral: #ec6a45;
     --coral-soft: #fdeae3;
+    --coral-text: #c1451f; /* 코럴 원색은 크림 배경에서 2.92:1이라 텍스트로 못 씀 — 배경/장식용은 --coral, 글자는 이걸로 */
     --sage: #4f7a68;
     --sage-soft: #e6efe9;
     --radius-lg: 22px;
@@ -37,6 +38,7 @@
       --line: #2a2f38;
       --navy-soft: #232c3d;
       --coral-soft: #33241f;
+      --coral-text: var(--coral); /* 어두운 배경에서는 원색 코럴 자체가 6:1이라 그대로 씀 */
       --sage-soft: #1e2c26;
     }
   }
@@ -201,7 +203,7 @@
     transform: translateY(14px);
     animation: rise 0.7s var(--ease) forwards;
   }
-  .hero h1 .line2 { color: var(--coral); animation-delay: 0.12s; }
+  .hero h1 .line2 { color: var(--coral-text); animation-delay: 0.12s; }
   @keyframes rise { to { opacity: 1; transform: translateY(0); } }
   .hero p {
     color: var(--muted);
@@ -234,7 +236,7 @@
     font-size: 12.5px;
     font-weight: 800;
     letter-spacing: 0.12em;
-    color: var(--coral);
+    color: var(--coral-text);
     margin-bottom: 10px;
   }
   section .section-head h2 {
@@ -306,7 +308,7 @@
   .app-card .links a .arrow { display: inline-block; transition: transform 0.25s var(--ease); }
   .app-card .links a:hover .arrow { transform: translateX(3px); }
 
-  .app-card.galpirok  { --card-accent: var(--coral); --card-accent-soft: var(--coral-soft); }
+  .app-card.galpirok  { --card-accent: var(--coral-text); --card-accent-soft: var(--coral-soft); }
   .app-card.calendar   { --card-accent: var(--navy);  --card-accent-soft: var(--navy-soft); }
 
   .principles {
