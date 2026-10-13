@@ -9,35 +9,24 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
 <style>
+  /* 항상 다크 모드 — 기기의 밝은/어두운 설정과 상관없이 어둡게 보여 준다 */
   :root {
-    --bg: #fbf7ef;
-    --surface: #ffffff;
-    --ink: #1c2230;
-    --muted: #6b7280;
-    --line: #ece5d8;
+    color-scheme: dark;
+    --bg: #14171c;
+    --surface: #1b1f26;
+    --ink: #f2efe8;
+    --muted: #98a0ad;
+    --line: #2a2f38;
     --navy: #2a4365;
-    --navy-soft: #e9edf5;
+    --navy-soft: #232c3d;
     --coral: #ec6a45;
-    --coral-soft: #fdeae3;
-    --coral-text: #c1451f; /* 코럴 원색은 크림 배경에서 2.92:1이라 텍스트로 못 씀 — 배경/장식용은 --coral, 글자는 이걸로 */
+    --coral-soft: #33241f;
+    --coral-text: var(--coral); /* 어두운 배경에서는 원색 코럴 자체가 6:1이라 그대로 씀 */
     --sage: #4f7a68;
-    --sage-soft: #e6efe9;
+    --sage-soft: #1e2c26;
     --radius-lg: 22px;
     --radius-md: 14px;
     --ease: cubic-bezier(.22,1,.36,1);
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #14171c;
-      --surface: #1b1f26;
-      --ink: #f2efe8;
-      --muted: #98a0ad;
-      --line: #2a2f38;
-      --navy-soft: #232c3d;
-      --coral-soft: #33241f;
-      --coral-text: var(--coral); /* 어두운 배경에서는 원색 코럴 자체가 6:1이라 그대로 씀 */
-      --sage-soft: #1e2c26;
-    }
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -211,6 +200,30 @@
     animation-delay: 0.24s;
   }
 
+  /* 히어로 가운데 영상 */
+  .showcase {
+    position: relative;
+    margin: 52px auto 0;
+    max-width: 780px;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    box-shadow: 0 34px 60px -34px color-mix(in srgb, var(--ink) 38%, transparent);
+    opacity: 0;
+    transform: translateY(22px) scale(0.985);
+    animation: rise-card 0.9s var(--ease) forwards;
+    animation-delay: 0.4s;
+  }
+  @keyframes rise-card { to { opacity: 1; transform: translateY(0) scale(1); } }
+  .showcase video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
   .wrap {
     max-width: 920px;
     margin: 0 auto;
@@ -378,7 +391,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     .blob-1, .blob-2 { animation: none; }
-    .hero h1 span, .hero p { animation: none; opacity: 1; transform: none; }
+    .hero h1 span, .hero p, .showcase { animation: none; opacity: 1; transform: none; }
     .reveal { opacity: 1; transform: none; transition: none; }
     html { scroll-behavior: auto; }
   }
@@ -407,6 +420,9 @@
       <div class="eyebrow">● ALCHAN LABS</div>
       <h1><span>매일 쓰는 순간을</span><br><span class="line2">더 알차게.</span></h1>
       <p>알찬랩스는 복잡한 일상을 가볍게 정리할 수 있는 모바일 앱을 만들고 운영합니다.</p>
+      <div class="showcase">
+        <video id="heroVideo" src="assets/hero.mp4" poster="assets/hero-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="알찬랩스 소개 영상: 매일 쓰는 순간을 더 알차게, 갈피록과 근무일정 달력"></video>
+      </div>
     </div>
   </div>
 
@@ -516,6 +532,13 @@
 
     // 스크롤 리빌
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // 움직임 줄이기 설정이면 영상을 멈추고 대표 이미지만 보여 준다
+    if (reduceMotion) {
+      var heroVideo = document.getElementById('heroVideo');
+      heroVideo.removeAttribute('autoplay');
+      heroVideo.pause();
+    }
     if (!reduceMotion && 'IntersectionObserver' in window) {
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
