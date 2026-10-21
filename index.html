@@ -123,6 +123,57 @@
     .nav ul a:hover::after { width: 100%; }
     .nav .tagline { display: none; }
   }
+  @media (max-width: 520px) {
+    .nav .tagline { display: none; }
+  }
+
+  /* 언어 스위치 — 기본은 한국어 */
+  .lang-switch {
+    position: relative;
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 3px;
+    border-radius: 999px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+  }
+  .lang-switch .thumb {
+    position: absolute;
+    top: 3px; bottom: 3px; left: 3px;
+    width: calc(50% - 3px);
+    border-radius: 999px;
+    background: var(--navy);
+    transition: transform 0.3s var(--ease);
+  }
+  .lang-switch[data-lang="en"] .thumb { transform: translateX(100%); }
+  .lang-switch button {
+    position: relative;
+    z-index: 1;
+    font: inherit;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--muted);
+    background: none;
+    border: 0;
+    border-radius: 999px;
+    padding: 7px 14px;
+    min-height: 34px;
+    cursor: pointer;
+    transition: color 0.25s var(--ease);
+  }
+  .lang-switch button[aria-pressed="true"] { color: #fff; }
+  .lang-switch button:focus-visible { outline: 2px solid var(--coral-text); outline-offset: 2px; }
+
+  /* 언어를 바꿀 때 글이 스르륵 바뀌도록 잠깐 흐렸다가 돌아온다 */
+  .hero-inner, .wrap, footer, .nav ul, .nav .tagline, .nav .brand-text {
+    transition: opacity 0.18s ease;
+  }
+  html.lang-swap .hero-inner,
+  html.lang-swap .wrap,
+  html.lang-swap footer,
+  html.lang-swap .nav ul,
+  html.lang-swap .nav .tagline,
+  html.lang-swap .nav .brand-text { opacity: 0; }
 
   /* 히어로 배경 블롭 */
   .hero {
@@ -403,14 +454,19 @@
   <nav class="nav">
     <div class="brand">
       <span class="mark"></span>
-      알찬랩스
+      <span class="brand-text" data-i18n="brand">알찬랩스</span>
     </div>
     <ul>
-      <li><a href="#apps">만든 앱</a></li>
-      <li><a href="#principles">방식</a></li>
-      <li><a href="#contact">문의</a></li>
+      <li><a href="#apps" data-i18n="navApps">만든 앱</a></li>
+      <li><a href="#principles" data-i18n="navWay">방식</a></li>
+      <li><a href="#contact" data-i18n="navContact">문의</a></li>
     </ul>
     <div class="tagline">Apps for everyday life</div>
+    <div class="lang-switch" id="langSwitch" data-lang="ko" role="group" aria-label="언어 선택 / Language">
+      <span class="thumb" aria-hidden="true"></span>
+      <button type="button" data-set-lang="ko" aria-pressed="true">한국어</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">English</button>
+    </div>
   </nav>
 
   <div class="hero">
@@ -418,8 +474,8 @@
     <span class="blob blob-2"></span>
     <div class="hero-inner">
       <div class="eyebrow">● ALCHAN LABS</div>
-      <h1><span>매일 쓰는 순간을</span><br><span class="line2">더 알차게.</span></h1>
-      <p>알찬랩스는 복잡한 일상을 가볍게 정리할 수 있는 모바일 앱을 만들고 운영합니다.</p>
+      <h1><span data-i18n="h1a">매일 쓰는 순간을</span><br><span class="line2" data-i18n="h1b">더 알차게.</span></h1>
+      <p data-i18n="heroP">알찬랩스는 복잡한 일상을 가볍게 정리할 수 있는 모바일 앱을 만들고 운영합니다.</p>
       <div class="showcase">
         <video id="heroVideo" src="assets/hero.mp4" poster="assets/hero-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="알찬랩스 소개 영상: 매일 쓰는 순간을 더 알차게, 갈피록과 근무일정 달력"></video>
       </div>
@@ -430,8 +486,8 @@
     <section id="apps" class="reveal">
       <div class="section-head">
         <div class="kicker">OUR APPS</div>
-        <h2>만든 앱</h2>
-        <p>하나씩 순서대로 다듬어서 내보내고 있습니다.</p>
+        <h2 data-i18n="appsH2">만든 앱</h2>
+        <p data-i18n="appsP">하나씩 순서대로 다듬어서 내보내고 있습니다.</p>
       </div>
       <div class="apps">
         <div class="app-card galpirok">
@@ -439,13 +495,13 @@
             <div class="icon">
               <svg viewBox="0 0 24 24" fill="none"><path d="M6 3.5h12a.5.5 0 0 1 .5.5v16.2a.5.5 0 0 1-.77.42L12 16.8l-5.73 3.82A.5.5 0 0 1 5.5 20.2V4a.5.5 0 0 1 .5-.5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
             </div>
-            <div class="status">iOS · Android 출시</div>
+            <div class="status" data-i18n="released">iOS · Android 출시</div>
           </div>
-          <div class="name">갈피록</div>
-          <div class="desc">책과 책갈피로 나만의 기록을 정리하는 메모 앱입니다. 회원가입 없이 바로 시작하고, 기록은 서버 없이 기기 안에만 보관됩니다. iOS와 Android 모두 출시되어 있습니다.</div>
+          <div class="name" data-i18n="galName">갈피록</div>
+          <div class="desc" data-i18n="galDesc">책과 책갈피로 나만의 기록을 정리하는 메모 앱입니다. 회원가입 없이 바로 시작하고, 기록은 서버 없이 기기 안에만 보관됩니다. iOS와 Android 모두 출시되어 있습니다.</div>
           <div class="links">
-            <a href="https://apps.apple.com/app/id6805031378" target="_blank" rel="noopener">App Store에서 보기 <span class="arrow">→</span></a>
-            <a href="https://play.google.com/store/apps/details?id=com.alchanim.galpirok" target="_blank" rel="noopener">Google Play에서 보기 <span class="arrow">→</span></a>
+            <a href="https://apps.apple.com/kr/app/id6805031378" data-href-ko="https://apps.apple.com/kr/app/id6805031378" data-href-en="https://apps.apple.com/us/app/id6805031378" target="_blank" rel="noopener"><span data-i18n="viewAppStore">App Store에서 보기</span> <span class="arrow">→</span></a>
+            <a href="https://play.google.com/store/apps/details?id=com.alchanim.galpirok&hl=ko" data-href-ko="https://play.google.com/store/apps/details?id=com.alchanim.galpirok&hl=ko" data-href-en="https://play.google.com/store/apps/details?id=com.alchanim.galpirok&hl=en" target="_blank" rel="noopener"><span data-i18n="viewPlay">Google Play에서 보기</span> <span class="arrow">→</span></a>
           </div>
         </div>
         <div class="app-card calendar">
@@ -453,10 +509,14 @@
             <div class="icon">
               <svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5" width="17" height="15.5" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><rect x="7.3" y="11.8" width="4" height="4" rx="1" fill="currentColor"/></svg>
             </div>
-            <div class="status">iOS·Android 출시 준비 중</div>
+            <div class="status" data-i18n="released">iOS · Android 출시</div>
           </div>
-          <div class="name">근무일정 달력</div>
-          <div class="desc">교대 근무 팀을 위한 근무표 관리 앱입니다. 관리자가 짠 근무표가 팀원에게 실시간으로 공유되고, 변경 사항도 바로 전달됩니다. iOS와 Android에서 서로 호환됩니다.</div>
+          <div class="name" data-i18n="calName">근무일정 달력</div>
+          <div class="desc" data-i18n="calDesc">교대 근무 팀을 위한 근무표 관리 앱입니다. 관리자가 짠 근무표가 팀원에게 실시간으로 공유되고, 변경 사항도 바로 전달됩니다. iOS와 Android에서 서로 호환됩니다.</div>
+          <div class="links">
+            <a href="https://apps.apple.com/kr/app/id6809374096" data-href-ko="https://apps.apple.com/kr/app/id6809374096" data-href-en="https://apps.apple.com/us/app/id6809374096" target="_blank" rel="noopener"><span data-i18n="viewAppStore">App Store에서 보기</span> <span class="arrow">→</span></a>
+            <a href="https://play.google.com/store/apps/details?id=com.alchanim.workschedulecalendar&hl=ko" data-href-ko="https://play.google.com/store/apps/details?id=com.alchanim.workschedulecalendar&hl=ko" data-href-en="https://play.google.com/store/apps/details?id=com.alchanim.workschedulecalendar&hl=en" target="_blank" rel="noopener"><span data-i18n="viewPlay">Google Play에서 보기</span> <span class="arrow">→</span></a>
+          </div>
         </div>
       </div>
     </section>
@@ -464,57 +524,57 @@
     <section id="principles" class="reveal">
       <div class="section-head">
         <div class="kicker">HOW WE WORK</div>
-        <h2>알찬랩스가 일하는 방식</h2>
-        <p>작은 팀이라 지킬 수 있는 원칙을 지킵니다.</p>
+        <h2 data-i18n="wayH2">알찬랩스가 일하는 방식</h2>
+        <p data-i18n="wayP">작은 팀이라 지킬 수 있는 원칙을 지킵니다.</p>
       </div>
       <div class="principles">
         <div class="principle">
           <div class="num">01</div>
-          <h3>작게 만든다</h3>
-          <p>한 번에 다 하려 하지 않고, 꼭 필요한 기능부터 제대로 만듭니다.</p>
+          <h3 data-i18n="p1h">작게 만든다</h3>
+          <p data-i18n="p1p">한 번에 다 하려 하지 않고, 꼭 필요한 기능부터 제대로 만듭니다.</p>
         </div>
         <div class="principle">
           <div class="num">02</div>
-          <h3>꾸준히 고친다</h3>
-          <p>실제로 써 보면서 나온 문제를 그때그때 다듬어 갑니다.</p>
+          <h3 data-i18n="p2h">꾸준히 고친다</h3>
+          <p data-i18n="p2p">실제로 써 보면서 나온 문제를 그때그때 다듬어 갑니다.</p>
         </div>
         <div class="principle">
           <div class="num">03</div>
-          <h3>무리하지 않는다</h3>
-          <p>필요 없는 데이터는 모으지 않고, 부담 없이 쓸 수 있게 합니다.</p>
+          <h3 data-i18n="p3h">무리하지 않는다</h3>
+          <p data-i18n="p3p">필요 없는 데이터는 모으지 않고, 부담 없이 쓸 수 있게 합니다.</p>
         </div>
       </div>
     </section>
 
     <div id="contact" class="contact-card reveal">
       <div>
-        <div class="label">문의하기</div>
-        <p>제품 문의, 오류 신고, 개인정보 관련 문의를 받습니다.</p>
+        <div class="label" data-i18n="contactLabel">문의하기</div>
+        <p data-i18n="contactP">제품 문의, 오류 신고, 개인정보 관련 문의를 받습니다.</p>
       </div>
       <a class="mail-btn" href="mailto:alchanlabs.dev@gmail.com">✉ alchanlabs.dev@gmail.com</a>
     </div>
   </div>
 
   <footer>
-    <div>© 2026 알찬랩스. All rights reserved. · 대표 이알찬 · 사업자등록번호 453-03-03842 · 통신판매업신고 제2026-충남천안-2243호</div>
+    <div data-i18n="copyright">© 2026 알찬랩스. All rights reserved. · 대표 이알찬 · 사업자등록번호 453-03-03842 · 통신판매업신고 제2026-충남천안-2243호</div>
     <div class="doc-links">
       <div class="doc-group">
-        <span class="app-name">갈피록 iOS</span>
-        <a href="https://sites.google.com/view/galpirok-privacy-kr-ios" target="_blank" rel="noopener">개인정보처리방침</a>
+        <span class="app-name" data-i18n="galIos">갈피록 iOS</span>
+        <a href="https://sites.google.com/view/galpirok-privacy-kr-ios" data-href-ko="https://sites.google.com/view/galpirok-privacy-kr-ios" data-href-en="https://sites.google.com/view/galpirok-privacy-en-ios" target="_blank" rel="noopener" data-i18n="privacy">개인정보처리방침</a>
         <span class="sep">·</span>
-        <a href="https://sites.google.com/view/galpirok-notes-ios" target="_blank" rel="noopener">고객지원</a>
+        <a href="https://sites.google.com/view/galpirok-notes-ios" target="_blank" rel="noopener" data-i18n="support">고객지원</a>
       </div>
       <div class="doc-group">
-        <span class="app-name">갈피록 Android</span>
-        <a href="https://sites.google.com/view/galpirok-privacy-kr-aos" target="_blank" rel="noopener">개인정보처리방침</a>
+        <span class="app-name" data-i18n="galAos">갈피록 Android</span>
+        <a href="https://sites.google.com/view/galpirok-privacy-kr-aos" data-href-ko="https://sites.google.com/view/galpirok-privacy-kr-aos" data-href-en="https://sites.google.com/view/galpirok-privacy-en-aos" target="_blank" rel="noopener" data-i18n="privacy">개인정보처리방침</a>
         <span class="sep">·</span>
-        <a href="https://sites.google.com/view/galpirok-notes-aos" target="_blank" rel="noopener">고객지원</a>
+        <a href="https://sites.google.com/view/galpirok-notes-aos" target="_blank" rel="noopener" data-i18n="support">고객지원</a>
       </div>
       <div class="doc-group">
-        <span class="app-name">근무일정 달력</span>
-        <a href="https://sites.google.com/view/work-schedule-privacy-kr" target="_blank" rel="noopener">개인정보처리방침</a>
+        <span class="app-name" data-i18n="calName">근무일정 달력</span>
+        <a href="https://sites.google.com/view/work-schedule-privacy-kr" data-href-ko="https://sites.google.com/view/work-schedule-privacy-kr" data-href-en="https://sites.google.com/view/work-schedule-privacy-en" target="_blank" rel="noopener" data-i18n="privacy">개인정보처리방침</a>
         <span class="sep">·</span>
-        <a href="https://sites.google.com/view/work-schedule-notes-kr" target="_blank" rel="noopener">고객지원</a>
+        <a href="https://sites.google.com/view/work-schedule-notes-kr" data-href-ko="https://sites.google.com/view/work-schedule-notes-kr" data-href-en="https://sites.google.com/view/work-schedule-notes-en" target="_blank" rel="noopener" data-i18n="support">고객지원</a>
       </div>
     </div>
   </footer>
@@ -552,6 +612,107 @@
     } else {
       document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
     }
+
+    // 언어 전환 — 기본은 한국어, 고른 언어는 이 브라우저에 기억한다
+    var I18N = {
+      ko: {
+        title: '알찬랩스',
+        metaDesc: '알찬랩스 — 매일 쓰는 순간을 더 알차게. 갈피록, 근무일정 달력을 만듭니다.',
+        video: 'assets/hero.mp4', poster: 'assets/hero-poster.jpg',
+        videoLabel: '알찬랩스 소개 영상: 매일 쓰는 순간을 더 알차게, 갈피록과 근무일정 달력',
+        brand: '알찬랩스', navApps: '만든 앱', navWay: '방식', navContact: '문의',
+        h1a: '매일 쓰는 순간을', h1b: '더 알차게.',
+        heroP: '알찬랩스는 복잡한 일상을 가볍게 정리할 수 있는 모바일 앱을 만들고 운영합니다.',
+        appsH2: '만든 앱', appsP: '하나씩 순서대로 다듬어서 내보내고 있습니다.',
+        released: 'iOS · Android 출시',
+        viewAppStore: 'App Store에서 보기', viewPlay: 'Google Play에서 보기',
+        galName: '갈피록',
+        galDesc: '책과 책갈피로 나만의 기록을 정리하는 메모 앱입니다. 회원가입 없이 바로 시작하고, 기록은 서버 없이 기기 안에만 보관됩니다. iOS와 Android 모두 출시되어 있습니다.',
+        calName: '근무일정 달력',
+        calDesc: '교대 근무 팀을 위한 근무표 관리 앱입니다. 관리자가 짠 근무표가 팀원에게 실시간으로 공유되고, 변경 사항도 바로 전달됩니다. iOS와 Android에서 서로 호환됩니다.',
+        wayH2: '알찬랩스가 일하는 방식', wayP: '작은 팀이라 지킬 수 있는 원칙을 지킵니다.',
+        p1h: '작게 만든다', p1p: '한 번에 다 하려 하지 않고, 꼭 필요한 기능부터 제대로 만듭니다.',
+        p2h: '꾸준히 고친다', p2p: '실제로 써 보면서 나온 문제를 그때그때 다듬어 갑니다.',
+        p3h: '무리하지 않는다', p3p: '필요 없는 데이터는 모으지 않고, 부담 없이 쓸 수 있게 합니다.',
+        contactLabel: '문의하기', contactP: '제품 문의, 오류 신고, 개인정보 관련 문의를 받습니다.',
+        copyright: '© 2026 알찬랩스. All rights reserved. · 대표 이알찬 · 사업자등록번호 453-03-03842 · 통신판매업신고 제2026-충남천안-2243호',
+        galIos: '갈피록 iOS', galAos: '갈피록 Android', privacy: '개인정보처리방침', support: '고객지원'
+      },
+      en: {
+        title: 'AlchanLabs',
+        metaDesc: 'AlchanLabs — making everyday moments more fulfilling. We build Galpirok and Work Schedule Calendar.',
+        video: 'assets/hero-en.mp4', poster: 'assets/hero-poster-en.jpg',
+        videoLabel: 'AlchanLabs intro video: making everyday moments more fulfilling, with Galpirok and Work Schedule Calendar',
+        brand: 'AlchanLabs', navApps: 'Apps', navWay: 'Approach', navContact: 'Contact',
+        h1a: 'Make everyday moments', h1b: 'more fulfilling.',
+        heroP: 'AlchanLabs builds and runs mobile apps that make it easy to keep a busy, complicated life organized.',
+        appsH2: 'Apps we\u2019ve made', appsP: 'We polish them one at a time before we ship.',
+        released: 'Out on iOS · Android',
+        viewAppStore: 'View on App Store', viewPlay: 'View on Google Play',
+        galName: 'Galpirok',
+        galDesc: 'A notes app that organizes your records with books and bookmarks. Start right away without signing up \u2014 your notes stay on your device, never on a server. Available on both iOS and Android.',
+        calName: 'Work Schedule Calendar',
+        calDesc: 'A roster app for shift-work teams. The schedule a manager builds is shared with the team in real time, and any changes reach everyone right away. It works together across iOS and Android.',
+        wayH2: 'How AlchanLabs works', wayP: 'As a small team, we stick to principles we can actually keep.',
+        p1h: 'Build small', p1p: 'We don\u2019t try to do everything at once \u2014 we build the features that matter first, and build them properly.',
+        p2h: 'Keep improving', p2p: 'We fix problems as they come up from real use.',
+        p3h: 'Don\u2019t overreach', p3p: 'We don\u2019t collect data we don\u2019t need, and we keep the apps easy and low-pressure to use.',
+        contactLabel: 'Contact us', contactP: 'Product questions, bug reports, and privacy inquiries are welcome.',
+        copyright: '\u00a9 2026 AlchanLabs. All rights reserved. \u00b7 CEO Alchan Lee \u00b7 Business Reg. No. 453-03-03842 \u00b7 Mail-order Business Report No. \uc81c2026-\ucda9\ub0a8\ucc9c\uc548-2243\ud638',
+        galIos: 'Galpirok iOS', galAos: 'Galpirok Android', privacy: 'Privacy Policy', support: 'Support'
+      }
+    };
+    var langSwitch = document.getElementById('langSwitch');
+    var currentLang = 'ko';
+
+    function applyLang(lang) {
+      var dict = I18N[lang];
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      document.title = dict.title;
+      document.querySelector('meta[name="description"]').setAttribute('content', dict.metaDesc);
+      var video = document.getElementById('heroVideo');
+      video.setAttribute('aria-label', dict.videoLabel);
+      if (video.getAttribute('src') !== dict.video) {
+        video.setAttribute('poster', dict.poster);
+        video.setAttribute('src', dict.video);
+        video.load();
+        if (!reduceMotion) { var started = video.play(); if (started && started.catch) started.catch(function () {}); }
+      }
+      document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        var text = dict[el.getAttribute('data-i18n')];
+        if (text !== undefined) el.textContent = text;
+      });
+      document.querySelectorAll('[data-href-' + lang + ']').forEach(function (a) {
+        a.setAttribute('href', a.getAttribute('data-href-' + lang));
+      });
+      langSwitch.setAttribute('data-lang', lang);
+      langSwitch.querySelectorAll('[data-set-lang]').forEach(function (b) {
+        b.setAttribute('aria-pressed', b.getAttribute('data-set-lang') === lang ? 'true' : 'false');
+      });
+    }
+
+    function setLang(lang, remember) {
+      if (lang === currentLang) return;
+      if (remember) {
+        try { localStorage.setItem('alchanlabs-lang', lang); } catch (e) {}
+      }
+      if (reduceMotion) { applyLang(lang); return; }
+      var root = document.documentElement;
+      root.classList.add('lang-swap');
+      setTimeout(function () {
+        applyLang(lang);
+        root.classList.remove('lang-swap');
+      }, 190);
+    }
+
+    langSwitch.querySelectorAll('[data-set-lang]').forEach(function (b) {
+      b.addEventListener('click', function () { setLang(b.getAttribute('data-set-lang'), true); });
+    });
+
+    var savedLang = null;
+    try { savedLang = localStorage.getItem('alchanlabs-lang'); } catch (e) {}
+    if (savedLang === 'en') applyLang('en');
   </script>
 </body>
 </html>
