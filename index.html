@@ -131,7 +131,7 @@
   .lang-switch {
     position: relative;
     display: inline-grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
     padding: 3px;
     border-radius: 999px;
     background: var(--surface);
@@ -140,12 +140,14 @@
   .lang-switch .thumb {
     position: absolute;
     top: 3px; bottom: 3px; left: 3px;
-    width: calc(50% - 3px);
+    width: calc((100% - 6px) / 4);
     border-radius: 999px;
     background: var(--navy);
     transition: transform 0.3s var(--ease);
   }
   .lang-switch[data-lang="en"] .thumb { transform: translateX(100%); }
+  .lang-switch[data-lang="ja"] .thumb { transform: translateX(200%); }
+  .lang-switch[data-lang="zh"] .thumb { transform: translateX(300%); }
   .lang-switch button {
     position: relative;
     z-index: 1;
@@ -156,13 +158,22 @@
     background: none;
     border: 0;
     border-radius: 999px;
-    padding: 7px 14px;
+    padding: 7px 12px;
     min-height: 34px;
     cursor: pointer;
     transition: color 0.25s var(--ease);
   }
   .lang-switch button[aria-pressed="true"] { color: #fff; }
   .lang-switch button:focus-visible { outline: 2px solid var(--coral-text); outline-offset: 2px; }
+  /* 좁은 화면: 언어 스위치를 둘째 줄에 가득 채워 네 언어가 모두 보이게 한다 */
+  @media (max-width: 520px) {
+    .nav { flex-wrap: wrap; row-gap: 10px; }
+    .lang-switch { width: 100%; }
+    .lang-switch button { padding: 7px 4px; }
+  }
+  /* 일본어·번체 중국어는 그 언어에 맞는 글꼴로 이어 쓴다(한국식 한자 모양이 섞이지 않게) */
+  html[lang="ja"] body { font-family: "Pretendard Variable", Pretendard, -apple-system, "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif; }
+  html[lang="zh-Hant-TW"] body { font-family: "Pretendard Variable", Pretendard, -apple-system, "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", sans-serif; }
 
   /* 언어를 바꿀 때 글이 스르륵 바뀌도록 잠깐 흐렸다가 돌아온다 */
   .hero-inner, .wrap, footer, .nav ul, .nav .tagline, .nav .brand-text {
@@ -336,8 +347,12 @@
     color: var(--card-accent);
     display: flex; align-items: center; justify-content: center;
     transition: transform 0.35s var(--ease);
+    overflow: hidden;
   }
   .app-card .icon svg { width: 22px; height: 22px; }
+  /* 실제 앱 아이콘 그림 */
+  .app-card .icon.pic { background: none; }
+  .app-card .icon.pic img { display: block; width: 100%; height: 100%; border-radius: var(--radius-md); }
   .app-card:hover .icon { transform: scale(1.08) rotate(-4deg); }
   .app-card .status {
     font-size: 11.5px;
@@ -371,6 +386,10 @@
 
   .app-card.galpirok  { --card-accent: var(--coral-text); --card-accent-soft: var(--coral-soft); }
   .app-card.calendar   { --card-accent: var(--navy);  --card-accent-soft: var(--navy-soft); }
+  .app-card.standboard { --card-accent: var(--sage);  --card-accent-soft: var(--sage-soft); }
+  .app-card.caregiver  { --card-accent: var(--coral-text); --card-accent-soft: var(--coral-soft); }
+  .app-card.roomforge  { --card-accent: var(--navy);  --card-accent-soft: var(--navy-soft); }
+  .app-card.hubnote    { --card-accent: var(--sage);  --card-accent-soft: var(--sage-soft); }
 
   .principles {
     display: grid;
@@ -462,10 +481,12 @@
       <li><a href="#contact" data-i18n="navContact">문의</a></li>
     </ul>
     <div class="tagline">Apps for everyday life</div>
-    <div class="lang-switch" id="langSwitch" data-lang="ko" role="group" aria-label="언어 선택 / Language">
+    <div class="lang-switch" id="langSwitch" data-lang="ko" role="group" aria-label="언어 선택 / Language / 言語 / 語言">
       <span class="thumb" aria-hidden="true"></span>
       <button type="button" data-set-lang="ko" aria-pressed="true">한국어</button>
       <button type="button" data-set-lang="en" aria-pressed="false">English</button>
+      <button type="button" data-set-lang="ja" aria-pressed="false" lang="ja">日本語</button>
+      <button type="button" data-set-lang="zh" aria-pressed="false" lang="zh-Hant-TW">繁體中文</button>
     </div>
   </nav>
 
@@ -492,31 +513,66 @@
       <div class="apps">
         <div class="app-card galpirok">
           <div class="top-row">
-            <div class="icon">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M6 3.5h12a.5.5 0 0 1 .5.5v16.2a.5.5 0 0 1-.77.42L12 16.8l-5.73 3.82A.5.5 0 0 1 5.5 20.2V4a.5.5 0 0 1 .5-.5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
-            </div>
+            <div class="icon pic"><img src="assets/icons/galpirok.png" alt="" width="46" height="46"></div>
             <div class="status" data-i18n="released">iOS · Android 출시</div>
           </div>
           <div class="name" data-i18n="galName">갈피록</div>
           <div class="desc" data-i18n="galDesc">책과 책갈피로 나만의 기록을 정리하는 메모 앱입니다. 회원가입 없이 바로 시작하고, 기록은 서버 없이 기기 안에만 보관됩니다. iOS와 Android 모두 출시되어 있습니다.</div>
           <div class="links">
-            <a href="https://apps.apple.com/kr/app/id6805031378" data-href-ko="https://apps.apple.com/kr/app/id6805031378" data-href-en="https://apps.apple.com/us/app/id6805031378" target="_blank" rel="noopener"><span data-i18n="viewAppStore">App Store에서 보기</span> <span class="arrow">→</span></a>
-            <a href="https://play.google.com/store/apps/details?id=com.alchanim.galpirok&hl=ko" data-href-ko="https://play.google.com/store/apps/details?id=com.alchanim.galpirok&hl=ko" data-href-en="https://play.google.com/store/apps/details?id=com.alchanim.galpirok&hl=en" target="_blank" rel="noopener"><span data-i18n="viewPlay">Google Play에서 보기</span> <span class="arrow">→</span></a>
+            <a href="https://apps.apple.com/kr/app/id6805031378" data-href-ko="https://apps.apple.com/kr/app/id6805031378" data-href-en="https://apps.apple.com/us/app/id6805031378" data-href-ja="https://apps.apple.com/jp/app/id6805031378" data-href-zh="https://apps.apple.com/tw/app/id6805031378" target="_blank" rel="noopener"><span data-i18n="viewAppStore">App Store에서 보기</span> <span class="arrow">→</span></a>
+            <a href="https://play.google.com/store/apps/details?id=com.alchanim.galpirok&hl=ko" data-href-ko="https://play.google.com/store/apps/details?id=com.alchanim.galpirok&hl=ko" data-href-en="https://play.google.com/store/apps/details?id=com.alchanim.galpirok&hl=en" data-href-ja="https://play.google.com/store/apps/details?id=com.alchanim.galpirok&hl=ja" data-href-zh="https://play.google.com/store/apps/details?id=com.alchanim.galpirok&hl=zh-TW" target="_blank" rel="noopener"><span data-i18n="viewPlay">Google Play에서 보기</span> <span class="arrow">→</span></a>
           </div>
         </div>
         <div class="app-card calendar">
           <div class="top-row">
-            <div class="icon">
-              <svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5" width="17" height="15.5" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><rect x="7.3" y="11.8" width="4" height="4" rx="1" fill="currentColor"/></svg>
-            </div>
+            <div class="icon pic"><img src="assets/icons/workschedule.png" alt="" width="46" height="46"></div>
             <div class="status" data-i18n="released">iOS · Android 출시</div>
           </div>
           <div class="name" data-i18n="calName">근무일정 달력</div>
           <div class="desc" data-i18n="calDesc">교대 근무 팀을 위한 근무표 관리 앱입니다. 관리자가 짠 근무표가 팀원에게 실시간으로 공유되고, 변경 사항도 바로 전달됩니다. iOS와 Android에서 서로 호환됩니다.</div>
           <div class="links">
-            <a href="https://apps.apple.com/kr/app/id6809374096" data-href-ko="https://apps.apple.com/kr/app/id6809374096" data-href-en="https://apps.apple.com/us/app/id6809374096" target="_blank" rel="noopener"><span data-i18n="viewAppStore">App Store에서 보기</span> <span class="arrow">→</span></a>
-            <a href="https://play.google.com/store/apps/details?id=com.alchanim.workschedulecalendar&hl=ko" data-href-ko="https://play.google.com/store/apps/details?id=com.alchanim.workschedulecalendar&hl=ko" data-href-en="https://play.google.com/store/apps/details?id=com.alchanim.workschedulecalendar&hl=en" target="_blank" rel="noopener"><span data-i18n="viewPlay">Google Play에서 보기</span> <span class="arrow">→</span></a>
+            <a href="https://apps.apple.com/kr/app/id6809374096" data-href-ko="https://apps.apple.com/kr/app/id6809374096" data-href-en="https://apps.apple.com/us/app/id6809374096" data-href-ja="https://apps.apple.com/jp/app/id6809374096" data-href-zh="https://apps.apple.com/tw/app/id6809374096" target="_blank" rel="noopener"><span data-i18n="viewAppStore">App Store에서 보기</span> <span class="arrow">→</span></a>
+            <a href="https://play.google.com/store/apps/details?id=com.alchanim.workschedulecalendar&hl=ko" data-href-ko="https://play.google.com/store/apps/details?id=com.alchanim.workschedulecalendar&hl=ko" data-href-en="https://play.google.com/store/apps/details?id=com.alchanim.workschedulecalendar&hl=en" data-href-ja="https://play.google.com/store/apps/details?id=com.alchanim.workschedulecalendar&hl=ja" data-href-zh="https://play.google.com/store/apps/details?id=com.alchanim.workschedulecalendar&hl=zh-TW" target="_blank" rel="noopener"><span data-i18n="viewPlay">Google Play에서 보기</span> <span class="arrow">→</span></a>
           </div>
+        </div>
+        <div class="app-card standboard">
+          <div class="top-row">
+            <div class="icon pic"><img src="assets/icons/standboard.png" alt="" width="46" height="46"></div>
+            <div class="status" data-i18n="released">iOS · Android 출시</div>
+          </div>
+          <div class="name" data-i18n="sbName">스탠드보드</div>
+          <div class="desc" data-i18n="sbDesc">매장 카운터나 마켓 가판대에 태블릿·폰을 세워 두면 와이파이 QR과 공지, SNS 링크를 크게 보여 주는 안내판 앱입니다. 무료이고 광고·로그인 없이 기기 안에서만 동작합니다.</div>
+          <div class="links">
+            <a href="https://apps.apple.com/kr/app/id6826278141" data-href-ko="https://apps.apple.com/kr/app/id6826278141" data-href-en="https://apps.apple.com/us/app/id6826278141" data-href-ja="https://apps.apple.com/jp/app/id6826278141" data-href-zh="https://apps.apple.com/tw/app/id6826278141" target="_blank" rel="noopener"><span data-i18n="viewAppStore">App Store에서 보기</span> <span class="arrow">→</span></a>
+            <a href="https://play.google.com/store/apps/details?id=com.alchanlabs.standboard&hl=ko" data-href-ko="https://play.google.com/store/apps/details?id=com.alchanlabs.standboard&hl=ko" data-href-en="https://play.google.com/store/apps/details?id=com.alchanlabs.standboard&hl=en" data-href-ja="https://play.google.com/store/apps/details?id=com.alchanlabs.standboard&hl=ja" data-href-zh="https://play.google.com/store/apps/details?id=com.alchanlabs.standboard&hl=zh-TW" target="_blank" rel="noopener"><span data-i18n="viewPlay">Google Play에서 보기</span> <span class="arrow">→</span></a>
+          </div>
+        </div>
+        <div class="app-card caregiver">
+          <div class="top-row">
+            <div class="icon pic"><img src="assets/icons/caregiver.png" alt="" width="46" height="46"></div>
+            <div class="status" data-i18n="webStatus">웹 이용 가능</div>
+          </div>
+          <div class="name" data-i18n="cgName">산후관리사 스케쥴러</div>
+          <div class="desc" data-i18n="cgDesc">산후도우미 사무실의 지사장이 산모 일정을 등록하고 관리사에게 배정하는 일정 관리 앱입니다. 관리사는 내 근무를 확인하고 변경을 신청할 수 있습니다.</div>
+          <div class="links">
+            <a href="https://dolbomi.pages.dev" target="_blank" rel="noopener"><span data-i18n="openWeb">웹에서 열기</span> <span class="arrow">→</span></a>
+          </div>
+        </div>
+        <div class="app-card roomforge">
+          <div class="top-row">
+            <div class="icon pic"><img src="assets/icons/roomforge.png" alt="" width="46" height="46"></div>
+            <div class="status" data-i18n="soon">준비 중</div>
+          </div>
+          <div class="name" data-i18n="rfName">방배치도</div>
+          <div class="desc" data-i18n="rfDesc">방 크기를 입력해 평면도를 만들고 가구를 옮겨 보며 배치해 보는 태블릿 앱입니다. 사진으로 내 가구를 만들 수 있고, 모든 자료는 기기 안에만 저장됩니다.</div>
+        </div>
+        <div class="app-card hubnote">
+          <div class="top-row">
+            <div class="icon pic"><img src="assets/icons/hubnote.png" alt="" width="46" height="46"></div>
+            <div class="status" data-i18n="soon">준비 중</div>
+          </div>
+          <div class="name" data-i18n="hnName">허브노트</div>
+          <div class="desc" data-i18n="hnDesc">수업 필기와 강의 녹음, 복습을 한곳에서 하는 태블릿 필기 앱입니다. 학생이 쉽게 쓰는 것을 가장 먼저 생각하며 만들고 있습니다.</div>
         </div>
       </div>
     </section>
@@ -617,9 +673,10 @@
     var I18N = {
       ko: {
         title: '알찬랩스',
-        metaDesc: '알찬랩스 — 매일 쓰는 순간을 더 알차게. 갈피록, 근무일정 달력을 만듭니다.',
+        metaDesc: '알찬랩스 — 매일 쓰는 순간을 더 알차게. 갈피록, 근무일정 달력, 스탠드보드 등을 만듭니다.',
         video: 'assets/hero.mp4', poster: 'assets/hero-poster.jpg',
         videoLabel: '알찬랩스 소개 영상: 매일 쓰는 순간을 더 알차게, 갈피록과 근무일정 달력',
+        htmlLang: 'ko',
         brand: '알찬랩스', navApps: '만든 앱', navWay: '방식', navContact: '문의',
         h1a: '매일 쓰는 순간을', h1b: '더 알차게.',
         heroP: '알찬랩스는 복잡한 일상을 가볍게 정리할 수 있는 모바일 앱을 만들고 운영합니다.',
@@ -636,13 +693,23 @@
         p3h: '무리하지 않는다', p3p: '필요 없는 데이터는 모으지 않고, 부담 없이 쓸 수 있게 합니다.',
         contactLabel: '문의하기', contactP: '제품 문의, 오류 신고, 개인정보 관련 문의를 받습니다.',
         copyright: '© 2026 알찬랩스. All rights reserved. · 대표 이알찬 · 사업자등록번호 453-03-03842 · 통신판매업신고 제2026-충남천안-2243호',
+        soon: '준비 중', webStatus: '웹 이용 가능', openWeb: '웹에서 열기',
+        sbName: '스탠드보드',
+        sbDesc: '매장 카운터나 마켓 가판대에 태블릿·폰을 세워 두면 와이파이 QR과 공지, SNS 링크를 크게 보여 주는 안내판 앱입니다. 무료이고 광고·로그인 없이 기기 안에서만 동작합니다.',
+        cgName: '산후관리사 스케쥴러',
+        cgDesc: '산후도우미 사무실의 지사장이 산모 일정을 등록하고 관리사에게 배정하는 일정 관리 앱입니다. 관리사는 내 근무를 확인하고 변경을 신청할 수 있습니다. 한국에서만 사용할 수 있습니다.',
+        rfName: '방배치도',
+        rfDesc: '방 크기를 입력해 평면도를 만들고 가구를 옮겨 보며 배치해 보는 태블릿 앱입니다. 사진으로 내 가구를 만들 수 있고, 모든 자료는 기기 안에만 저장됩니다.',
+        hnName: '허브노트',
+        hnDesc: '수업 필기와 강의 녹음, 복습을 한곳에서 하는 태블릿 필기 앱입니다. 학생이 쉽게 쓰는 것을 가장 먼저 생각하며 만들고 있습니다.',
         galIos: '갈피록 iOS', galAos: '갈피록 Android', privacy: '개인정보처리방침', support: '고객지원'
       },
       en: {
         title: 'AlchanLabs',
-        metaDesc: 'AlchanLabs — making everyday moments more fulfilling. We build Galpirok and Work Schedule Calendar.',
+        metaDesc: 'AlchanLabs — making everyday moments more fulfilling. We build Galpirok, Work Schedule Calendar, Standboard and more.',
         video: 'assets/hero-en.mp4', poster: 'assets/hero-poster-en.jpg',
         videoLabel: 'AlchanLabs intro video: making everyday moments more fulfilling, with Galpirok and Work Schedule Calendar',
+        htmlLang: 'en',
         brand: 'AlchanLabs', navApps: 'Apps', navWay: 'Approach', navContact: 'Contact',
         h1a: 'Make everyday moments', h1b: 'more fulfilling.',
         heroP: 'AlchanLabs builds and runs mobile apps that make it easy to keep a busy, complicated life organized.',
@@ -659,7 +726,82 @@
         p3h: 'Don\u2019t overreach', p3p: 'We don\u2019t collect data we don\u2019t need, and we keep the apps easy and low-pressure to use.',
         contactLabel: 'Contact us', contactP: 'Product questions, bug reports, and privacy inquiries are welcome.',
         copyright: '\u00a9 2026 AlchanLabs. All rights reserved. \u00b7 CEO Alchan Lee \u00b7 Business Reg. No. 453-03-03842 \u00b7 Mail-order Business Report No. \uc81c2026-\ucda9\ub0a8\ucc9c\uc548-2243\ud638',
+        soon: 'Coming soon', webStatus: 'Available on the web', openWeb: 'Open on the web',
+        sbName: 'Standboard',
+        sbDesc: 'A signboard app: stand a tablet or phone on a shop counter or market stall and it shows your Wi-Fi QR, notices and social links in large type. Free, with no ads or login, and it works entirely on your device.',
+        cgName: '산후관리사 스케쥴러',
+        cgDesc: 'A scheduling app for postpartum-care agencies: the branch manager registers each mother\u2019s schedule and assigns caregivers, and caregivers check their own shifts and request changes. Available in Korea only, in Korean.',
+        rfName: '방배치도',
+        rfDesc: 'A tablet app for laying out a room: enter the room size to draw a floor plan, then move furniture around to try arrangements. You can turn photos into your own furniture, and everything stays on your device.',
+        hnName: 'HubNote',
+        hnDesc: 'A tablet note-taking app that brings class notes, lecture recordings and review together in one place, built with students\u2019 ease of use first.',
         galIos: 'Galpirok iOS', galAos: 'Galpirok Android', privacy: 'Privacy Policy', support: 'Support'
+      },
+      ja: {
+        title: 'AlchanLabs',
+        metaDesc: 'AlchanLabs \u2014 毎日使う瞬間を、もっと充実させる。Galpirok、Work Schedule Calendar、Standboard などを作っています。',
+        video: 'assets/hero-ja.mp4', poster: 'assets/hero-poster-ja.jpg',
+        videoLabel: 'AlchanLabs 紹介動画: 毎日使う瞬間をもっと充実させる、GalpirokとWork Schedule Calendar',
+        htmlLang: 'ja',
+        brand: 'AlchanLabs', navApps: 'アプリ', navWay: '方針', navContact: 'お問い合わせ',
+        h1a: '毎日使う瞬間を', h1b: 'もっと充実させる。',
+        heroP: 'AlchanLabs は、忙しく複雑な毎日を軽やかに整えられるモバイルアプリを作り、運営しています。',
+        appsH2: '作ったアプリ', appsP: '一つずつ丁寧に仕上げてから公開しています。',
+        released: 'iOS・Android 配信中',
+        viewAppStore: 'App Storeで見る', viewPlay: 'Google Playで見る',
+        galName: 'Galpirok',
+        galDesc: 'ブックとしおりで自分の記録を整理するメモアプリです。会員登録なしですぐ始められ、記録はサーバーではなく端末の中だけに保存されます。iOSとAndroidの両方で配信中です。アプリの表示言語は現在、韓国語と英語です。日本語と繁体字中国語は今後のアップデートで対応予定です。',
+        calName: 'Work Schedule Calendar',
+        calDesc: '交代勤務チーム向けのシフト表管理アプリです。管理者が作ったシフト表がチームメンバーにリアルタイムで共有され、変更もすぐに伝わります。iOSとAndroidで相互に使えます。アプリの表示言語は現在、韓国語と英語です。日本語と繁体字中国語は今後のアップデートで対応予定です。',
+        wayH2: 'AlchanLabs の働き方', wayP: '小さなチームだからこそ守れる原則を守ります。',
+        p1h: '小さく作る', p1p: '一度にすべてをやろうとせず、本当に必要な機能から丁寧に作ります。',
+        p2h: '続けて直す', p2p: '実際に使って見つかった問題を、その都度磨き上げていきます。',
+        p3h: '無理をしない', p3p: '不要なデータは集めず、気軽に使えるようにします。',
+        contactLabel: 'お問い合わせ', contactP: '製品のご質問、不具合のご報告、個人情報に関するお問い合わせを受け付けています。',
+        copyright: '\u00a9 2026 AlchanLabs. All rights reserved. \u00b7 代表 Alchan Lee \u00b7 事業者登録番号 453-03-03842 \u00b7 通信販売業申告番号 \uc81c2026-\ucda9\ub0a8\ucc9c\uc548-2243\ud638',
+        galIos: 'Galpirok iOS', galAos: 'Galpirok Android', privacy: 'プライバシーポリシー', support: 'サポート',
+        soon: '準備中', webStatus: 'Web版あり', openWeb: 'Webで開く',
+        sbName: 'Standboard',
+        sbDesc: 'お店のカウンターやマーケットの屋台にタブレットやスマホを立てておくと、Wi-Fi QR・お知らせ・SNSリンクを大きく表示する案内ボードアプリです。無料で、広告もログインもなく、端末の中だけで動作します。',
+        cgName: '산후관리사 스케쥴러',
+        cgDesc: '産後ケア事業所の責任者が産婦さんの予定を登録してケア担当者に割り当て、担当者は自分の勤務を確認して変更を申請できるスケジュール管理アプリです。韓国国内のみ、韓国語で利用できます。',
+        rfName: '방배치도',
+        rfDesc: '部屋の広さを入力して間取り図を作り、家具を動かして配置を試せるタブレット向けアプリです。写真から自分の家具を作ることができ、データはすべて端末の中にだけ保存されます。',
+        hnName: 'HubNote',
+        hnDesc: '授業のノート、講義の録音、復習をひとつにまとめたタブレット向けノートアプリです。学生が使いやすいことを最優先に作っています。'
+      },
+      zh: {
+        title: 'AlchanLabs',
+        metaDesc: 'AlchanLabs \u2014 讓每天使用的時刻更充實。我們製作 Galpirok、Work Schedule Calendar、Standboard 等 App。',
+        video: 'assets/hero-zh.mp4', poster: 'assets/hero-poster-zh.jpg',
+        videoLabel: 'AlchanLabs 介紹影片：讓每天使用的時刻更加充實，Galpirok 與 Work Schedule Calendar',
+        htmlLang: 'zh-Hant-TW',
+        brand: 'AlchanLabs', navApps: '我們的 App', navWay: '做事方式', navContact: '聯絡我們',
+        h1a: '讓每天使用的時刻', h1b: '更加充實。',
+        heroP: 'AlchanLabs 製作並營運行動 App，讓忙碌又繁雜的日常可以輕鬆整理。',
+        appsH2: '我們做的 App', appsP: '一個一個慢慢打磨後才推出。',
+        released: 'iOS・Android 已上架',
+        viewAppStore: '前往 App Store', viewPlay: '前往 Google Play',
+        galName: 'Galpirok',
+        galDesc: '以書本與書籤整理個人紀錄的筆記 App。免註冊即可開始使用，紀錄只保存在裝置內，不會上傳伺服器。iOS 與 Android 皆已上架。App 介面語言目前為韓文與英文，日文與繁體中文將於後續更新支援。',
+        calName: 'Work Schedule Calendar',
+        calDesc: '專為輪班團隊設計的排班表管理 App。管理者排好的班表會即時分享給團隊成員，異動也會立刻通知。iOS 與 Android 可互通使用。App 介面語言目前為韓文與英文，日文與繁體中文將於後續更新支援。',
+        wayH2: 'AlchanLabs 的做事方式', wayP: '因為是小團隊，所以守住我們真正做得到的原則。',
+        p1h: '做小而美', p1p: '不想一次做完所有事，先把真正必要的功能好好做出來。',
+        p2h: '持續改進', p2p: '把實際使用中發現的問題隨時修正、打磨。',
+        p3h: '不勉強', p3p: '不蒐集不必要的資料，讓大家可以沒有負擔地使用。',
+        contactLabel: '聯絡我們', contactP: '歡迎洽詢產品問題、回報錯誤與個資相關問題。',
+        copyright: '\u00a9 2026 AlchanLabs. All rights reserved. \u00b7 代表人 Alchan Lee \u00b7 營業登記號碼 453-03-03842 \u00b7 通訊販賣業申報號碼 \uc81c2026-\ucda9\ub0a8\ucc9c\uc548-2243\ud638',
+        galIos: 'Galpirok iOS', galAos: 'Galpirok Android', privacy: '隱私權政策', support: '客戶支援',
+        soon: '籌備中', webStatus: '提供網頁版', openWeb: '在網頁開啟',
+        sbName: 'Standboard',
+        sbDesc: '把平板或手機立在店家櫃檯或市集攤位上，就能放大顯示 Wi-Fi QR 碼、公告與社群連結的告示板 App。免費、無廣告、免登入，完全在裝置內運作。',
+        cgName: '산후관리사 스케쥴러',
+        cgDesc: '由月子照護機構的負責人登錄產婦的行程並指派照護員，照護員可確認自己的班表並申請異動的排程管理 App。僅限韓國境內使用，介面為韓文。',
+        rfName: '방배치도',
+        rfDesc: '輸入房間尺寸繪製平面圖，再移動家具試排擺設的平板 App。可以用照片製作自己的家具，所有資料都只保存在裝置內。',
+        hnName: 'HubNote',
+        hnDesc: '把課堂筆記、課程錄音與複習集中在一起的平板筆記 App，以學生輕鬆好用為最優先來打造。'
       }
     };
     var langSwitch = document.getElementById('langSwitch');
@@ -668,7 +810,7 @@
     function applyLang(lang) {
       var dict = I18N[lang];
       currentLang = lang;
-      document.documentElement.lang = lang;
+      document.documentElement.lang = dict.htmlLang;
       document.title = dict.title;
       document.querySelector('meta[name="description"]').setAttribute('content', dict.metaDesc);
       var video = document.getElementById('heroVideo');
@@ -683,8 +825,9 @@
         var text = dict[el.getAttribute('data-i18n')];
         if (text !== undefined) el.textContent = text;
       });
-      document.querySelectorAll('[data-href-' + lang + ']').forEach(function (a) {
-        a.setAttribute('href', a.getAttribute('data-href-' + lang));
+      // 그 언어 주소가 없으면 영어, 그것도 없으면 한국어 주소를 쓴다(예: 일본어·번체 개인정보처리방침은 영어 문서)
+      document.querySelectorAll('[data-href-ko]').forEach(function (a) {
+        a.setAttribute('href', a.getAttribute('data-href-' + lang) || a.getAttribute('data-href-en') || a.getAttribute('data-href-ko'));
       });
       langSwitch.setAttribute('data-lang', lang);
       langSwitch.querySelectorAll('[data-set-lang]').forEach(function (b) {
@@ -712,7 +855,7 @@
 
     var savedLang = null;
     try { savedLang = localStorage.getItem('alchanlabs-lang'); } catch (e) {}
-    if (savedLang === 'en') applyLang('en');
+    if (savedLang && savedLang !== 'ko' && I18N[savedLang]) applyLang(savedLang);
   </script>
 </body>
 </html>
