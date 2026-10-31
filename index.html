@@ -255,7 +255,7 @@
         </button>
         <button type="button" class="slot" data-app="caregiver" aria-pressed="false" aria-controls="panel-caregiver" style="--i:3">
           <span class="stand"><img src="assets/icons/caregiver.png" alt="" width="132" height="132"></span>
-          <span class="slot-name" data-i18n="cgName">산후관리사 스케쥴러</span>
+          <span class="slot-name" data-i18n="cgName">산후관리사 스케쥴러</span><span class="slot-note" data-i18n="soon">준비 중</span>
         </button>
         <button type="button" class="slot" data-app="roomforge" aria-pressed="false" aria-controls="panel-roomforge" style="--i:4">
           <span class="stand"><img src="assets/icons/roomforge.png" alt="" width="132" height="132"></span>
@@ -303,12 +303,9 @@
       <article class="panel" id="panel-caregiver" data-app="caregiver" hidden>
         <div class="panel-head">
           <h3 class="name" data-i18n="cgName">산후관리사 스케쥴러</h3>
-          <span class="status" data-i18n="webStatus">웹 이용 가능</span>
+          <span class="status" data-i18n="soon">준비 중</span>
         </div>
-        <p class="desc" data-i18n="cgDesc">산후도우미 사무실의 지사장이 산모 일정을 등록하고 관리사에게 배정하는 일정 관리 앱입니다. 관리사는 내 근무를 확인하고 변경을 신청할 수 있습니다. 한국에서만 사용할 수 있습니다.</p>
-        <div class="links">
-          <a class="btn" href="https://dolbomi.pages.dev" target="_blank" rel="noopener" data-i18n="openWeb">웹에서 열기</a>
-        </div>
+        <p class="desc" data-i18n="cgDesc">산후도우미 사무실의 지사장이 산모 일정을 등록하고 관리사에게 배정하는 일정 관리 앱입니다. 관리사는 내 근무를 확인하고 변경을 신청할 수 있습니다. 웹, Android, iOS에서 쓸 수 있도록 개발하고 있으며, 한국에서만 사용할 수 있습니다.</p>
       </article>
       <article class="panel" id="panel-roomforge" data-app="roomforge" hidden>
         <div class="panel-head">
@@ -440,11 +437,11 @@
         p3h: '무리하지 않는다', p3p: '필요 없는 데이터는 모으지 않고, 부담 없이 쓸 수 있게 합니다.',
         contactLabel: '문의하기', contactP: '제품 문의, 오류 신고, 개인정보 관련 문의를 받습니다.',
         copyright: '© 2026 알찬랩스. All rights reserved. · 대표 이알찬 · 사업자등록번호 453-03-03842 · 통신판매업신고 제2026-충남천안-2243호',
-        soon: '준비 중', webStatus: '웹 이용 가능', openWeb: '웹에서 열기',
+        soon: '준비 중',
         sbName: '스탠드보드',
         sbDesc: '매장 카운터나 마켓 가판대에 태블릿·폰을 세워 두면 와이파이 QR과 공지, SNS 링크를 크게 보여 주는 안내판 앱입니다. 무료이고 광고·로그인 없이 기기 안에서만 동작합니다.',
         cgName: '산후관리사 스케쥴러',
-        cgDesc: '산후도우미 사무실의 지사장이 산모 일정을 등록하고 관리사에게 배정하는 일정 관리 앱입니다. 관리사는 내 근무를 확인하고 변경을 신청할 수 있습니다. 한국에서만 사용할 수 있습니다.',
+        cgDesc: '산후도우미 사무실의 지사장이 산모 일정을 등록하고 관리사에게 배정하는 일정 관리 앱입니다. 관리사는 내 근무를 확인하고 변경을 신청할 수 있습니다. 웹, Android, iOS에서 쓸 수 있도록 개발하고 있으며, 한국에서만 사용할 수 있습니다.',
         rfName: '방배치도',
         rfDesc: '방 크기를 입력해 평면도를 만들고 가구를 옮겨 보며 배치해 보는 태블릿 앱입니다. 사진으로 내 가구를 만들 수 있고, 모든 자료는 기기 안에만 저장됩니다.',
         hnName: '허브노트',
@@ -473,11 +470,11 @@
         p3h: 'Don\u2019t overreach', p3p: 'We don\u2019t collect data we don\u2019t need, and we keep the apps easy and low-pressure to use.',
         contactLabel: 'Contact us', contactP: 'Product questions, bug reports, and privacy inquiries are welcome.',
         copyright: '\u00a9 2026 AlchanLabs. All rights reserved. \u00b7 CEO Alchan Lee \u00b7 Business Reg. No. 453-03-03842 \u00b7 Mail-order Business Report No. \uc81c2026-\ucda9\ub0a8\ucc9c\uc548-2243\ud638',
-        soon: 'Coming soon', webStatus: 'Available on the web', openWeb: 'Open on the web',
+        soon: 'Coming soon',
         sbName: 'Standboard',
         sbDesc: 'A signboard app: stand a tablet or phone on a shop counter or market stall and it shows your Wi-Fi QR, notices and social links in large type. Free, with no ads or login, and it works entirely on your device.',
         cgName: '산후관리사 스케쥴러',
-        cgDesc: 'A scheduling app for postpartum-care agencies: the branch manager registers each mother\u2019s schedule and assigns caregivers, and caregivers check their own shifts and request changes. Available in Korea only, in Korean.',
+        cgDesc: 'A scheduling app for postpartum-care agencies: the branch manager registers each mother\u2019s schedule and assigns caregivers, and caregivers check their own shifts and request changes. It is being built for the web, Android and iOS, and will be available in Korea only, in Korean.',
         rfName: '방배치도',
         rfDesc: 'A tablet app for laying out a room: enter the room size to draw a floor plan, then move furniture around to try arrangements. You can turn photos into your own furniture, and everything stays on your device.',
         hnName: 'HubNote',
@@ -507,11 +504,11 @@
         contactLabel: 'お問い合わせ', contactP: '製品のご質問、不具合のご報告、個人情報に関するお問い合わせを受け付けています。',
         copyright: '\u00a9 2026 AlchanLabs. All rights reserved. \u00b7 代表 Alchan Lee \u00b7 事業者登録番号 453-03-03842 \u00b7 通信販売業申告番号 \uc81c2026-\ucda9\ub0a8\ucc9c\uc548-2243\ud638',
         galIos: 'Galpirok iOS', galAos: 'Galpirok Android', privacy: 'プライバシーポリシー', support: 'サポート',
-        soon: '準備中', webStatus: 'Web版あり', openWeb: 'Webで開く',
+        soon: '準備中',
         sbName: 'Standboard',
         sbDesc: 'お店のカウンターやマーケットの屋台にタブレットやスマホを立てておくと、Wi-Fi QR・お知らせ・SNSリンクを大きく表示する案内ボードアプリです。無料で、広告もログインもなく、端末の中だけで動作します。',
         cgName: '산후관리사 스케쥴러',
-        cgDesc: '産後ケア事業所の責任者が産婦さんの予定を登録してケア担当者に割り当て、担当者は自分の勤務を確認して変更を申請できるスケジュール管理アプリです。韓国国内のみ、韓国語で利用できます。',
+        cgDesc: '産後ケア事業所の責任者が産婦さんの予定を登録してケア担当者に割り当て、担当者は自分の勤務を確認して変更を申請できるスケジュール管理アプリです。Web、Android、iOSで使えるよう開発中で、韓国国内のみ、韓国語で利用できる予定です。',
         rfName: '방배치도',
         rfDesc: '部屋の広さを入力して間取り図を作り、家具を動かして配置を試せるタブレット向けアプリです。写真から自分の家具を作ることができ、データはすべて端末の中にだけ保存されます。',
         hnName: 'HubNote',
@@ -540,11 +537,11 @@
         contactLabel: '聯絡我們', contactP: '歡迎洽詢產品問題、回報錯誤與個資相關問題。',
         copyright: '\u00a9 2026 AlchanLabs. All rights reserved. \u00b7 代表人 Alchan Lee \u00b7 營業登記號碼 453-03-03842 \u00b7 通訊販賣業申報號碼 \uc81c2026-\ucda9\ub0a8\ucc9c\uc548-2243\ud638',
         galIos: 'Galpirok iOS', galAos: 'Galpirok Android', privacy: '隱私權政策', support: '客戶支援',
-        soon: '籌備中', webStatus: '提供網頁版', openWeb: '在網頁開啟',
+        soon: '籌備中',
         sbName: 'Standboard',
         sbDesc: '把平板或手機立在店家櫃檯或市集攤位上，就能放大顯示 Wi-Fi QR 碼、公告與社群連結的告示板 App。免費、無廣告、免登入，完全在裝置內運作。',
         cgName: '산후관리사 스케쥴러',
-        cgDesc: '由月子照護機構的負責人登錄產婦的行程並指派照護員，照護員可確認自己的班表並申請異動的排程管理 App。僅限韓國境內使用，介面為韓文。',
+        cgDesc: '由月子照護機構的負責人登錄產婦的行程並指派照護員，照護員可確認自己的班表並申請異動的排程管理 App。目前正開發可在網頁、Android 與 iOS 使用的版本，僅限韓國境內使用，介面為韓文。',
         rfName: '방배치도',
         rfDesc: '輸入房間尺寸繪製平面圖，再移動家具試排擺設的平板 App。可以用照片製作自己的家具，所有資料都只保存在裝置內。',
         hnName: 'HubNote',
