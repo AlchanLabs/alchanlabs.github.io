@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1d2f4d">
 <title>알찬랩스</title>
 <meta name="description" content="알찬랩스 — 매일 쓰는 순간을 더 알차게. 갈피록, 근무일정 달력, 스탠드보드 등을 만듭니다.">
 <meta name="google-site-verification" content="qPxNv5ks8CxJUILHDE9cHZltj8KSbzx2hvc_WT1OjUo" />
@@ -208,6 +209,31 @@
     .panel.enter, .stand img { animation: none; }
     .panel-wrap::before, .stand img, .lang-switch .thumb { transition: none; }
   }
+
+  /* 첫 화면 남색 띠(A안): 로고의 남색을 첫 화면에 깔고, 단추·언어 버튼은 로고의 코랄로 맞춘다.
+     띠는 첫 화면 영역을 화면 가로 끝까지 채운다(언어·화면 크기가 바뀌어도 높이가 따라간다). */
+  :root { --band: #1d2f4d; --band-ink: #ffffff; --band-muted: #b8c4d6; --coral-strong: #c9502c; --accent: #c9502c; }
+  .nav { background: var(--band); }
+  /* 로고의 남색 원은 남색 바탕에 묻히므로 한 단계 밝게(소개 영상과 같은 색) */
+  .nav .mark::before { background: #4a6fa5; }
+  .brand, .nav ul a { color: var(--band-ink); }
+  .nav ul a { opacity: .78; }
+  .nav ul a:hover { color: var(--band-ink); opacity: 1; }
+  .lang-switch { background: #26395c; border-color: #3a5482; }
+  .lang-switch .thumb { background: var(--coral-strong); }
+  .lang-switch button { color: #c9d3e3; }
+  .hero { position: relative; padding-bottom: 80px; }
+  .hero::before {
+    content: ''; position: absolute; z-index: -1; top: 0; bottom: 0;
+    left: calc(50% - 50vw); right: calc(50% - 50vw); background: var(--band);
+  }
+  .hero h1 { color: var(--band-ink); }
+  .hero p { color: var(--band-muted); }
+  .showcase { box-shadow: 0 30px 60px -28px rgba(0, 0, 0, .7); }
+  .nav :focus-visible, .hero :focus-visible { outline-color: #ffb59c; }
+  .shelf-area { margin-top: 80px; }
+  .btn:hover { background: #a9401f; }
+  .principle { border-top-color: var(--coral-strong); }
 </style>
 </head>
 <body>
