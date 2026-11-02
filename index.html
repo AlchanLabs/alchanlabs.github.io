@@ -3,242 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#1d2f4d">
+<meta name="theme-color" content="#f4efe4">
 <title>알찬랩스</title>
-<meta name="description" content="알찬랩스 — 매일 쓰는 순간을 더 알차게. 갈피록, 근무일정 달력, 스탠드보드 등을 만듭니다.">
+<meta name="description" content="알찬랩스">
 <meta name="google-site-verification" content="qPxNv5ks8CxJUILHDE9cHZltj8KSbzx2hvc_WT1OjUo" />
-<link rel="preconnect" href="https://cdn.jsdelivr.net">
-<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
-<style>
-  :root {
-    color-scheme: light;
-    --paper: #f1f3f4;
-    --surface: #ffffff;
-    --ink: #17212b;
-    --muted: #5b6670;
-    --line: #d7dde1;
-    --accent: #223a5c;
-    --focus: #2b6cb0;
-    --navy: #2a4365;
-    --coral: #ec6a45;
-    --radius: 18px;
-    --ease: cubic-bezier(.22,1,.36,1);
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    font-family: "Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-    background: var(--paper);
-    color: var(--ink);
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-  html[lang="ko"] body { word-break: keep-all; }
-  html[lang="ja"] body { font-family: "Pretendard Variable", Pretendard, -apple-system, "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif; line-break: strict; }
-  html[lang="zh-Hant-TW"] body { font-family: "Pretendard Variable", Pretendard, -apple-system, "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", sans-serif; line-break: strict; }
-  a { color: inherit; }
-  :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
-
-  .page { max-width: 1040px; margin: 0 auto; padding: 0 28px; }
-
-  /* 위쪽 줄 */
-  .nav {
-    position: sticky; top: 0; z-index: 20;
-    background: color-mix(in srgb, var(--paper) 88%, transparent);
-    backdrop-filter: blur(10px);
-  }
-  .nav .page { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 16px; padding-bottom: 16px; }
-  .brand { display: flex; align-items: center; gap: 11px; font-weight: 800; font-size: 16px; letter-spacing: -0.01em; }
-  .mark { position: relative; width: 26px; height: 26px; flex: none; }
-  .mark::before, .mark::after { content: ''; position: absolute; width: 17px; height: 17px; border-radius: 50%; }
-  .mark::before { background: var(--navy); top: 0; left: 0; }
-  .mark::after { background: var(--coral); bottom: 0; right: 0; opacity: .92; }
-  .nav ul { display: none; list-style: none; margin: 0 auto 0 28px; padding: 0; gap: 26px; }
-  @media (min-width: 720px) { .nav ul { display: flex; } }
-  .nav ul a { text-decoration: none; font-size: 14px; font-weight: 600; color: var(--muted); }
-  .nav ul a:hover { color: var(--ink); }
-
-  /* 언어 스위치 */
-  .lang-switch {
-    position: relative; display: inline-grid; grid-template-columns: repeat(4, 1fr);
-    padding: 3px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line);
-  }
-  .lang-switch .thumb {
-    position: absolute; top: 3px; bottom: 3px; left: 3px; width: calc((100% - 6px) / 4);
-    border-radius: 999px; background: var(--accent); transition: transform .3s var(--ease);
-  }
-  .lang-switch[data-lang="en"] .thumb { transform: translateX(100%); }
-  .lang-switch[data-lang="ja"] .thumb { transform: translateX(200%); }
-  .lang-switch[data-lang="zh"] .thumb { transform: translateX(300%); }
-  .lang-switch button {
-    position: relative; z-index: 1; font: inherit; font-size: 12.5px; font-weight: 700; color: var(--muted);
-    background: none; border: 0; border-radius: 999px; padding: 7px 12px; min-height: 34px; cursor: pointer;
-    transition: color .25s var(--ease);
-  }
-  .lang-switch button[aria-pressed="true"] { color: #fff; }
-  @media (max-width: 560px) {
-    .nav .page { flex-wrap: wrap; row-gap: 10px; }
-    .lang-switch { width: 100%; }
-    .lang-switch button { padding: 7px 4px; }
-  }
-
-  /* 언어를 바꿀 때 글이 스르륵 바뀌도록 잠깐 흐렸다가 돌아온다 */
-  .hero-text, .shelf-area, .panel-wrap, .way, .contact, footer, .nav ul, .brand-text { transition: opacity .18s ease; }
-  html.lang-swap .hero-text, html.lang-swap .shelf-area, html.lang-swap .panel-wrap, html.lang-swap .way,
-  html.lang-swap .contact, html.lang-swap footer, html.lang-swap .nav ul, html.lang-swap .brand-text { opacity: 0; }
-
-  /* 첫 화면 */
-  .hero { padding: 72px 0 0; }
-  .hero h1 {
-    margin: 0 0 22px; max-width: 14em;
-    font-size: clamp(38px, 7.2vw, 76px); font-weight: 800; letter-spacing: -0.04em; line-height: 1.16;
-  }
-  html[lang="ja"] .hero h1, html[lang="zh-Hant-TW"] .hero h1 { letter-spacing: -0.015em; line-height: 1.25; }
-  .hero p { margin: 0; max-width: 34em; color: var(--muted); font-size: 17px; }
-  .showcase {
-    margin: 44px 0 0; max-width: 880px; aspect-ratio: 16 / 9; border-radius: 20px; overflow: hidden;
-    background: #14171c; box-shadow: 0 28px 50px -30px rgba(23, 33, 43, .55);
-  }
-  .showcase video { display: block; width: 100%; height: 100%; object-fit: cover; }
-
-  /* 앱 진열대 */
-  .shelf-area { margin-top: 96px; }
-  .shelf-area h2, .way h2, .contact h2 { margin: 0 0 8px; font-size: 28px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.3; }
-  .shelf-area .lead, .way .lead { margin: 0; color: var(--muted); font-size: 15.5px; }
-  .shelf {
-    display: grid; grid-template-columns: repeat(6, 1fr); gap: 36px 24px; margin-top: 44px;
-  }
-  @media (max-width: 899px) { .shelf { grid-template-columns: repeat(3, 1fr); gap: 32px 16px; } }
-  .slot {
-    font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-align: center;
-    display: flex; flex-direction: column; align-items: center; border-radius: 16px;
-  }
-  .stand { display: block; position: relative; width: 100%; padding-bottom: 10px; }
-  /* 선반 한 칸 */
-  .stand::after {
-    content: ''; position: absolute; left: -12px; right: -12px; bottom: 0; height: 10px; border-radius: 6px;
-    background: linear-gradient(#e3e8eb, #c5cdd4); box-shadow: 0 7px 9px -6px rgba(23, 33, 43, .4);
-  }
-  .shelf .slot:nth-child(6n+1) .stand::after { left: 0; }
-  .shelf .slot:nth-child(6n) .stand::after { right: 0; }
-  @media (max-width: 899px) {
-    .shelf .slot .stand::after { left: -8px; right: -8px; }
-    .shelf .slot:nth-child(3n+1) .stand::after { left: 0; }
-    .shelf .slot:nth-child(3n) .stand::after { right: 0; }
-  }
-  .stand img {
-    display: block; width: min(100%, 132px); height: auto; margin: 0 auto; border-radius: 23%;
-    box-shadow: 0 6px 6px -4px rgba(23, 33, 43, .45);
-    transition: transform .32s var(--ease), box-shadow .32s var(--ease);
-  }
-  .slot:hover .stand img { transform: translateY(-4px); }
-  .slot[aria-pressed="true"] .stand img { transform: translateY(-10px); box-shadow: 0 16px 16px -8px rgba(23, 33, 43, .42); }
-  .slot-name { margin-top: 14px; font-size: 14.5px; font-weight: 700; color: var(--muted); letter-spacing: -0.01em; line-height: 1.35; }
-  .slot[aria-pressed="true"] .slot-name { color: var(--ink); }
-  .slot-note { margin-top: 2px; font-size: 12.5px; color: var(--muted); }
-
-  /* 첫 화면에서 아이콘이 선반에 내려앉는 한 번의 움직임 */
-  @media (prefers-reduced-motion: no-preference) {
-    .stand img { animation: settle .7s var(--ease) backwards; animation-delay: calc(var(--i) * 70ms + 150ms); }
-    .slot[aria-pressed="true"] .stand img { animation-name: settle-up; }
-  }
-  @keyframes settle { from { transform: translateY(-34px); opacity: 0; } }
-  @keyframes settle-up { from { transform: translateY(-44px); opacity: 0; } }
-
-  /* 설명 상자: 누른 아이콘 밑으로 화살촉이 미끄러져 간다 */
-  .panel-wrap { position: relative; margin-top: 30px; }
-  .panel-wrap::before {
-    content: ''; position: absolute; top: -9px; left: var(--nx, 66px); width: 18px; height: 18px; z-index: 1;
-    background: var(--surface); border-left: 1px solid var(--line); border-top: 1px solid var(--line);
-    transform: translateX(-50%) rotate(45deg); transition: left .4s var(--ease);
-  }
-  .panel {
-    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px 32px;
-  }
-  .panel[hidden] { display: none; }
-  .panel.enter { animation: panel-in .35s var(--ease); }
-  @keyframes panel-in { from { opacity: 0; transform: translateY(8px); } }
-  .panel-head { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px; margin-bottom: 10px; }
-  .panel .name { margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.3; }
-  .panel .status { font-size: 13px; font-weight: 700; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px; }
-  .panel .desc { margin: 0; max-width: 40em; color: var(--muted); font-size: 15.5px; }
-  .langs { margin: 14px 0 0; font-size: 14px; color: var(--muted); }
-  .langs .langs-label { font-weight: 700; color: var(--ink); margin-right: 8px; }
-  .langs .langs-note { display: block; margin-top: 2px; font-size: 13px; }
-  .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
-  .btn {
-    display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px; border-radius: 999px;
-    background: var(--accent); color: #fff; font-size: 14px; font-weight: 700; text-decoration: none;
-    transition: background .2s var(--ease), transform .2s var(--ease);
-  }
-  .btn:hover { background: #17294a; transform: translateY(-1px); }
-
-  /* 일하는 방식: 순서가 아니라서 번호 없이 가는 줄로 나눈다 */
-  .way { margin-top: 112px; }
-  .principles { display: grid; gap: 28px 40px; grid-template-columns: 1fr; margin-top: 32px; }
-  @media (min-width: 720px) { .principles { grid-template-columns: repeat(3, 1fr); } }
-  .principle { border-top: 2px solid var(--ink); padding-top: 16px; }
-  .principle h3 { margin: 0 0 8px; font-size: 18px; font-weight: 800; letter-spacing: -0.02em; }
-  .principle p { margin: 0; color: var(--muted); font-size: 15px; }
-
-  .contact { margin-top: 112px; padding: 36px 0 0; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 32px; }
-  .contact p { margin: 0; color: var(--muted); font-size: 15px; }
-  .contact .btn { font-size: 15px; }
-
-  footer { margin-top: 72px; padding: 26px 0 44px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--muted); }
-  footer .page { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px 28px; flex-wrap: wrap; }
-  footer .copy { max-width: 36em; }
-  footer .doc-links { display: flex; gap: 14px 24px; flex-wrap: wrap; }
-  footer .doc-group { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
-  footer .doc-group .app-name { font-weight: 700; color: var(--ink); }
-  footer .doc-links a { color: var(--muted); text-decoration: none; }
-  footer .doc-links a:hover { color: var(--ink); text-decoration: underline; }
-  footer .doc-links .sep { color: var(--line); }
-
-  @media (max-width: 560px) {
-    .page { padding: 0 20px; }
-    .hero { padding-top: 48px; }
-    .shelf-area { margin-top: 72px; }
-    .panel { padding: 24px 22px; }
-    .panel .name { font-size: 23px; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .panel.enter, .stand img { animation: none; }
-    .panel-wrap::before, .stand img, .lang-switch .thumb { transition: none; }
-  }
-
-  /* 첫 화면 남색 띠(A안): 로고의 남색을 첫 화면에 깔고, 단추·언어 버튼은 로고의 코랄로 맞춘다.
-     띠는 첫 화면 영역을 화면 가로 끝까지 채운다(언어·화면 크기가 바뀌어도 높이가 따라간다). */
-  :root { --band: #1d2f4d; --band-ink: #ffffff; --band-muted: #b8c4d6; --coral-strong: #c9502c; --accent: #c9502c; }
-  .nav { background: var(--band); }
-  /* 로고의 남색 원은 남색 바탕에 묻히므로 한 단계 밝게(소개 영상과 같은 색) */
-  .nav .mark::before { background: #4a6fa5; }
-  .brand, .nav ul a { color: var(--band-ink); }
-  .nav ul a { opacity: .78; }
-  .nav ul a:hover { color: var(--band-ink); opacity: 1; }
-  .lang-switch { background: #26395c; border-color: #3a5482; }
-  .lang-switch .thumb { background: var(--coral-strong); }
-  .lang-switch button { color: #c9d3e3; }
-  .hero { position: relative; padding-bottom: 80px; }
-  .hero::before {
-    content: ''; position: absolute; z-index: -1; top: 0; bottom: 0;
-    left: calc(50% - 50vw); right: calc(50% - 50vw); background: var(--band);
-  }
-  .hero h1 { color: var(--band-ink); }
-  .hero p { color: var(--band-muted); }
-  .showcase { box-shadow: 0 30px 60px -28px rgba(0, 0, 0, .7); }
-  .nav :focus-visible, .hero :focus-visible { outline-color: #ffb59c; }
-  .shelf-area { margin-top: 80px; }
-  .btn:hover { background: #a9401f; }
-  .principle { border-top-color: var(--coral-strong); }
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Archivo:wght@400;500&family=Archivo+Narrow:wght@600&family=Noto+Serif+KR:wght@700&family=Noto+Serif+JP:wght@700&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
+<link rel="stylesheet" href="style.css">
+<noscript><style>.panel[hidden] { display: grid !important; margin-bottom: var(--space-lg); } .panel-wrap { position: static; }</style></noscript>
 </head>
 <body>
   <nav class="nav">
-    <div class="page">
+    <div class="container">
       <div class="brand"><span class="mark"></span><span class="brand-text" data-i18n="brand">알찬랩스</span></div>
       <ul>
         <li><a href="#apps" data-i18n="navApps">만든 앱</a></li>
@@ -255,21 +32,29 @@
     </div>
   </nav>
 
-  <main class="page">
+  <main>
     <header class="hero">
-      <div class="hero-text">
-        <h1><span data-i18n="h1a">매일 쓰는 순간을</span><br><span data-i18n="h1b">더 알차게.</span></h1>
-        <p data-i18n="heroP">알찬랩스는 복잡한 일상을 가볍게 정리할 수 있는 모바일 앱을 만들고 운영합니다.</p>
-      </div>
-      <div class="showcase">
-        <video id="heroVideo" src="assets/hero.mp4?v=20261101b" poster="assets/hero-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="알찬랩스 소개 영상: 매일 쓰는 순간을 더 알차게, 갈피록, 근무일정 달력, 스탠드보드 등 여섯 앱"></video>
+      <div class="container">
+        <div class="hero-text">
+          <h1><span class="line" data-i18n="h1a">매일 쓰는 순간을</span><span class="line" data-i18n="h1b">더 알차게.</span></h1>
+          <p class="lead" data-i18n="heroP">알찬랩스는 복잡한 일상을 가볍게 정리할 수 있는 모바일 앱을 만들고 운영합니다.</p>
+          <div class="actions">
+            <a class="btn" href="#apps" data-i18n="navApps">만든 앱</a>
+            <a class="btn btn--secondary" href="#contact" data-i18n="contactLabel">문의하기</a>
+          </div>
+        </div>
+        <div class="showcase well">
+          <video id="heroVideo" src="assets/hero.mp4?v=20261102" poster="assets/hero-poster.jpg?v=20261102" autoplay muted loop playsinline preload="auto" aria-label="알찬랩스 소개 영상"></video>
+        </div>
       </div>
     </header>
 
     <section id="apps" class="shelf-area">
-      <h2 data-i18n="appsH2">만든 앱</h2>
-      <p class="lead" data-i18n="appsP">하나씩 순서대로 다듬어서 내보내고 있습니다.</p>
-      <div class="shelf" id="shelf">
+      <div class="container">
+        <div class="shelf-col">
+          <h2 data-i18n="appsH2">만든 앱</h2>
+          <p class="lead" data-i18n="appsP">하나씩 순서대로 다듬어서 내보내고 있습니다.</p>
+          <div class="shelf" id="shelf">
         <button type="button" class="slot" data-app="galpirok" aria-pressed="true" aria-controls="panel-galpirok" style="--i:0">
           <span class="stand"><img src="assets/icons/galpirok.png" alt="" width="132" height="132"></span>
           <span class="slot-name" data-i18n="galName">갈피록</span>
@@ -295,120 +80,129 @@
           <span class="slot-name" data-i18n="hnName">허브노트</span><span class="slot-note" data-i18n="soon">준비 중</span>
         </button>
       </div>
-      <div class="panel-wrap" id="panelWrap" aria-live="polite">
-      <article class="panel" id="panel-galpirok" data-app="galpirok">
+        </div>
+        <div class="panel-wrap" id="panelWrap" aria-live="polite">
+      <article class="panel well has-shot" id="panel-galpirok" data-app="galpirok"><div class="panel-body">
         <div class="panel-head">
           <h3 class="name" data-i18n="galName">갈피록</h3>
           <span class="status" data-i18n="released">iOS · Android 출시</span>
         </div>
         <p class="desc" data-i18n="galDesc">책과 책갈피로 나만의 기록을 정리하는 메모 앱입니다. 사진을 붙이고 페이지를 잠글 수 있으며, 회원가입이나 광고 없이 기록은 기기 안에만 보관됩니다.</p>
-        <p class="langs"><span class="langs-label" data-i18n="langLabel">지원 언어</span><span>한국어 · English</span><span class="langs-note" data-i18n="langPlanned">일본어·번체 중국어는 업데이트로 지원 예정</span></p>
+        <p class="langs"><span class="langs-label" data-i18n="langLabel">지원 언어</span><span class="chip">한국어</span><span class="chip">English</span><span class="langs-note" data-i18n="langPlanned">일본어·번체 중국어는 업데이트로 지원 예정</span></p>
         <div class="links">
           <a class="btn" href="https://apps.apple.com/kr/app/id6805031378" data-href-ko="https://apps.apple.com/kr/app/id6805031378" data-href-en="https://apps.apple.com/us/app/id6805031378" data-href-ja="https://apps.apple.com/jp/app/id6805031378" data-href-zh="https://apps.apple.com/tw/app/id6805031378" target="_blank" rel="noopener" data-i18n="viewAppStore">App Store에서 보기</a>
           <a class="btn" href="https://play.google.com/store/apps/details?id=com.alchanim.galpirok&hl=ko" data-href-ko="https://play.google.com/store/apps/details?id=com.alchanim.galpirok&hl=ko" data-href-en="https://play.google.com/store/apps/details?id=com.alchanim.galpirok&hl=en" data-href-ja="https://play.google.com/store/apps/details?id=com.alchanim.galpirok&hl=ja" data-href-zh="https://play.google.com/store/apps/details?id=com.alchanim.galpirok&hl=zh-TW" target="_blank" rel="noopener" data-i18n="viewPlay">Google Play에서 보기</a>
         </div>
-      </article>
-      <article class="panel" id="panel-calendar" data-app="calendar" hidden>
+      </div><figure class="shot"><img src="shots/gal-ko.jpg" data-src-ko="shots/gal-ko.jpg" data-src-en="shots/gal-en.jpg" data-alt-key="galName" alt="" width="400" height="805" loading="lazy"></figure></article>
+      <article class="panel well has-shot" id="panel-calendar" data-app="calendar" hidden><div class="panel-body">
         <div class="panel-head">
           <h3 class="name" data-i18n="calName">근무일정 달력</h3>
           <span class="status" data-i18n="released">iOS · Android 출시</span>
         </div>
         <p class="desc" data-i18n="calDesc">교대 근무·알바 팀의 근무표를 한 달 달력에 색으로 보여 주는 앱입니다. 초대 코드 하나로 팀을 만들면 관리자가 짠 근무표가 팀원에게 바로 공유되고, 바뀌면 알림이 옵니다. iOS와 Android 양쪽에서 같은 근무표를 함께 확인할 수 있습니다.</p>
-        <p class="langs"><span class="langs-label" data-i18n="langLabel">지원 언어</span><span>한국어 · English</span><span class="langs-note" data-i18n="langPlanned">일본어·번체 중국어는 업데이트로 지원 예정</span></p>
+        <p class="langs"><span class="langs-label" data-i18n="langLabel">지원 언어</span><span class="chip">한국어</span><span class="chip">English</span><span class="langs-note" data-i18n="langPlanned">일본어·번체 중국어는 업데이트로 지원 예정</span></p>
         <div class="links">
           <a class="btn" href="https://apps.apple.com/kr/app/id6809374096" data-href-ko="https://apps.apple.com/kr/app/id6809374096" data-href-en="https://apps.apple.com/us/app/id6809374096" data-href-ja="https://apps.apple.com/jp/app/id6809374096" data-href-zh="https://apps.apple.com/tw/app/id6809374096" target="_blank" rel="noopener" data-i18n="viewAppStore">App Store에서 보기</a>
           <a class="btn" href="https://play.google.com/store/apps/details?id=com.alchanim.workschedulecalendar&hl=ko" data-href-ko="https://play.google.com/store/apps/details?id=com.alchanim.workschedulecalendar&hl=ko" data-href-en="https://play.google.com/store/apps/details?id=com.alchanim.workschedulecalendar&hl=en" data-href-ja="https://play.google.com/store/apps/details?id=com.alchanim.workschedulecalendar&hl=ja" data-href-zh="https://play.google.com/store/apps/details?id=com.alchanim.workschedulecalendar&hl=zh-TW" target="_blank" rel="noopener" data-i18n="viewPlay">Google Play에서 보기</a>
         </div>
-      </article>
-      <article class="panel" id="panel-standboard" data-app="standboard" hidden>
+      </div><figure class="shot"><img src="shots/cal-ko.jpg" data-src-ko="shots/cal-ko.jpg" data-src-en="shots/cal-en.jpg" data-alt-key="calName" alt="" width="400" height="805" loading="lazy"></figure></article>
+      <article class="panel well" id="panel-standboard" data-app="standboard" hidden><div class="panel-body">
         <div class="panel-head">
           <h3 class="name" data-i18n="sbName">스탠드보드</h3>
           <span class="status" data-i18n="released">iOS · Android 출시</span>
         </div>
         <p class="desc" data-i18n="sbDesc">매장 카운터나 마켓 가판대에 태블릿·폰을 세워 두면 와이파이 QR과 공지, SNS 링크를 크게 보여 주는 안내판 앱입니다. 무료이고 광고·로그인 없이 기기 안에서만 동작합니다.</p>
-        <p class="langs"><span class="langs-label" data-i18n="langLabel">지원 언어</span><span>한국어 · English · 日本語 · 繁體中文</span></p>
+        <p class="langs"><span class="langs-label" data-i18n="langLabel">지원 언어</span><span class="chip">한국어</span><span class="chip">English</span><span class="chip">日本語</span><span class="chip">繁體中文</span></p>
         <div class="links">
           <a class="btn" href="https://apps.apple.com/kr/app/id6826278141" data-href-ko="https://apps.apple.com/kr/app/id6826278141" data-href-en="https://apps.apple.com/us/app/id6826278141" data-href-ja="https://apps.apple.com/jp/app/id6826278141" data-href-zh="https://apps.apple.com/tw/app/id6826278141" target="_blank" rel="noopener" data-i18n="viewAppStore">App Store에서 보기</a>
           <a class="btn" href="https://play.google.com/store/apps/details?id=com.alchanlabs.standboard&hl=ko" data-href-ko="https://play.google.com/store/apps/details?id=com.alchanlabs.standboard&hl=ko" data-href-en="https://play.google.com/store/apps/details?id=com.alchanlabs.standboard&hl=en" data-href-ja="https://play.google.com/store/apps/details?id=com.alchanlabs.standboard&hl=ja" data-href-zh="https://play.google.com/store/apps/details?id=com.alchanlabs.standboard&hl=zh-TW" target="_blank" rel="noopener" data-i18n="viewPlay">Google Play에서 보기</a>
         </div>
-      </article>
-      <article class="panel" id="panel-caregiver" data-app="caregiver" hidden>
+      </div></article>
+      <article class="panel well" id="panel-caregiver" data-app="caregiver" hidden><div class="panel-body">
         <div class="panel-head">
           <h3 class="name" data-i18n="cgName">산후관리사 스케쥴러</h3>
           <span class="status" data-i18n="soon">준비 중</span>
         </div>
         <p class="desc" data-i18n="cgDesc">산후관리사 사무실의 관리자가 산후관리가 필요한 산모를 등록하고 관리사에게 배정하는 일정 관리 앱입니다. 관리사는 내 근무를 확인하고 변경을 신청할 수 있습니다. 웹, Android, iOS가 같은 자료를 함께 쓰도록 개발하고 있습니다.</p>
-        <p class="langs"><span class="langs-label" data-i18n="langLabel">지원 언어</span><span>한국어</span></p>
-      </article>
-      <article class="panel" id="panel-roomforge" data-app="roomforge" hidden>
+        <p class="langs"><span class="langs-label" data-i18n="langLabel">지원 언어</span><span class="chip">한국어</span></p>
+      </div></article>
+      <article class="panel well" id="panel-roomforge" data-app="roomforge" hidden><div class="panel-body">
         <div class="panel-head">
           <h3 class="name" data-i18n="rfName">방배치도</h3>
           <span class="status" data-i18n="soon">준비 중</span>
         </div>
         <p class="desc" data-i18n="rfDesc">방 크기를 입력해 평면도를 만들고, 문과 창문을 달고 가구를 옮겨 보며 배치해 보는 앱입니다. 원하는 모양의 가구도 직접 만들 수 있고, 모든 자료는 기기 안에만 저장됩니다.</p>
-        <p class="langs"><span class="langs-label" data-i18n="langLabel">지원 언어</span><span>한국어 · English · 日本語 · 繁體中文</span></p>
-      </article>
-      <article class="panel" id="panel-hubnote" data-app="hubnote" hidden>
+        <p class="langs"><span class="langs-label" data-i18n="langLabel">지원 언어</span><span class="chip">한국어</span><span class="chip">English</span><span class="chip">日本語</span><span class="chip">繁體中文</span></p>
+      </div></article>
+      <article class="panel well" id="panel-hubnote" data-app="hubnote" hidden><div class="panel-body">
         <div class="panel-head">
           <h3 class="name" data-i18n="hnName">허브노트</h3>
           <span class="status" data-i18n="soon">준비 중</span>
         </div>
         <p class="desc" data-i18n="hnDesc">수업 필기와 강의 녹음, 복습을 한곳에서 하는 태블릿 필기 앱입니다. 워드프로세서나 발표 자료 프로그램처럼 문서를 만드는 기능도 있어, 문서 작업에도 쓸 수 있습니다. Android 태블릿과 iPad(iPadOS)에서 쓸 수 있고, 파일로 내보내고 가져와서 두 기기 사이에 자료를 옮겨 쓸 수 있습니다. 사용자가 쉽게 쓰는 것을 가장 먼저 생각하며 만들고 있습니다.</p>
-        <p class="langs"><span class="langs-label" data-i18n="langLabel">지원 언어</span><span>한국어 · English · 日本語 · 繁體中文</span></p>
-      </article>
+        <p class="langs"><span class="langs-label" data-i18n="langLabel">지원 언어</span><span class="chip">한국어</span><span class="chip">English</span><span class="chip">日本語</span><span class="chip">繁體中文</span></p>
+      </div></article>
+        </div>
       </div>
     </section>
 
     <section id="way" class="way">
-      <h2 data-i18n="wayH2">알찬랩스가 일하는 방식</h2>
-      <p class="lead" data-i18n="wayP">작은 팀이라 지킬 수 있는 원칙을 지킵니다.</p>
-      <div class="principles">
-        <div class="principle"><h3 data-i18n="p1h">작게 만든다</h3><p data-i18n="p1p">한 번에 다 하려 하지 않고, 꼭 필요한 기능부터 제대로 만듭니다.</p></div>
-        <div class="principle"><h3 data-i18n="p2h">꾸준히 고친다</h3><p data-i18n="p2p">실제로 써 보면서 나온 문제를 그때그때 다듬어 갑니다.</p></div>
-        <div class="principle"><h3 data-i18n="p3h">무리하지 않는다</h3><p data-i18n="p3p">필요 없는 데이터는 모으지 않고, 부담 없이 쓸 수 있게 합니다.</p></div>
+      <div class="container">
+        <div>
+          <h2 data-i18n="wayH2">알찬랩스가 일하는 방식</h2>
+          <p class="lead" data-i18n="wayP">작은 팀이라 지킬 수 있는 원칙을 지킵니다.</p>
+        </div>
+        <div class="principles">
+          <div class="principle"><h3 data-i18n="p1h">작게 만든다</h3><p data-i18n="p1p">한 번에 다 하려 하지 않고, 꼭 필요한 기능부터 제대로 만듭니다.</p></div>
+          <div class="principle"><h3 data-i18n="p2h">꾸준히 고친다</h3><p data-i18n="p2p">실제로 써 보면서 나온 문제를 그때그때 다듬어 갑니다.</p></div>
+          <div class="principle"><h3 data-i18n="p3h">무리하지 않는다</h3><p data-i18n="p3p">필요 없는 데이터는 모으지 않고, 부담 없이 쓸 수 있게 합니다.</p></div>
+        </div>
       </div>
     </section>
 
     <section id="contact" class="contact">
-      <div>
-        <h2 data-i18n="contactLabel">문의하기</h2>
-        <p data-i18n="contactP">제품 문의, 오류 신고, 개인정보 관련 문의를 받습니다.</p>
+      <div class="container">
+        <div>
+          <h2 data-i18n="contactLabel">문의하기</h2>
+          <p data-i18n="contactP">제품 문의, 오류 신고, 개인정보 관련 문의를 받습니다.</p>
+        </div>
+        <a class="btn" href="mailto:alchanlabs.dev@gmail.com">alchanlabs.dev@gmail.com</a>
       </div>
-      <a class="btn" href="mailto:alchanlabs.dev@gmail.com">alchanlabs.dev@gmail.com</a>
     </section>
   </main>
 
-  <footer>
-  <div class="page">
-    <div class="copy" data-i18n="copyright">© 2026 알찬랩스. All rights reserved. · 대표 이알찬 · 사업자등록번호 453-03-03842 · 통신판매업신고 제2026-충남천안-2243호</div>
-    <div class="doc-links">
+  <footer class="colophon">
+    <div class="container">
+      <div class="word" data-i18n="brand">알찬랩스</div>
+      <div class="doc-links">
       <div class="doc-group">
         <span class="app-name" data-i18n="galIos">갈피록 iOS</span>
         <a href="https://sites.google.com/view/galpirok-privacy-kr-ios" data-href-ko="https://sites.google.com/view/galpirok-privacy-kr-ios" data-href-en="https://sites.google.com/view/galpirok-privacy-en-ios" target="_blank" rel="noopener" data-i18n="privacy">개인정보처리방침</a>
-        <span class="sep">·</span>
+        
         <a href="https://sites.google.com/view/galpirok-notes-ios" target="_blank" rel="noopener" data-i18n="support">고객지원</a>
       </div>
       <div class="doc-group">
         <span class="app-name" data-i18n="galAos">갈피록 Android</span>
         <a href="https://sites.google.com/view/galpirok-privacy-kr-aos" data-href-ko="https://sites.google.com/view/galpirok-privacy-kr-aos" data-href-en="https://sites.google.com/view/galpirok-privacy-en-aos" target="_blank" rel="noopener" data-i18n="privacy">개인정보처리방침</a>
-        <span class="sep">·</span>
+        
         <a href="https://sites.google.com/view/galpirok-notes-aos" target="_blank" rel="noopener" data-i18n="support">고객지원</a>
       </div>
       <div class="doc-group">
         <span class="app-name" data-i18n="calName">근무일정 달력</span>
         <a href="https://sites.google.com/view/work-schedule-privacy-kr" data-href-ko="https://sites.google.com/view/work-schedule-privacy-kr" data-href-en="https://sites.google.com/view/work-schedule-privacy-en" target="_blank" rel="noopener" data-i18n="privacy">개인정보처리방침</a>
-        <span class="sep">·</span>
+        
         <a href="https://sites.google.com/view/work-schedule-notes-kr" data-href-ko="https://sites.google.com/view/work-schedule-notes-kr" data-href-en="https://sites.google.com/view/work-schedule-notes-en" target="_blank" rel="noopener" data-i18n="support">고객지원</a>
       </div>
       <div class="doc-group">
         <span class="app-name" data-i18n="sbName">스탠드보드</span>
         <a href="https://sites.google.com/view/standboard/privacy-policy-%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4-%EC%B2%98%EB%A6%AC%EB%B0%A9%EC%B9%A8" target="_blank" rel="noopener" data-i18n="privacy">개인정보처리방침</a>
-        <span class="sep">·</span>
+        
         <a href="https://sites.google.com/view/standboard/" target="_blank" rel="noopener" data-i18n="support">고객지원</a>
       </div>
     </div>
-  </div>
-</footer>
+      <div class="copy" data-i18n="copyright" data-lines><span>© 2026 알찬랩스. All rights reserved.</span><span>대표 이알찬</span><span>사업자등록번호 453-03-03842</span><span>통신판매업신고 제2026-충남천안-2243호</span></div>
+    </div>
+  </footer>
 
   <script>
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -460,7 +254,7 @@
         langLabel: '지원 언어', langPlanned: '일본어·번체 중국어는 업데이트로 지원 예정',
         title: '알찬랩스',
         metaDesc: '알찬랩스 — 매일 쓰는 순간을 더 알차게. 갈피록, 근무일정 달력, 스탠드보드 등을 만듭니다.',
-        video: 'assets/hero.mp4?v=20261101b', poster: 'assets/hero-poster.jpg',
+        video: 'assets/hero.mp4?v=20261102', poster: 'assets/hero-poster.jpg?v=20261102',
         videoLabel: '알찬랩스 소개 영상: 매일 쓰는 순간을 더 알차게, 갈피록, 근무일정 달력, 스탠드보드 등 여섯 앱',
         htmlLang: 'ko',
         brand: '알찬랩스', navApps: '만든 앱', navWay: '방식', navContact: '문의',
@@ -494,7 +288,7 @@
         langLabel: 'Languages', langPlanned: 'Japanese and Traditional Chinese are coming in an update',
         title: 'AlchanLabs',
         metaDesc: 'AlchanLabs — making everyday moments more fulfilling. We build Galpirok, Work Schedule Calendar, Standboard and more.',
-        video: 'assets/hero-en.mp4?v=20261101b', poster: 'assets/hero-poster-en.jpg',
+        video: 'assets/hero-en.mp4?v=20261102', poster: 'assets/hero-poster-en.jpg?v=20261102',
         videoLabel: 'AlchanLabs intro video: making everyday moments more fulfilling, with six apps including Galpirok, Work Schedule Calendar and Standboard',
         htmlLang: 'en',
         brand: 'AlchanLabs', navApps: 'Apps', navWay: 'Approach', navContact: 'Contact',
@@ -528,7 +322,7 @@
         langLabel: '対応言語', langPlanned: '日本語・繁体字中国語は今後のアップデートで対応予定',
         title: 'AlchanLabs',
         metaDesc: 'AlchanLabs \u2014 毎日使う瞬間を、もっと充実させる。Galpirok、Work Schedule Calendar、Standboard などを作っています。',
-        video: 'assets/hero-ja.mp4?v=20261101b', poster: 'assets/hero-poster-ja.jpg',
+        video: 'assets/hero-ja.mp4?v=20261102', poster: 'assets/hero-poster-ja.jpg?v=20261102',
         videoLabel: 'AlchanLabs 紹介動画: 毎日使う瞬間をもっと充実させる、Galpirok、Work Schedule Calendar、Standboardなど6つのアプリ',
         htmlLang: 'ja',
         brand: 'AlchanLabs', navApps: 'アプリ', navWay: '方針', navContact: 'お問い合わせ',
@@ -562,7 +356,7 @@
         langLabel: '支援語言', langPlanned: '日文與繁體中文將於後續更新支援',
         title: 'AlchanLabs',
         metaDesc: 'AlchanLabs \u2014 讓每天使用的時刻更充實。我們製作 Galpirok、Work Schedule Calendar、Standboard 等 App。',
-        video: 'assets/hero-zh.mp4?v=20261101b', poster: 'assets/hero-poster-zh.jpg',
+        video: 'assets/hero-zh.mp4?v=20261102', poster: 'assets/hero-poster-zh.jpg?v=20261102',
         videoLabel: 'AlchanLabs 介紹影片：讓每天使用的時刻更加充實，Galpirok、Work Schedule Calendar、Standboard 等六款 App',
         htmlLang: 'zh-Hant-TW',
         brand: 'AlchanLabs', navApps: '我們的 App', navWay: '做事方式', navContact: '聯絡我們',
@@ -612,7 +406,17 @@
       }
       document.querySelectorAll('[data-i18n]').forEach(function (el) {
         var text = dict[el.getAttribute('data-i18n')];
-        if (text !== undefined) el.textContent = text;
+        if (text === undefined) return;
+        if (el.hasAttribute('data-lines')) {
+          el.textContent = '';
+          text.split(' · ').forEach(function (part) { var s = document.createElement('span'); s.textContent = part; el.appendChild(s); });
+        } else {
+          el.textContent = text.replace(/ · /g, ', ');
+        }
+      });
+      document.querySelectorAll('img[data-src-en]').forEach(function (img) {
+        img.setAttribute('src', img.getAttribute('data-src-' + lang) || img.getAttribute('data-src-en'));
+        img.setAttribute('alt', dict[img.getAttribute('data-alt-key')] + ({ko: ' 앱 화면', en: ' app screen', ja: ' アプリ画面', zh: ' App 畫面'}[lang] || ''));
       });
       // 그 언어 주소가 없으면 영어, 그것도 없으면 한국어 주소를 쓴다(예: 일본어·번체 개인정보처리방침은 영어 문서)
       document.querySelectorAll('[data-href-ko]').forEach(function (a) {
@@ -645,7 +449,7 @@
 
     var savedLang = null;
     try { savedLang = localStorage.getItem('alchanlabs-lang'); } catch (e) {}
-    if (savedLang && savedLang !== 'ko' && I18N[savedLang]) applyLang(savedLang);
+    applyLang(savedLang && I18N[savedLang] ? savedLang : 'ko');
     </script>
 </body>
 </html>
