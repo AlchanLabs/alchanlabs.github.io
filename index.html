@@ -69,7 +69,7 @@
         </button>
         <button type="button" class="slot" data-app="caregiver" aria-pressed="false" aria-controls="panel-caregiver" style="--i:3">
           <span class="stand"><img src="assets/icons/caregiver.png" alt="" width="132" height="132"></span>
-          <span class="slot-name" data-i18n="cgName">산후관리사 스케쥴러</span><span class="slot-note" data-i18n="soon">준비 중</span>
+          <span class="slot-name" data-i18n="cgName">산후관리사 스케쥴러</span><span class="slot-note" data-i18n="cgSlot">웹·PC</span>
         </button>
         <button type="button" class="slot" data-app="roomforge" aria-pressed="false" aria-controls="panel-roomforge" style="--i:4">
           <span class="stand"><img src="assets/icons/roomforge.png" alt="" width="132" height="132"></span>
@@ -118,14 +118,19 @@
           <a class="btn" href="https://play.google.com/store/apps/details?id=com.alchanlabs.standboard&hl=ko" data-href-ko="https://play.google.com/store/apps/details?id=com.alchanlabs.standboard&hl=ko" data-href-en="https://play.google.com/store/apps/details?id=com.alchanlabs.standboard&hl=en" data-href-ja="https://play.google.com/store/apps/details?id=com.alchanlabs.standboard&hl=ja" data-href-zh="https://play.google.com/store/apps/details?id=com.alchanlabs.standboard&hl=zh-TW" target="_blank" rel="noopener" data-i18n="viewPlay">Google Play에서 보기</a>
         </div>
       </div><figure class="shot"><img src="shots/sb-ko.jpg" data-src-ko="shots/sb-ko.jpg" data-src-en="shots/sb-en.jpg" data-src-ja="shots/sb-ja.jpg" data-alt-key="sbName" alt="" width="392" height="775" loading="lazy"></figure></article>
-      <article class="panel well" id="panel-caregiver" data-app="caregiver" hidden><div class="panel-body">
+      <article class="panel well has-shot" id="panel-caregiver" data-app="caregiver" hidden><div class="panel-body">
         <div class="panel-head">
           <h3 class="name" data-i18n="cgName">산후관리사 스케쥴러</h3>
-          <span class="status" data-i18n="soon">준비 중</span>
+          <span class="status" data-i18n="cgStatus">웹과 윈도우 프로그램으로 이용 중, 폰·태블릿 앱은 준비 중</span>
         </div>
-        <p class="desc" data-i18n="cgDesc">산후관리사 사무실의 관리자가 산후관리가 필요한 산모를 등록하고 관리사에게 배정하는 일정 관리 앱입니다. 관리사는 내 근무를 확인하고 변경을 신청할 수 있습니다. 웹, Android, iOS가 같은 자료를 함께 쓰도록 개발하고 있습니다.</p>
+        <p class="desc" data-i18n="cgDesc">산후관리사 사무실의 관리자가 산후관리가 필요한 산모를 등록하고 관리사에게 배정하는 일정 관리 앱입니다. 관리사는 내 근무를 확인하고 변경을 신청할 수 있습니다. 컴퓨터 브라우저(웹)와 윈도우 프로그램에서 쓸 수 있고, Android·iOS 앱도 같은 자료를 함께 쓰도록 개발하고 있습니다.</p>
         <p class="langs"><span class="langs-label" data-i18n="langLabel">지원 언어</span><span class="chip">한국어</span></p>
-      </div></article>
+        <div class="links">
+          <a class="btn" href="https://github.com/AlchanLabs/alchanlabs.github.io/releases/latest/download/CaregiverScheduler-Setup.exe" data-i18n="cgWin">윈도우 설치 파일 받기</a>
+          <a class="btn btn--secondary" href="https://dolbomi.pages.dev" target="_blank" rel="noopener" data-i18n="cgWeb">웹에서 열기</a>
+          <a class="btn btn--secondary" href="caregiver/" data-i18n="cgGuide">설치 방법 보기</a>
+        </div>
+      </div><figure class="shot"><img src="shots/cg-ko.jpg" alt="산후관리사 스케쥴러 앱 화면" width="506" height="1096" loading="lazy"></figure></article>
       <article class="panel well has-shot" id="panel-roomforge" data-app="roomforge" hidden><div class="panel-body">
         <div class="panel-head">
           <h3 class="name" data-i18n="rfName">방배치도</h3>
@@ -288,7 +293,8 @@
         sbName: '스탠드보드',
         sbDesc: '매장 카운터나 마켓 가판대에 태블릿·폰을 세워 두면 와이파이 QR과 공지, SNS 링크를 크게 보여 주는 안내판 앱입니다. 무료이고 광고·로그인 없이 기기 안에서만 동작합니다.',
         cgName: '산후관리사 스케쥴러',
-        cgDesc: '산후관리사 사무실의 관리자가 산후관리가 필요한 산모를 등록하고 관리사에게 배정하는 일정 관리 앱입니다. 관리사는 내 근무를 확인하고 변경을 신청할 수 있습니다. 웹, Android, iOS가 같은 자료를 함께 쓰도록 개발하고 있습니다.',
+        cgDesc: '산후관리사 사무실의 관리자가 산후관리가 필요한 산모를 등록하고 관리사에게 배정하는 일정 관리 앱입니다. 관리사는 내 근무를 확인하고 변경을 신청할 수 있습니다. 컴퓨터 브라우저(웹)와 윈도우 프로그램에서 쓸 수 있고, Android·iOS 앱도 같은 자료를 함께 쓰도록 개발하고 있습니다.',
+        cgSlot: '웹·PC', cgStatus: '웹과 윈도우 프로그램으로 이용 중, 폰·태블릿 앱은 준비 중', cgWin: '윈도우 설치 파일 받기', cgWeb: '웹에서 열기', cgGuide: '설치 방법 보기',
         rfName: '방배치도',
         rfDesc: '실제로 잰 치수대로 방과 가구를 평면도에 그려, 가구를 미리 놓아 보는 도면·배치도 앱입니다. 이사 전이나 새 가구를 사기 전, 가게·사무실을 꾸리기 전에 쓰기 좋고, 문과 창문을 달고 원하는 모양의 가구도 직접 만들 수 있습니다. 공간 문서 1개는 모든 편집 기능이 무료이고, 한 번 결제하면(구독 아님) 문서 무제한과 내보내기·인쇄를 쓸 수 있습니다. 로그인·광고 없이 자료는 기기 안에만 저장됩니다.',
         hnName: '허브노트',
@@ -323,7 +329,8 @@
         sbName: 'Standboard',
         sbDesc: 'A signboard app: stand a tablet or phone on a shop counter or market stall and it shows your Wi-Fi QR, notices and social links in large type. Free, with no ads or login, and it works entirely on your device.',
         cgName: '산후관리사 스케쥴러',
-        cgDesc: 'A scheduling app for postpartum-care agencies: the manager registers mothers who need postpartum care and assigns caregivers, and caregivers check their own shifts and request changes. The web, Android and iOS versions are being built to share the same data.',
+        cgDesc: 'A scheduling app for postpartum-care agencies: the manager registers mothers who need postpartum care and assigns caregivers, and caregivers check their own shifts and request changes. It runs in a computer browser and as a Windows program; the Android and iOS apps are being built to share the same data.',
+        cgSlot: 'Web & PC', cgStatus: 'Available on the web and Windows; phone and tablet apps coming soon', cgWin: 'Download for Windows', cgWeb: 'Open on the web', cgGuide: 'How to install',
         rfName: 'Room Layout',
         rfDesc: 'An app that draws your rooms and furniture to real measurements on a floor plan, so you can try arrangements first. It suits planning a move, buying new furniture, or laying out a shop or office. Add doors and windows, and make furniture in any shape you need. One space document is free with every editing feature; a one-time purchase (not a subscription) unlocks unlimited documents plus export and printing. No sign-in and no ads, and everything stays on your device.',
         hnName: 'HubNote',
@@ -359,7 +366,8 @@
         sbName: 'Standboard',
         sbDesc: 'お店のカウンターやマーケットの屋台にタブレットやスマホを立てておくと、Wi-Fi QR・お知らせ・SNSリンクを大きく表示する案内ボードアプリです。無料で、広告もログインもなく、端末の中だけで動作します。',
         cgName: '산후관리사 스케쥴러',
-        cgDesc: '産後ケア事業所の管理者が産後ケアを必要とする産婦さんを登録してケア担当者に割り当て、担当者は自分の勤務を確認して変更を申請できるスケジュール管理アプリです。Web、Android、iOSで同じデータを共有できるよう開発中です。',
+        cgDesc: '産後ケア事業所の管理者が産後ケアを必要とする産婦さんを登録してケア担当者に割り当て、担当者は自分の勤務を確認して変更を申請できるスケジュール管理アプリです。パソコンのブラウザ（Web）とWindowsプログラムで利用でき、Android・iOSアプリも同じデータを共有できるよう開発中です。',
+        cgSlot: 'Web・PC', cgStatus: 'WebとWindows版を利用可能、スマホ・タブレット版は準備中', cgWin: 'Windows版をダウンロード', cgWeb: 'Webで開く', cgGuide: 'インストール方法',
         rfName: '部屋レイアウト',
         rfDesc: '実際に測った寸法どおりに部屋と家具を平面図に描き、家具を置いて配置を事前に確かめられるアプリです。引越しの前、家具を買う前、店舗やオフィスを整える前に役立ちます。ドアや窓をつけ、好きな形の家具も自分で作れます。空間の文書1つはすべての編集機能が無料で、一度の購入（サブスクリプションではありません）で文書が無制限になり、書き出しと印刷も使えます。ログインも広告もなく、データは端末の中にだけ保存されます。',
         hnName: 'HubNote',
@@ -394,7 +402,8 @@
         sbName: 'Standboard',
         sbDesc: '把平板或手機立在店家櫃檯或市集攤位上，就能放大顯示 Wi-Fi QR 碼、公告與社群連結的告示板 App。免費、無廣告、免登入，完全在裝置內運作。',
         cgName: '산후관리사 스케쥴러',
-        cgDesc: '由月子照護機構的管理者登錄需要產後照護的產婦並指派照護員，照護員可確認自己的班表並申請異動的排程管理 App。目前正開發網頁、Android 與 iOS 共用同一份資料的版本。',
+        cgDesc: '由月子照護機構的管理者登錄需要產後照護的產婦並指派照護員，照護員可確認自己的班表並申請異動的排程管理 App。可在電腦瀏覽器（網頁）與 Windows 程式使用，Android 與 iOS App 也正開發為共用同一份資料。',
+        cgSlot: '網頁・PC', cgStatus: '可使用網頁與 Windows 版，手機與平板 App 籌備中', cgWin: '下載 Windows 版', cgWeb: '在網頁開啟', cgGuide: '安裝說明',
         rfName: '房間配置圖',
         rfDesc: '依實際量測的尺寸，把房間與家具畫成平面圖，先擺放看看再確認配置的 App。適合搬家前、買家具前，或佈置店面與辦公室之前使用。可加上門與窗，也能自己製作想要形狀的家具。一份空間文件可免費使用全部編輯功能，一次購買（非訂閱）即可使用無限份文件，並可匯出與列印。免登入、無廣告，資料只保存在裝置內。',
         hnName: 'HubNote',

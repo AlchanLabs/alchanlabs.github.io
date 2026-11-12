@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f4efe4">
+<title>산후관리사 스케쥴러 설치 안내 · 알찬랩스</title>
+<meta name="description" content="산후관리사 스케쥴러를 윈도우 PC에 설치하거나 웹에서 쓰는 방법을 화면과 함께 안내합니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Archivo:wght@400;500&family=Archivo+Narrow:wght@600&family=Noto+Serif+KR:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .guide-top { padding-block: var(--space-2xl) var(--space-xl); }
+  .guide-top .back { display: inline-flex; align-items: center; min-height: 44px; font: 600 var(--text-sm)/1 var(--font-outlier); color: var(--color-ink-2); text-decoration: none; border-bottom: var(--rule-bar) solid transparent; }
+  .guide-top .back:hover { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+  .guide-head { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: var(--space-lg); align-items: center; margin-top: var(--space-lg); }
+  .guide-head img { width: 96px; height: 96px; border-radius: 22px; }
+  .guide-head h1 { font-size: clamp(2.2rem, 4vw, 3.6rem); line-height: 1.12; max-width: none; }
+  .guide-top .lead { margin-top: var(--space-lg); color: var(--color-ink-2); }
+  .rule { margin-top: var(--space-lg); padding: var(--space-md) var(--space-lg); border-left: var(--rule-bar) solid var(--color-accent); background: var(--color-paper-2); color: var(--color-ink-2); max-width: 65ch; }
+  .shot-wide { margin-top: var(--space-xl); padding: var(--space-md); }
+  .shot-wide img { width: 100%; height: auto; border: var(--rule-hair) solid var(--color-rule); }
+  .shot-wide figcaption { margin-top: var(--space-sm); text-align: center; }
+  .block { padding-block: var(--section-gap-s); border-top: var(--rule-bar) solid var(--color-ink); }
+  .block h2 { font-size: var(--text-section); margin-bottom: var(--space-lg); }
+  .dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: var(--space-lg); align-items: start; }
+  .dl .small { margin-top: var(--space-sm); }
+  .dl .btn { width: 100%; justify-content: center; }
+  .dl .btn--secondary { justify-content: flex-start; }
+  .dl .off { display: inline-flex; align-items: center; min-height: 44px; padding: var(--space-sm) var(--space-lg); border: var(--rule-hair) dashed var(--color-muted); color: var(--color-muted); font: 600 var(--text-sm)/1.3 var(--font-outlier); }
+  .ver { margin-top: var(--space-lg); }
+  ol.steps { list-style: none; padding: 0; margin: 0; counter-reset: s; border-top: var(--rule-hair) solid var(--color-rule); max-width: 760px; }
+  ol.steps > li { counter-increment: s; position: relative; padding: var(--space-lg) 0 var(--space-lg) 64px; border-bottom: var(--rule-hair) solid var(--color-rule); }
+  ol.steps > li::before { content: counter(s); position: absolute; left: 0; top: var(--space-lg); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--color-ink); color: var(--color-paper); font: 700 var(--text-md)/1 var(--font-display); }
+  ol.steps h3 { font-size: var(--text-lg); line-height: 1.3; font-family: var(--font-body); font-weight: 600; letter-spacing: 0; }
+  ol.steps p { margin-top: var(--space-xs); color: var(--color-ink-2); }
+  ol.steps img { margin-top: var(--space-md); max-width: 520px; border: var(--rule-hair) solid var(--color-rule); }
+  .note { margin-top: var(--space-md); padding: var(--space-sm) var(--space-md); background: color-mix(in oklab, var(--color-gold) 22%, var(--color-paper)); color: var(--color-ink); font-size: var(--text-sm); max-width: 520px; }
+  .faq { max-width: 760px; border-top: var(--rule-hair) solid var(--color-rule); }
+  .faq div { padding-block: var(--space-md); border-bottom: var(--rule-hair) solid var(--color-rule); }
+  .faq h3 { font-family: var(--font-body); font-weight: 600; font-size: var(--text-md); line-height: 1.4; letter-spacing: 0; }
+  .faq p { margin-top: var(--space-2xs); color: var(--color-ink-2); }
+  @media (max-width: 40rem) {
+    .guide-head { grid-template-columns: 64px minmax(0, 1fr); }
+    .guide-head img { width: 64px; height: 64px; border-radius: 15px; }
+    ol.steps > li { padding-left: 0; padding-top: calc(var(--space-lg) + 52px); }
+  }
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container">
+      <div class="brand"><span class="mark"></span><span class="brand-text">알찬랩스</span></div>
+    </div>
+  </nav>
+
+  <main>
+    <header class="guide-top">
+      <div class="container">
+        <a class="back" href="../#caregiver">← 알찬랩스 · 만든 앱</a>
+        <div class="guide-head">
+          <img src="img/icon.png" alt="산후관리사 스케쥴러 아이콘" width="96" height="96">
+          <h1>산후관리사 스케쥴러</h1>
+        </div>
+        <p class="lead">산후관리사 사무실의 근무표를 한곳에서 관리합니다. 지사장님은 산모님 일정을 등록하고 담당 관리사님을 정하고, 관리사님은 내 근무를 확인하고 필요한 변경을 신청합니다.</p>
+        <div class="rule">근무 변경·대신 근무·근무 시간 변경은 관리사님이 <b>신청</b>하고, <b>지사장님이 승인해야</b> 근무표에 반영됩니다.</div>
+        <figure class="well shot-wide">
+          <img src="img/pc.jpg" alt="윈도우 프로그램 화면: 한 달 근무표와 그날 근무 인원" width="1100" height="714">
+          <figcaption class="small">윈도우 프로그램 화면 — 한 달 근무표와 그날 근무 인원</figcaption>
+        </figure>
+      </div>
+    </header>
+
+    <section class="block" id="get">
+      <div class="container">
+        <h2>받기</h2>
+        <div class="dl">
+          <div>
+            <a class="btn" href="https://github.com/AlchanLabs/alchanlabs.github.io/releases/latest/download/CaregiverScheduler-Setup.exe">윈도우 설치 파일 받기</a>
+            <p class="small">윈도우 10·11 (64비트) · 약 20MB<br><a href="#windows">설치 방법 보기</a></p>
+          </div>
+          <div>
+            <a class="btn btn--secondary" href="https://dolbomi.pages.dev" target="_blank" rel="noopener">맥·다른 컴퓨터: 웹에서 바로 쓰기</a>
+            <p class="small">설치 없이 인터넷 창(크롬·사파리·엣지)에서<br><a href="#web">쓰는 방법 보기</a></p>
+          </div>
+          <div>
+            <span class="off">폰·태블릿 앱: 출시 준비 중</span>
+            <p class="small">App Store · Google Play 출시 후 이곳에 링크를 올립니다</p>
+          </div>
+        </div>
+        <p class="small ver">윈도우 프로그램 최신 판: 1.0.0 (빌드 12) · 2026년 11월 12일</p>
+      </div>
+    </section>
+
+    <section class="block" id="windows">
+      <div class="container">
+        <h2>윈도우에 설치하기</h2>
+        <ol class="steps">
+          <li>
+            <h3>설치 파일을 받아 엽니다</h3>
+            <p>위 [윈도우 설치 파일 받기]를 누르면 <b>CaregiverScheduler-Setup</b> 파일이 다운로드 폴더에 저장됩니다. 받은 파일을 두 번 눌러 엽니다.</p>
+          </li>
+          <li>
+            <h3>"Windows의 PC 보호" 창이 뜨면 [추가 정보] → [실행]</h3>
+            <p>아직 마이크로소프트 인증서를 붙이지 않은 작은 회사의 프로그램이라 처음에 이 안내가 뜰 수 있습니다. 파란 창 안의 <b>[추가 정보]</b>를 누르고, 아래에 나타나는 <b>[실행]</b>을 누르세요.</p>
+          </li>
+          <li>
+            <h3>[현재 사용자용으로 설치 (권장)]을 누릅니다</h3>
+            <p>관리자 비밀번호 없이 지금 로그인한 사람에게 설치됩니다.</p>
+            <img src="img/win-wizard-1.png" alt="설치 모드 선택: 현재 사용자용으로 설치(권장)" loading="lazy">
+          </li>
+          <li>
+            <h3>설치할 곳은 그대로 두고 [다음]</h3>
+            <img src="img/win-wizard-2.png" alt="대상 위치 선택 화면" loading="lazy">
+          </li>
+          <li>
+            <h3>바탕화면 바로가기가 필요하면 체크하고 [다음]</h3>
+            <img src="img/win-wizard-3.png" alt="추가 작업 선택: 바탕화면에 바로가기 만들기" loading="lazy">
+          </li>
+          <li>
+            <h3>[설치]를 누릅니다</h3>
+            <img src="img/win-wizard-4.png" alt="설치 준비 완료 화면" loading="lazy">
+          </li>
+          <li>
+            <h3>[마침]을 누르면 프로그램이 켜집니다</h3>
+            <p>다음부터는 시작 메뉴의 <b>산후관리사 스케쥴러</b>로 엽니다.</p>
+            <img src="img/win-wizard-5.png" alt="설치 마법사 완료: 산후관리사 스케쥴러 지금 실행" loading="lazy">
+          </li>
+          <li>
+            <h3>폰에서 쓰던 방식으로 로그인합니다</h3>
+            <p>카카오·Google·Apple 중 폰에서 가입한 방식과 같은 것을 고르면, 기본 인터넷 창이 열렸다가 로그인이 끝나면 프로그램으로 돌아옵니다.</p>
+            <img src="img/win-login.jpg" alt="윈도우 프로그램 로그인 화면" loading="lazy">
+            <div class="note">여러 사람이 쓰는 사무실 PC라면 쓰고 나서 꼭 왼쪽 아래 [메뉴 · 설정] → 로그아웃을 눌러 주세요.</div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block" id="web">
+      <div class="container">
+        <h2>맥·다른 컴퓨터에서 쓰기 (웹)</h2>
+        <ol class="steps">
+          <li>
+            <h3>인터넷 창에서 주소를 엽니다</h3>
+            <p><a href="https://dolbomi.pages.dev" target="_blank" rel="noopener">dolbomi.pages.dev</a> — 설치할 것이 없습니다. 자주 쓰면 즐겨찾기에 넣어 두세요.</p>
+          </li>
+          <li>
+            <h3>폰에서 쓰던 방식으로 로그인합니다</h3>
+            <p>로그인 창이 작은 새 창으로 열립니다. 열리지 않으면 주소창 오른쪽의 팝업 차단 표시를 눌러 허용해 주세요. 인터넷 창(탭)을 닫으면 저절로 로그아웃됩니다.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block" id="faq">
+      <div class="container">
+        <h2>자주 묻는 것</h2>
+        <div class="faq">
+          <div><h3>폰과 PC에서 같은 일정이 보이나요?</h3><p>네. 같은 계정으로 로그인하면 폰·태블릿·PC 어디서나 같은 사무실 일정이 보이고, 한쪽에서 바꾼 내용이 바로 반영됩니다.</p></div>
+          <div><h3>새 버전은 어떻게 받나요?</h3><p>이 페이지에서 설치 파일을 다시 받아 그대로 설치하면 이전 판 위에 덮어 설치됩니다. 일정은 서버에 있어 그대로입니다. 웹은 늘 최신 판이 열립니다.</p></div>
+          <div><h3>윈도우 프로그램을 지우려면?</h3><p>윈도우 설정 → 앱 → 설치된 앱에서 <b>산후관리사 스케쥴러</b>를 찾아 [제거]를 누르세요. 지우기 전에 프로그램에서 로그아웃해 두면 PC에 로그인 기록이 남지 않습니다.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <div>
+          <h2>문의하기</h2>
+          <p>사용 문의, 오류 신고, 개인정보 관련 문의를 받습니다.</p>
+        </div>
+        <a class="btn" href="mailto:alchanlabs.dev@gmail.com">alchanlabs.dev@gmail.com</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="colophon">
+    <div class="container">
+      <div class="word">알찬랩스</div>
+      <div class="copy">© 2026 알찬랩스. All rights reserved. · 대표 이알찬 · 사업자등록번호 453-03-03842 · 통신판매업신고 제2026-충남천안-2243호</div>
+    </div>
+  </footer>
+</body>
+</html>
