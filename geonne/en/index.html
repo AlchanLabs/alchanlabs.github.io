@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f4efe4">
+<title>Geonne install guide · AlchanLabs</title>
+<meta name="description" content="How to install Geonne on Mac and Windows and make your first connection.">
+<link rel="alternate" hreflang="ko" href="https://alchanlabs.com/geonne/">
+<link rel="alternate" hreflang="en" href="https://alchanlabs.com/geonne/en/">
+<link rel="alternate" hreflang="ja" href="https://alchanlabs.com/geonne/ja/">
+<link rel="alternate" hreflang="zh-Hant-TW" href="https://alchanlabs.com/geonne/zh/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Archivo:wght@400;500&family=Archivo+Narrow:wght@600&family=Noto+Serif+KR:wght@700&family=Noto+Serif+JP:wght@700&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
+<link rel="stylesheet" href="../../style.css">
+<style>
+  .guide-top { padding-block: var(--space-2xl) var(--space-xl); }
+  .guide-top .back { display: inline-flex; align-items: center; min-height: 44px; font: 600 var(--text-sm)/1 var(--font-outlier); color: var(--color-ink-2); text-decoration: none; border-bottom: var(--rule-bar) solid transparent; }
+  .guide-top .back:hover { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+  .guide-head { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: var(--space-lg); align-items: center; margin-top: var(--space-lg); }
+  .guide-head img { width: 96px; height: 96px; border-radius: 22px; }
+  .guide-head h1 { font-size: clamp(2.2rem, 4vw, 3.6rem); line-height: 1.12; max-width: none; }
+  .guide-top .lead { margin-top: var(--space-lg); color: var(--color-ink-2); }
+  .rule { margin-top: var(--space-lg); padding: var(--space-md) var(--space-lg); border-left: var(--rule-bar) solid var(--color-accent); background: var(--color-paper-2); color: var(--color-ink-2); max-width: 65ch; }
+  .shot-wide { margin-top: var(--space-xl); padding: var(--space-md); }
+  .shot-wide img { width: 100%; height: auto; border: var(--rule-hair) solid var(--color-rule); }
+  .shot-wide figcaption { margin-top: var(--space-sm); text-align: center; }
+  .block { padding-block: var(--section-gap-s); border-top: var(--rule-bar) solid var(--color-ink); }
+  .block h2 { font-size: var(--text-section); margin-bottom: var(--space-lg); }
+  .dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: var(--space-lg); align-items: start; }
+  .dl .small { margin-top: var(--space-sm); }
+  .dl .btn { width: 100%; justify-content: center; }
+  .dl .btn--secondary { justify-content: flex-start; }
+  .dl .off { display: inline-flex; align-items: center; min-height: 44px; padding: var(--space-sm) var(--space-lg); border: var(--rule-hair) dashed var(--color-muted); color: var(--color-muted); font: 600 var(--text-sm)/1.3 var(--font-outlier); }
+  .ver { margin-top: var(--space-lg); }
+  ol.steps { list-style: none; padding: 0; margin: 0; counter-reset: s; border-top: var(--rule-hair) solid var(--color-rule); max-width: 760px; }
+  ol.steps > li { counter-increment: s; position: relative; padding: var(--space-lg) 0 var(--space-lg) 64px; border-bottom: var(--rule-hair) solid var(--color-rule); }
+  ol.steps > li::before { content: counter(s); position: absolute; left: 0; top: var(--space-lg); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--color-ink); color: var(--color-paper); font: 700 var(--text-md)/1 var(--font-display); }
+  ol.steps h3 { font-size: var(--text-lg); line-height: 1.3; font-family: var(--font-body); font-weight: 600; letter-spacing: 0; }
+  ol.steps p { margin-top: var(--space-xs); color: var(--color-ink-2); }
+  ol.steps img { margin-top: var(--space-md); max-width: 520px; border: var(--rule-hair) solid var(--color-rule); }
+  .note { margin-top: var(--space-md); padding: var(--space-sm) var(--space-md); background: color-mix(in oklab, var(--color-gold) 22%, var(--color-paper)); color: var(--color-ink); font-size: var(--text-sm); max-width: 520px; }
+  .faq { max-width: 760px; border-top: var(--rule-hair) solid var(--color-rule); }
+  .faq div { padding-block: var(--space-md); border-bottom: var(--rule-hair) solid var(--color-rule); }
+  .faq h3 { font-family: var(--font-body); font-weight: 600; font-size: var(--text-md); line-height: 1.4; letter-spacing: 0; }
+  .faq p { margin-top: var(--space-2xs); color: var(--color-ink-2); }
+  @media (max-width: 40rem) {
+    .guide-head { grid-template-columns: 64px minmax(0, 1fr); }
+    .guide-head img { width: 64px; height: 64px; border-radius: 15px; }
+    ol.steps > li { padding-left: 0; padding-top: calc(var(--space-lg) + 52px); }
+  }
+  .langbar { display: flex; flex-wrap: wrap; gap: var(--space-xs) var(--space-md); margin-top: var(--space-md); font: 600 var(--text-sm)/1 var(--font-outlier); }
+  .langbar a { color: var(--color-ink-2); text-decoration: none; padding: var(--space-2xs) 0; border-bottom: var(--rule-bar) solid transparent; }
+  .langbar a:hover { color: var(--color-accent); }
+  .langbar a[aria-current="page"] { color: var(--color-ink); border-bottom-color: var(--color-accent); }
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container">
+      <div class="brand"><span class="mark"></span><span class="brand-text">AlchanLabs</span></div>
+    </div>
+  </nav>
+
+  <main>
+    <header class="guide-top">
+      <div class="container">
+        <a class="back" href="../../#geonne">← AlchanLabs · Apps</a>
+        <nav class="langbar" aria-label="언어 선택 / Language / 言語 / 語言"><a href="../">한국어</a><a href="../en/" aria-current="page">English</a><a href="../ja/" lang="ja">日本語</a><a href="../zh/" lang="zh-Hant-TW">繁體中文</a></nav>
+        <div class="guide-head">
+          <img src="../img/icon.png" alt="Geonne" width="96" height="96">
+          <h1>Geonne</h1>
+        </div>
+        <p class="lead">Geonne sends photos, videos, documents and multi-GB files between your own devices on the same Wi-Fi, with no cables. Sending many in a row never stalls, and if a transfer is interrupted, only the remaining files are sent. Files go directly between devices with no server and no account, and every connection is encrypted.</p>
+        <div class="rule">Both the sending and receiving devices must be on the <b>same Wi-Fi</b> with <b>Geonne open</b>. Only the first time you connect, you check that the same 6-digit number appears on both screens.</div>
+        <figure class="well shot-wide">
+          <img src="../img/mac.jpg" alt="Mac screen example: nearby devices on the left, transfers on the right" width="1400" height="839">
+          <figcaption class="small">Mac screen example — nearby devices on the left, transfers on the right (device names and files are examples)</figcaption>
+        </figure>
+      </div>
+    </header>
+
+    <section class="block" id="get">
+      <div class="container">
+        <h2>Download</h2>
+        <div class="dl">
+          <div>
+            <a class="btn" href="https://github.com/AlchanLabs/alchanlabs.github.io/releases/download/geonne-1.0.0/Geonne-1.0.0.dmg">Download for Mac</a>
+            <p class="small">macOS 12 or later · about 12 MB · notarized by Apple<br><a href="#mac">How to install</a></p>
+          </div>
+          <div>
+            <a class="btn" href="https://github.com/AlchanLabs/alchanlabs.github.io/releases/download/geonne-1.0.0/Geonne-Setup-1.0.0.exe">Download for Windows</a>
+            <p class="small">Windows 10 / 11 (64-bit) · about 12 MB<br><a href="#windows">How to install</a></p>
+          </div>
+          <div>
+            <span class="off">Phone and tablet apps: coming to the stores</span>
+            <p class="small">Links will be added here after the App Store and Google Play launch</p>
+          </div>
+        </div>
+        <p class="small ver">Latest version: 1.0.0 · November 16, 2026 · the Mac and Windows apps have no ads</p>
+      </div>
+    </section>
+
+    <section class="block" id="mac">
+      <div class="container">
+        <h2>Install on Mac</h2>
+        <ol class="steps">
+          <li>
+            <h3>Open the downloaded file</h3>
+            <p>Double-click <b>Geonne-1.0.0.dmg</b>, downloaded with the button above. A small window opens.</p>
+          </li>
+          <li>
+            <h3>Drag Geonne into the Applications folder</h3>
+            <p>Drag the <b>Geonne</b> icon in the window onto the <b>Applications</b> folder next to it. That finishes the install. You can close the window and move the dmg to the Trash.</p>
+          </li>
+          <li>
+            <h3>Open Geonne from Applications</h3>
+            <p>The first time, if a notice says it is an app downloaded from the Internet, click [Open]. The app has been checked by Apple, so no other warning appears.</p>
+          </li>
+          <li>
+            <h3>Click [Allow] on the “Local Network” prompt</h3>
+            <p>This is required to find other devices on the same Wi-Fi. If you blocked it by mistake, turn on Geonne in <b>System Settings → Privacy &amp; Security → Local Network</b>.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block" id="windows">
+      <div class="container">
+        <h2>Install on Windows</h2>
+        <ol class="steps">
+          <li>
+            <h3>Download and open the installer</h3>
+            <p>Click [Download for Windows] above. A file named <b>Geonne-Setup-1.0.0</b> is saved to your Downloads folder. Double-click it.</p>
+          </li>
+          <li>
+            <h3>If “Windows protected your PC” appears, click [More info] → [Run anyway]</h3>
+            <p>Because this is a small company’s program without a Microsoft certificate yet, this notice may appear the first time. Click <b>[More info]</b> in the window; the app name <b>Geonne-Setup-1.0.0.exe</b> and the publisher appear, and a <b>[Run anyway]</b> button shows up below. Click it.</p>
+            <div class="note">The window color may look blue or purple depending on your PC’s color settings.</div>
+          </li>
+          <li>
+            <h3>In the setup wizard, click [Next] → [Install] → [Finish]</h3>
+            <p>By default it installs for the current user only, with no administrator password. Tick the desktop shortcut if you want one. Leave [Launch Geonne] ticked on the last page and click [Finish] to start it. Next time, open <b>Geonne</b> from the Start menu.</p>
+          </li>
+          <li>
+            <h3>If a firewall window appears, click [Allow access]</h3>
+            <p>If “Windows Defender Firewall has blocked some features of this app” appears, make sure <b>Private networks</b> is ticked and click <b>[Allow access]</b>. If it is blocked, the devices cannot see each other.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block" id="connect">
+      <div class="container">
+        <h2>Connect and send for the first time</h2>
+        <ol class="steps">
+          <li>
+            <h3>Open Geonne on both devices</h3>
+            <p>Open Geonne on two devices on the same Wi-Fi. Within a few seconds each appears in the other’s <b>Nearby devices</b> list.</p>
+          </li>
+          <li>
+            <h3>Tap [Send] next to the device and choose files</h3>
+            <p>For a device you have not connected before, the button is [Pair &amp; send]. On Mac and Windows you can also drop files into the window. You can pick many at once, and large files go as they are.</p>
+          </li>
+          <li>
+            <h3>Check the 6-digit number only the first time</h3>
+            <p>Two devices meeting for the first time show the same 6-digit number on both screens. If they match, tap [They match] on both devices (the receiving button is [They match — receive]). The transfer starts, and next time you won’t be asked.</p>
+          </li>
+          <li>
+            <h3>Tap [Receive] on the receiving device</h3>
+            <p>When files arrive from a device you already connected, see who is sending how many files, then tap [Receive]. For your own regular devices you can turn on “Always accept” to receive without asking.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block" id="faq">
+      <div class="container">
+        <h2>FAQ</h2>
+        <div class="faq">
+          <div><h3>The other device doesn’t appear in the list</h3><p>Check that both devices are on the same Wi-Fi and Geonne is open on both. Some routers’ “AP isolation” and guest Wi-Fi at offices or cafés keep devices from seeing each other. In that case enter the other device’s address under [Connect by IP] on the Geonne screen. Also check Local Network permission on Mac and the firewall on Windows.</p></div>
+          <div><h3>Do files go through an internet server?</h3><p>No. Files go directly between devices on the same network and every connection is encrypted. There is no sign-up or login.</p></div>
+          <div><h3>Can I send whole folders?</h3><p>Not yet. Please zip the folder and send the zip file.</p></div>
+          <div><h3>How do I get a new version?</h3><p>Download the new installer from this page and install it; it installs over the old version.</p></div>
+          <div><h3>How do I uninstall?</h3><p>On Mac, move Geonne from the Applications folder to the Trash. On Windows, open Settings → Apps → Installed apps, find <b>Geonne</b> and click [Uninstall].</p></div>
+          <div><h3>What about my privacy?</h3><p>The Mac and Windows apps have no ads and no accounts, and files and history stay on your device. See the <a href="https://sites.google.com/view/geonne/privacy-en" target="_blank" rel="noopener">Privacy Policy</a>.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <div>
+          <h2>Contact us</h2>
+          <p>Questions, bug reports and privacy inquiries are welcome.</p>
+        </div>
+        <a class="btn" href="mailto:alchanlabs.dev@gmail.com">alchanlabs.dev@gmail.com</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="colophon">
+    <div class="container">
+      <div class="word">AlchanLabs</div>
+      <div class="copy">© 2026 AlchanLabs. All rights reserved. · CEO Alchan Lee · Business Reg. No. 453-03-03842 · Mail-order Business Report No. 제2026-충남천안-2243호</div>
+    </div>
+  </footer>
+</body>
+</html>
