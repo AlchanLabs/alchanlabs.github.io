@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#f4efe4">
-<title>Geonne 安裝說明 · AlchanLabs</title>
-<meta name="description" content="說明如何在 Mac 與 Windows 電腦安裝 Geonne，以及第一次連線的方法。">
+<title>Geonne · 相片、文件、大型檔案，同一個 Wi-Fi 立即傳 · AlchanLabs</title>
+<meta name="description" content="Geonne 讓你在同一個 Wi-Fi 中，於自己的裝置之間無線傳送相片、影片、文件與數 GB 的大型檔案。提供 Mac 與 Windows 安裝檔與安裝說明。">
 <link rel="alternate" hreflang="ko" href="https://alchanlabs.com/geonne/">
 <link rel="alternate" hreflang="en" href="https://alchanlabs.com/geonne/en/">
 <link rel="alternate" hreflang="ja" href="https://alchanlabs.com/geonne/ja/">
@@ -54,6 +54,29 @@
   .langbar a { color: var(--color-ink-2); text-decoration: none; padding: var(--space-2xs) 0; border-bottom: var(--rule-bar) solid transparent; }
   .langbar a:hover { color: var(--color-accent); }
   .langbar a[aria-current="page"] { color: var(--color-ink); border-bottom-color: var(--color-accent); }
+
+  .gn-hero { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-xl) var(--space-2xl); align-items: center; margin-top: var(--space-xl); }
+  .gn-kicker { display: flex; align-items: center; gap: var(--space-md); font: 700 var(--text-md)/1 var(--font-outlier); color: var(--color-ink-2); }
+  .gn-kicker img { width: 56px; height: 56px; border-radius: 13px; }
+  .gn-hero h1 { margin-top: var(--space-lg); font-size: clamp(2rem, 3.3vw, 3.4rem); line-height: 1.16; max-width: none; }
+  html[lang="ja"] .gn-hero h1, html[lang="zh-Hant-TW"] .gn-hero h1 { word-break: auto-phrase; max-width: none; }
+  .gn-hero h1 .line { display: block; }
+  .gn-hero h1 .line + .line { color: var(--color-accent); }
+  .gn-hero .lead { margin-top: var(--space-lg); color: var(--color-ink-2); max-width: 60ch; }
+  .gn-hero .actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-md) var(--space-xl); margin-top: var(--space-xl); }
+  .gn-hero .storenote { margin-top: var(--space-lg); max-width: 60ch; }
+  .gn-hero figure { padding: var(--space-md); margin: 0; }
+  .gn-hero figure img { width: 100%; height: auto; display: block; border: var(--rule-hair) solid var(--color-rule); }
+  .gn-section { padding-block: var(--section-gap-s); border-top: var(--rule-bar) solid var(--color-ink); }
+  .gn-section h2 { font-size: var(--text-section); margin-bottom: var(--space-lg); }
+  .gn-gallery { display: flex; gap: var(--space-lg); overflow-x: auto; scroll-snap-type: x mandatory; padding: var(--space-sm) var(--space-3xs) var(--space-lg); margin-top: var(--space-lg); -webkit-overflow-scrolling: touch; }
+  .gn-gallery img { flex: 0 0 auto; width: min(280px, 72vw); height: auto; scroll-snap-align: start; border: var(--rule-bar) solid var(--color-ink); background: var(--color-paper-2); box-shadow: 8px 8px 0 var(--color-paper-3); }
+  .gn-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: var(--space-lg); margin-top: var(--space-lg); }
+  .gn-card { padding: var(--space-lg); background: var(--color-paper-2); border: var(--rule-bar) solid var(--color-ink); box-shadow: var(--shadow-card); }
+  .gn-card h3 { font-family: var(--font-body); font-weight: 700; font-size: var(--text-lg); line-height: 1.3; letter-spacing: 0; }
+  .gn-card p { margin-top: var(--space-sm); color: var(--color-ink-2); }
+  .gn-card .no { display: inline-block; margin-bottom: var(--space-sm); font: 700 var(--text-sm)/1 var(--font-outlier); color: var(--color-accent); }
+  @media (max-width: 60rem) { .gn-hero { grid-template-columns: minmax(0, 1fr); } }
 </style>
 </head>
 <body>
@@ -68,18 +91,47 @@
       <div class="container">
         <a class="back" href="../../#geonne">← AlchanLabs · 所有 App</a>
         <nav class="langbar" aria-label="언어 선택 / Language / 言語 / 語言"><a href="../">한국어</a><a href="../en/">English</a><a href="../ja/" lang="ja">日本語</a><a href="../zh/" aria-current="page" lang="zh-Hant-TW">繁體中文</a></nav>
-        <div class="guide-head">
-          <img src="../img/icon.png" alt="Geonne" width="96" height="96">
-          <h1>Geonne</h1>
+        <div class="gn-hero">
+          <div>
+            <div class="gn-kicker"><img src="../img/icon.png" alt="Geonne" width="56" height="56"><span>Geonne</span></div>
+            <h1><span class="line">相片、文件、大型檔案</span><span class="line">同一個 Wi-Fi 立即傳。</span></h1>
+            <p class="lead">在同一個 Wi-Fi 中，於自己的裝置之間無線傳送，不需要傳輸線。連續傳送多筆也不會卡住，傳輸中斷時只會接著傳送剩下的檔案。不需伺服器與帳號，裝置之間直接傳輸，所有連線皆經過加密。</p>
+            <div class="actions">
+              <a class="btn" href="#get">下載 Mac／Windows 安裝檔</a>
+              <a class="btn btn--secondary" href="#uses">使用方式</a>
+            </div>
+            <p class="small storenote">手機與平板 App（iPhone、iPad、Android）正在籌備上架 App Store 與 Google Play。</p>
+          </div>
+          <figure class="well">
+            <img src="../img/mac.jpg" alt="Mac 畫面範例：左側為附近裝置，右側為傳輸紀錄" width="1400" height="839">
+            <figcaption class="small">Mac 畫面範例 — 左側為附近裝置，右側為傳輸紀錄（裝置名稱與檔案僅為範例）</figcaption>
+          </figure>
         </div>
-        <p class="lead">在同一個 Wi-Fi 中，於自己的裝置之間無線傳送相片、影片、文件與數 GB 大型檔案的 App。連續傳送多筆也不會卡住，傳輸中斷時只會接著傳送剩下的檔案。不需伺服器與帳號，裝置之間直接傳輸，所有連線皆經過加密。</p>
         <div class="rule">傳送端與接收端都必須在<b>同一個 Wi-Fi</b>，並<b>開著 Geonne</b>。只有第一次連線時，需要核對兩個畫面上的 6 位數字是否相同。</div>
-        <figure class="well shot-wide">
-          <img src="../img/mac.jpg" alt="Mac 畫面範例：左側為附近裝置，右側為傳輸紀錄" width="1400" height="839">
-          <figcaption class="small">Mac 畫面範例 — 左側為附近裝置，右側為傳輸紀錄（裝置名稱與檔案僅為範例）</figcaption>
-        </figure>
       </div>
     </header>
+
+    <section class="gn-section" id="uses">
+      <div class="container">
+        <h2>這些時候很好用</h2>
+        <div class="gn-cards"><div class="gn-card"><span class="no">01</span><h3>相片・影片</h3><p>把旅行拍的相片與影片，從手機直接傳到 Mac 或電腦。不需要線，也不經過雲端。</p></div><div class="gn-card"><span class="no">02</span><h3>文件・檔案</h3><p>合約、作業、壓縮檔，在自己的裝置之間直接傳。</p></div><div class="gn-card"><span class="no">03</span><h3>大型檔案</h3><p>數 GB 的影片也能原樣傳送。連續傳送也不會卡住，中斷時只會接著傳送剩下的。</p></div></div>
+      </div>
+    </section>
+
+    <section class="gn-section" id="screens">
+      <div class="container">
+        <h2>畫面長這樣</h2>
+        <p class="small">這是 iPhone 畫面範例，裝置名稱與檔案僅為示範。</p>
+        <div class="gn-gallery" tabindex="0"><img src="../img/shot-zh-1.jpg" alt="畫面長這樣 1" width="440" height="956" loading="lazy"><img src="../img/shot-zh-2.jpg" alt="畫面長這樣 2" width="440" height="956" loading="lazy"><img src="../img/shot-zh-3.jpg" alt="畫面長這樣 3" width="440" height="956" loading="lazy"><img src="../img/shot-zh-4.jpg" alt="畫面長這樣 4" width="440" height="956" loading="lazy"><img src="../img/shot-zh-5.jpg" alt="畫面長這樣 5" width="440" height="956" loading="lazy"><img src="../img/shot-zh-6.jpg" alt="畫面長這樣 6" width="440" height="956" loading="lazy"></div>
+      </div>
+    </section>
+
+    <section class="gn-section" id="features">
+      <div class="container">
+        <h2>可以放心使用的原因</h2>
+        <div class="gn-cards"><div class="gn-card"><h3>不需伺服器，不需帳號</h3><p>檔案不經過網際網路伺服器，而是在同一個網路內於裝置之間直接傳輸。不需註冊、不需登入。</p></div><div class="gn-card"><h3>加密與 6 位數字核對</h3><p>所有連線皆經過加密，初次連線的裝置必須核對兩個畫面上的 6 位數字才會連線。</p></div><div class="gn-card"><h3>每個裝置都是同一個 App</h3><p>iPhone、iPad、Android、Mac、Windows 使用方式一致，支援 한국어、English、日本語、繁體中文。</p></div><div class="gn-card"><h3>自己的裝置直接接收</h3><p>常用的自己的裝置可開啟「一律接收」，並可查看接收與傳送的紀錄。</p></div></div>
+      </div>
+    </section>
 
     <section class="block" id="get">
       <div class="container">

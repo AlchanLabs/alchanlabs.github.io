@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#f4efe4">
-<title>Geonne install guide · AlchanLabs</title>
-<meta name="description" content="How to install Geonne on Mac and Windows and make your first connection.">
+<title>Geonne · Photos, documents and big files over the same Wi-Fi · AlchanLabs</title>
+<meta name="description" content="Geonne sends photos, videos, documents and multi-GB files between your own devices on the same Wi-Fi, no cables, no account. Mac and Windows installers and install guide.">
 <link rel="alternate" hreflang="ko" href="https://alchanlabs.com/geonne/">
 <link rel="alternate" hreflang="en" href="https://alchanlabs.com/geonne/en/">
 <link rel="alternate" hreflang="ja" href="https://alchanlabs.com/geonne/ja/">
@@ -54,6 +54,29 @@
   .langbar a { color: var(--color-ink-2); text-decoration: none; padding: var(--space-2xs) 0; border-bottom: var(--rule-bar) solid transparent; }
   .langbar a:hover { color: var(--color-accent); }
   .langbar a[aria-current="page"] { color: var(--color-ink); border-bottom-color: var(--color-accent); }
+
+  .gn-hero { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-xl) var(--space-2xl); align-items: center; margin-top: var(--space-xl); }
+  .gn-kicker { display: flex; align-items: center; gap: var(--space-md); font: 700 var(--text-md)/1 var(--font-outlier); color: var(--color-ink-2); }
+  .gn-kicker img { width: 56px; height: 56px; border-radius: 13px; }
+  .gn-hero h1 { margin-top: var(--space-lg); font-size: clamp(2rem, 3.3vw, 3.4rem); line-height: 1.16; max-width: none; }
+  html[lang="ja"] .gn-hero h1, html[lang="zh-Hant-TW"] .gn-hero h1 { word-break: auto-phrase; max-width: none; }
+  .gn-hero h1 .line { display: block; }
+  .gn-hero h1 .line + .line { color: var(--color-accent); }
+  .gn-hero .lead { margin-top: var(--space-lg); color: var(--color-ink-2); max-width: 60ch; }
+  .gn-hero .actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-md) var(--space-xl); margin-top: var(--space-xl); }
+  .gn-hero .storenote { margin-top: var(--space-lg); max-width: 60ch; }
+  .gn-hero figure { padding: var(--space-md); margin: 0; }
+  .gn-hero figure img { width: 100%; height: auto; display: block; border: var(--rule-hair) solid var(--color-rule); }
+  .gn-section { padding-block: var(--section-gap-s); border-top: var(--rule-bar) solid var(--color-ink); }
+  .gn-section h2 { font-size: var(--text-section); margin-bottom: var(--space-lg); }
+  .gn-gallery { display: flex; gap: var(--space-lg); overflow-x: auto; scroll-snap-type: x mandatory; padding: var(--space-sm) var(--space-3xs) var(--space-lg); margin-top: var(--space-lg); -webkit-overflow-scrolling: touch; }
+  .gn-gallery img { flex: 0 0 auto; width: min(280px, 72vw); height: auto; scroll-snap-align: start; border: var(--rule-bar) solid var(--color-ink); background: var(--color-paper-2); box-shadow: 8px 8px 0 var(--color-paper-3); }
+  .gn-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: var(--space-lg); margin-top: var(--space-lg); }
+  .gn-card { padding: var(--space-lg); background: var(--color-paper-2); border: var(--rule-bar) solid var(--color-ink); box-shadow: var(--shadow-card); }
+  .gn-card h3 { font-family: var(--font-body); font-weight: 700; font-size: var(--text-lg); line-height: 1.3; letter-spacing: 0; }
+  .gn-card p { margin-top: var(--space-sm); color: var(--color-ink-2); }
+  .gn-card .no { display: inline-block; margin-bottom: var(--space-sm); font: 700 var(--text-sm)/1 var(--font-outlier); color: var(--color-accent); }
+  @media (max-width: 60rem) { .gn-hero { grid-template-columns: minmax(0, 1fr); } }
 </style>
 </head>
 <body>
@@ -68,18 +91,47 @@
       <div class="container">
         <a class="back" href="../../#geonne">← AlchanLabs · Apps</a>
         <nav class="langbar" aria-label="언어 선택 / Language / 言語 / 語言"><a href="../">한국어</a><a href="../en/" aria-current="page">English</a><a href="../ja/" lang="ja">日本語</a><a href="../zh/" lang="zh-Hant-TW">繁體中文</a></nav>
-        <div class="guide-head">
-          <img src="../img/icon.png" alt="Geonne" width="96" height="96">
-          <h1>Geonne</h1>
+        <div class="gn-hero">
+          <div>
+            <div class="gn-kicker"><img src="../img/icon.png" alt="Geonne" width="56" height="56"><span>Geonne</span></div>
+            <h1><span class="line">Photos, documents, big files</span><span class="line">straight over Wi-Fi.</span></h1>
+            <p class="lead">Send files between your own devices on the same Wi-Fi, no cables. Many in a row never stall, and an interrupted transfer picks up where it left off. No server and no account: files go directly between your devices, and every connection is encrypted.</p>
+            <div class="actions">
+              <a class="btn" href="#get">Get the Mac / Windows installer</a>
+              <a class="btn btn--secondary" href="#uses">How it works</a>
+            </div>
+            <p class="small storenote">The phone and tablet apps (iPhone, iPad, Android) are coming to the App Store and Google Play.</p>
+          </div>
+          <figure class="well">
+            <img src="../img/mac.jpg" alt="Mac screen example: nearby devices on the left, transfers on the right" width="1400" height="839">
+            <figcaption class="small">Mac screen example — nearby devices on the left, transfers on the right (device names and files are examples)</figcaption>
+          </figure>
         </div>
-        <p class="lead">Geonne sends photos, videos, documents and multi-GB files between your own devices on the same Wi-Fi, with no cables. Sending many in a row never stalls, and if a transfer is interrupted, only the remaining files are sent. Files go directly between devices with no server and no account, and every connection is encrypted.</p>
         <div class="rule">Both the sending and receiving devices must be on the <b>same Wi-Fi</b> with <b>Geonne open</b>. Only the first time you connect, you check that the same 6-digit number appears on both screens.</div>
-        <figure class="well shot-wide">
-          <img src="../img/mac.jpg" alt="Mac screen example: nearby devices on the left, transfers on the right" width="1400" height="839">
-          <figcaption class="small">Mac screen example — nearby devices on the left, transfers on the right (device names and files are examples)</figcaption>
-        </figure>
       </div>
     </header>
+
+    <section class="gn-section" id="uses">
+      <div class="container">
+        <h2>What it's for</h2>
+        <div class="gn-cards"><div class="gn-card"><span class="no">01</span><h3>Photos & videos</h3><p>Move the photos and videos from your trip from phone to Mac or PC, with no cable and no cloud.</p></div><div class="gn-card"><span class="no">02</span><h3>Documents & files</h3><p>Send contracts, homework and zip files between your own devices.</p></div><div class="gn-card"><span class="no">03</span><h3>Big files</h3><p>Multi-GB videos as they are. Sending many in a row never stalls, and an interrupted transfer sends only what's left.</p></div></div>
+      </div>
+    </section>
+
+    <section class="gn-section" id="screens">
+      <div class="container">
+        <h2>What it looks like</h2>
+        <p class="small">iPhone screens. Device names and files are examples.</p>
+        <div class="gn-gallery" tabindex="0"><img src="../img/shot-en-1.jpg" alt="What it looks like 1" width="440" height="956" loading="lazy"><img src="../img/shot-en-2.jpg" alt="What it looks like 2" width="440" height="956" loading="lazy"><img src="../img/shot-en-3.jpg" alt="What it looks like 3" width="440" height="956" loading="lazy"><img src="../img/shot-en-4.jpg" alt="What it looks like 4" width="440" height="956" loading="lazy"><img src="../img/shot-en-5.jpg" alt="What it looks like 5" width="440" height="956" loading="lazy"><img src="../img/shot-en-6.jpg" alt="What it looks like 6" width="440" height="956" loading="lazy"></div>
+      </div>
+    </section>
+
+    <section class="gn-section" id="features">
+      <div class="container">
+        <h2>Why you can rely on it</h2>
+        <div class="gn-cards"><div class="gn-card"><h3>No server, no account</h3><p>Files travel directly between your devices on the local network, never through an internet server. No sign-up, no login.</p></div><div class="gn-card"><h3>Encrypted, with a 6-digit check</h3><p>Every connection is encrypted, and a new device connects only after you match the 6-digit number on both screens.</p></div><div class="gn-card"><h3>The same app everywhere</h3><p>Works the same on iPhone, iPad, Android, Mac and Windows, in 한국어, English, 日本語 and 繁體中文.</p></div><div class="gn-card"><h3>Instant receive for your own devices</h3><p>Turn on “always accept” for your own devices, and see a history of what you received and sent.</p></div></div>
+      </div>
+    </section>
 
     <section class="block" id="get">
       <div class="container">
