@@ -145,6 +145,7 @@ html.lang-swap .hero-text, html.lang-swap .showcase, html.lang-swap .shelf-area 
 
 /* 건네 소개 배너(첫 화면 바로 아래) */
 .gn-banner { padding-block: 0 var(--space-xl); }
+.gn-banner .container { display: grid; gap: var(--space-md); }
 .gn-banner-link { display: grid; grid-template-columns: 72px minmax(0, 1fr) auto; gap: var(--space-lg); align-items: center; padding: var(--space-md) var(--space-lg); text-decoration: none; color: var(--color-ink); background: var(--color-paper-2); border: var(--rule-bar) solid var(--color-ink); box-shadow: var(--shadow-card); transition: transform 0.2s ease, box-shadow 0.2s ease; }
 .gn-banner-link:hover { transform: translate(-2px, -2px); box-shadow: 12px 12px 0 var(--color-paper-3); }
 .gn-banner-link img { width: 72px; height: 72px; border-radius: 16px; }
