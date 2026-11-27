@@ -8,10 +8,11 @@
 <meta name="description" content="알찬랩스">
 <meta name="google-site-verification" content="qPxNv5ks8CxJUILHDE9cHZltj8KSbzx2hvc_WT1OjUo" />
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Archivo:wght@400;500&family=Archivo+Narrow:wght@600&family=Noto+Serif+KR:wght@700&family=Noto+Serif+JP:wght@700&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Archivo:wght@400;500&family=Archivo+Narrow:wght@600&family=Noto+Serif+KR:wght@700&family=Noto+Serif+JP:wght@700&family=Noto+Serif+TC:wght@700&family=Noto+Sans:wght@400;500;600&family=Noto+Sans+Thai:wght@400;500;600&family=Noto+Serif+Thai:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
-<link rel="stylesheet" href="style.css?v=20261116">
-<noscript><style>.panel[hidden] { display: grid !important; margin-bottom: var(--space-lg); } .panel-wrap { position: static; }</style></noscript>
+<link rel="stylesheet" href="style.css?v=20261127">
+<script>document.documentElement.classList.add('js');</script>
+<noscript><style>.panel[hidden] { display: grid !important; margin-bottom: var(--space-lg); } .panel-wrap { position: static; } .lang-menu { display: none; }</style></noscript>
 </head>
 <body>
   <nav class="nav">
@@ -22,12 +23,28 @@
         <li><a href="#way" data-i18n="navWay">방식</a></li>
         <li><a href="#contact" data-i18n="navContact">문의</a></li>
       </ul>
-      <div class="lang-switch" id="langSwitch" data-lang="ko" role="group" aria-label="언어 선택 / Language / 言語 / 語言">
-        <span class="thumb" aria-hidden="true"></span>
-        <button type="button" data-set-lang="ko" aria-pressed="true">한국어</button>
-        <button type="button" data-set-lang="en" aria-pressed="false">English</button>
-        <button type="button" data-set-lang="ja" aria-pressed="false" lang="ja">日本語</button>
-        <button type="button" data-set-lang="zh" aria-pressed="false" lang="zh-Hant-TW">繁體中文</button>
+      <div class="lang-menu" id="langMenu">
+        <button type="button" class="lang-toggle" id="langToggle" aria-haspopup="true" aria-expanded="false" aria-controls="langList">
+          <svg class="globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.4 2.6 3.7 5.6 3.7 9s-1.3 6.4-3.7 9M12 3c-2.4 2.6-3.7 5.6-3.7 9s1.3 6.4 3.7 9"/></svg>
+          <span id="langCurrent">한국어</span>
+          <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="lang-list" id="langList" role="group" aria-label="언어 선택 / Language">
+          <button type="button" data-set-lang="ko" lang="ko" aria-pressed="true">한국어</button>
+          <button type="button" data-set-lang="en" lang="en" aria-pressed="false">English</button>
+          <button type="button" data-set-lang="ja" lang="ja" aria-pressed="false">日本語</button>
+          <button type="button" data-set-lang="zh" lang="zh-Hant-TW" aria-pressed="false">繁體中文</button>
+          <button type="button" data-set-lang="ru" lang="ru" aria-pressed="false">Русский</button>
+          <button type="button" data-set-lang="es" lang="es" aria-pressed="false">Español</button>
+          <button type="button" data-set-lang="pt" lang="pt-BR" aria-pressed="false">Português (Brasil)</button>
+          <button type="button" data-set-lang="fr" lang="fr" aria-pressed="false">Français</button>
+          <button type="button" data-set-lang="de" lang="de" aria-pressed="false">Deutsch</button>
+          <button type="button" data-set-lang="id" lang="id" aria-pressed="false">Bahasa Indonesia</button>
+          <button type="button" data-set-lang="vi" lang="vi" aria-pressed="false">Tiếng Việt</button>
+          <button type="button" data-set-lang="th" lang="th" aria-pressed="false">ไทย</button>
+          <button type="button" data-set-lang="it" lang="it" aria-pressed="false">Italiano</button>
+          <button type="button" data-set-lang="tr" lang="tr" aria-pressed="false">Türkçe</button>
+        </div>
       </div>
     </div>
   </nav>
@@ -51,6 +68,11 @@
 
     <aside class="gn-banner" aria-label="새로 나온 앱 소개">
       <div class="container">
+        <a class="gn-banner-link" href="#tabdeck">
+          <img src="assets/icons/tabdeck.png" alt="" width="72" height="72">
+          <span class="gn-banner-text"><span class="gn-banner-tag" data-i18n="tdBannerTag">새로 나왔어요</span><strong data-i18n="tdBannerTitle">TabDeck: 안 쓰는 태블릿·폰을 PC 단축키 패드로</strong><span class="gn-banner-desc" data-i18n="tdBannerDesc">안드로이드 앱은 Google Play에서 받고, PC 프로그램은 맥·윈도우 설치 파일로 받아요. 가입 없이 같은 와이파이로 연결해요</span></span>
+          <span class="gn-banner-cta" data-i18n="tdBannerCta">TabDeck 보기</span>
+        </a>
         <a class="gn-banner-link" href="geonne/" data-href-ko="geonne/" data-href-en="geonne/en/" data-href-ja="geonne/ja/" data-href-zh="geonne/zh/">
           <img src="assets/icons/geonne.png" alt="" width="72" height="72">
           <span class="gn-banner-text"><span class="gn-banner-tag" data-i18n="gnBannerTag">새로 나왔어요</span><strong data-i18n="gnBannerTitle">건네 — 같은 와이파이로 사진·문서·큰 파일을 바로</strong><span class="gn-banner-desc" data-i18n="gnBannerDesc">연달아 보내도 멈추지 않고, 서버도 계정도 없이. 아이폰·안드로이드·맥·윈도우에서 받아요</span></span>
@@ -111,7 +133,7 @@
           <span class="status" data-i18n="galStatus">iOS 1.1 업데이트, Android 업데이트 준비 중</span>
         </div>
         <p class="desc" data-i18n="galDesc">책과 책갈피로 메모와 일기를 책처럼 정리하는 노트 앱입니다. 무료로 책 3권, 책 한 권에 책갈피 3개까지 만들 수 있고, 한 번만 결제하는 무제한 플랜(구독 아님)에서는 제한 없이 쓰며 iCloud로 iPhone·iPad에 동기화할 수 있습니다. iPad를 가로로 두거나 접이식 iPhone을 펼치면 책처럼 두 쪽 화면이 됩니다. 로그인과 광고 없이 기록은 기기 안에 보관됩니다.</p>
-        <p class="langs"><span class="langs-label" data-i18n="langLabel">지원 언어</span><span class="chip">한국어</span><span class="chip">English</span><span class="chip">日本語</span><span class="chip">繁體中文</span><span class="langs-note" data-i18n="galLangNote">일본어·번체 중국어는 iOS에서 지원하며, Android는 업데이트를 준비 중입니다</span></p>
+        <p class="langs"><span class="langs-label" data-i18n="langLabel">지원 언어</span><span class="chip">한국어</span><span class="chip">English</span><span class="chip">日本語</span><span class="chip">繁體中文</span></p>
         <div class="links">
           <a class="btn" href="https://apps.apple.com/kr/app/id6805031378" data-href-ko="https://apps.apple.com/kr/app/id6805031378" data-href-en="https://apps.apple.com/us/app/id6805031378" data-href-ja="https://apps.apple.com/jp/app/id6805031378" data-href-zh="https://apps.apple.com/tw/app/id6805031378" target="_blank" rel="noopener" data-i18n="viewAppStore">App Store에서 보기</a>
           <a class="btn" href="https://play.google.com/store/apps/details?id=com.alchanim.galpirok&hl=ko" data-href-ko="https://play.google.com/store/apps/details?id=com.alchanim.galpirok&hl=ko" data-href-en="https://play.google.com/store/apps/details?id=com.alchanim.galpirok&hl=en" data-href-ja="https://play.google.com/store/apps/details?id=com.alchanim.galpirok&hl=ja" data-href-zh="https://play.google.com/store/apps/details?id=com.alchanim.galpirok&hl=zh-TW" target="_blank" rel="noopener" data-i18n="viewPlay">Google Play에서 보기</a>
@@ -123,24 +145,24 @@
           <span class="status" data-i18n="released">iOS · Android 출시</span>
         </div>
         <p class="desc" data-i18n="calDesc">교대 근무·알바 팀의 근무표를 한 달 달력에 색으로 보여 주는 앱입니다. 초대 코드 하나로 팀을 만들면 관리자가 짠 근무표가 팀원에게 바로 공유되고, 바뀌면 알림이 옵니다. iOS와 Android 양쪽에서 같은 근무표를 함께 확인할 수 있습니다.</p>
-        <p class="langs"><span class="langs-label" data-i18n="langLabel">지원 언어</span><span class="chip">한국어</span><span class="chip">English</span><span class="chip">日本語</span><span class="chip">繁體中文</span></p>
+        <p class="langs"><span class="langs-label" data-i18n="langLabel">지원 언어</span><span class="chip">한국어</span><span class="chip">English</span><span class="chip">日本語</span><span class="chip">繁體中文</span><span class="chip">Русский</span><span class="chip">Español</span><span class="chip">Português</span><span class="chip">Français</span><span class="chip">Deutsch</span><span class="chip">Bahasa Indonesia</span><span class="chip">Tiếng Việt</span><span class="chip">ไทย</span><span class="chip">Italiano</span><span class="chip">Türkçe</span></p>
         <div class="links">
           <a class="btn" href="https://apps.apple.com/kr/app/id6809374096" data-href-ko="https://apps.apple.com/kr/app/id6809374096" data-href-en="https://apps.apple.com/us/app/id6809374096" data-href-ja="https://apps.apple.com/jp/app/id6809374096" data-href-zh="https://apps.apple.com/tw/app/id6809374096" target="_blank" rel="noopener" data-i18n="viewAppStore">App Store에서 보기</a>
           <a class="btn" href="https://play.google.com/store/apps/details?id=com.alchanim.workschedulecalendar&hl=ko" data-href-ko="https://play.google.com/store/apps/details?id=com.alchanim.workschedulecalendar&hl=ko" data-href-en="https://play.google.com/store/apps/details?id=com.alchanim.workschedulecalendar&hl=en" data-href-ja="https://play.google.com/store/apps/details?id=com.alchanim.workschedulecalendar&hl=ja" data-href-zh="https://play.google.com/store/apps/details?id=com.alchanim.workschedulecalendar&hl=zh-TW" target="_blank" rel="noopener" data-i18n="viewPlay">Google Play에서 보기</a>
         </div>
-      </div><figure class="shot"><img src="shots/cal-ko.jpg?v=20261107" data-src-ko="shots/cal-ko.jpg?v=20261107" data-src-en="shots/cal-en.jpg?v=20261107" data-src-ja="shots/cal-ja.jpg?v=20261107" data-src-zh="shots/cal-zh.jpg?v=20261107" data-alt-key="calName" alt="" width="400" height="805" loading="lazy"></figure></article>
+      </div><figure class="shot"><img src="shots/cal-ko.jpg?v=20261127" data-src-ko="shots/cal-ko.jpg?v=20261127" data-src-en="shots/cal-en.jpg?v=20261127" data-src-ja="shots/cal-ja.jpg?v=20261127" data-src-zh="shots/cal-zh.jpg?v=20261127" data-src-ru="shots/cal-ru.jpg?v=20261127" data-src-es="shots/cal-es.jpg?v=20261127" data-src-pt="shots/cal-pt.jpg?v=20261127" data-src-fr="shots/cal-fr.jpg?v=20261127" data-src-de="shots/cal-de.jpg?v=20261127" data-src-id="shots/cal-id.jpg?v=20261127" data-src-vi="shots/cal-vi.jpg?v=20261127" data-src-th="shots/cal-th.jpg?v=20261127" data-src-it="shots/cal-it.jpg?v=20261127" data-src-tr="shots/cal-tr.jpg?v=20261127" data-alt-key="calName" alt="" width="400" height="805" loading="lazy"></figure></article>
       <article class="panel well has-shot" id="panel-standboard" data-app="standboard" hidden><div class="panel-body">
         <div class="panel-head">
           <h3 class="name" data-i18n="sbName">스탠드보드</h3>
           <span class="status" data-i18n="released">iOS · Android 출시</span>
         </div>
         <p class="desc" data-i18n="sbDesc">매장 카운터나 마켓 가판대에 태블릿·폰을 세워 두면 와이파이 QR과 공지, SNS 링크를 크게 보여 주는 안내판 앱입니다. 무료이고 광고·로그인 없이 기기 안에서만 동작합니다.</p>
-        <p class="langs"><span class="langs-label" data-i18n="langLabel">지원 언어</span><span class="chip">한국어</span><span class="chip">English</span><span class="chip">日本語</span></p>
+        <p class="langs"><span class="langs-label" data-i18n="langLabel">지원 언어</span><span class="chip">한국어</span><span class="chip">English</span><span class="chip">日本語</span><span class="chip">繁體中文</span><span class="chip">Русский</span></p>
         <div class="links">
           <a class="btn" href="https://apps.apple.com/kr/app/id6826278141" data-href-ko="https://apps.apple.com/kr/app/id6826278141" data-href-en="https://apps.apple.com/us/app/id6826278141" data-href-ja="https://apps.apple.com/jp/app/id6826278141" data-href-zh="https://apps.apple.com/tw/app/id6826278141" target="_blank" rel="noopener" data-i18n="viewAppStore">App Store에서 보기</a>
           <a class="btn" href="https://play.google.com/store/apps/details?id=com.alchanlabs.standboard&hl=ko" data-href-ko="https://play.google.com/store/apps/details?id=com.alchanlabs.standboard&hl=ko" data-href-en="https://play.google.com/store/apps/details?id=com.alchanlabs.standboard&hl=en" data-href-ja="https://play.google.com/store/apps/details?id=com.alchanlabs.standboard&hl=ja" data-href-zh="https://play.google.com/store/apps/details?id=com.alchanlabs.standboard&hl=zh-TW" target="_blank" rel="noopener" data-i18n="viewPlay">Google Play에서 보기</a>
         </div>
-      </div><figure class="shot"><img src="shots/sb-ko.jpg" data-src-ko="shots/sb-ko.jpg" data-src-en="shots/sb-en.jpg" data-src-ja="shots/sb-ja.jpg" data-alt-key="sbName" alt="" width="392" height="775" loading="lazy"></figure></article>
+      </div><figure class="shot"><img src="shots/sb-ko.jpg?v=20261127" data-src-ko="shots/sb-ko.jpg?v=20261127" data-src-en="shots/sb-en.jpg?v=20261127" data-src-ja="shots/sb-ja.jpg?v=20261127" data-src-zh="shots/sb-zh.jpg?v=20261127" data-src-ru="shots/sb-ru.jpg?v=20261127" data-alt-key="sbName" alt="" width="392" height="775" loading="lazy"></figure></article>
       <article class="panel well has-shot" id="panel-caregiver" data-app="caregiver" hidden><div class="panel-body">
         <div class="panel-head">
           <h3 class="name" data-i18n="cgName">산후관리사 스케쥴러</h3>
@@ -149,7 +171,7 @@
         <p class="desc" data-i18n="cgDesc">산후관리사 사무실의 관리자가 산후관리가 필요한 산모를 등록하고 관리사에게 배정하는 일정 관리 앱입니다. 관리사는 내 근무를 확인하고 변경을 신청할 수 있습니다. 컴퓨터 브라우저(웹)와 윈도우 프로그램에서 쓸 수 있고, Android·iOS 앱도 같은 자료를 함께 쓰도록 개발하고 있습니다.</p>
         <p class="langs"><span class="langs-label" data-i18n="langLabel">지원 언어</span><span class="chip">한국어</span></p>
         <div class="links">
-          <a class="btn" href="https://apps.apple.com/kr/app/id6824449735" target="_blank" rel="noopener" data-i18n="viewAppStore">App Store에서 보기</a>
+          <a class="btn" href="https://apps.apple.com/kr/app/id6824449735" data-fixed-store target="_blank" rel="noopener" data-i18n="viewAppStore">App Store에서 보기</a>
           <a class="btn" href="https://play.google.com/store/apps/details?id=com.alchanlabs.caregiverscheduler&hl=ko" data-href-ko="https://play.google.com/store/apps/details?id=com.alchanlabs.caregiverscheduler&hl=ko" data-href-en="https://play.google.com/store/apps/details?id=com.alchanlabs.caregiverscheduler&hl=en" data-href-ja="https://play.google.com/store/apps/details?id=com.alchanlabs.caregiverscheduler&hl=ja" data-href-zh="https://play.google.com/store/apps/details?id=com.alchanlabs.caregiverscheduler&hl=zh-TW" target="_blank" rel="noopener" data-i18n="viewPlay">Google Play에서 보기</a>
           <a class="btn" href="https://github.com/AlchanLabs/alchanlabs.github.io/releases/latest/download/CaregiverScheduler-Setup.exe" data-i18n="cgWin">윈도우 설치 파일 받기</a>
           <a class="btn btn--secondary" href="https://dolbomi.pages.dev" target="_blank" rel="noopener" data-i18n="cgWeb">웹에서 열기</a>
@@ -189,11 +211,12 @@
           <span class="status" data-i18n="tdStatus">맥·윈도우용 PC 프로그램을 지금 받을 수 있어요. 아이폰·아이패드·안드로이드 앱은 준비 중이에요</span>
         </div>
         <p class="desc" data-i18n="tdDesc">안 쓰는 태블릿이나 폰을 PC의 단축키 패드로 바꿔 주는 앱입니다. 영상·사진 편집, 방송·화상회의, 업무용 단축키를 키 하나로 누르고, 시계·CPU·메모리 같은 PC 상태도 키에 띄워 볼 수 있어요. 휴대용 터치 모니터에 키 화면을 띄워 쓸 수도 있습니다. PC에 프로그램을 설치하고 같은 와이파이로 연결하면 되고, 시작할 때 가입은 필요 없습니다. 상태 표시 등 일부 기능은 한 번 결제하는 Pro로 쓸 수 있어요.</p>
-        <p class="langs"><span class="langs-label" data-i18n="langLabel">지원 언어</span><span class="chip">한국어</span><span class="chip">English</span><span class="chip">日本語</span><span class="chip">繁體中文</span></p>
+        <p class="langs"><span class="langs-label" data-i18n="langLabel">지원 언어</span><span class="chip">한국어</span><span class="chip">English</span><span class="chip">日本語</span><span class="chip">繁體中文</span><span class="chip">Русский</span><span class="chip">Español</span><span class="chip">Português</span><span class="chip">Français</span><span class="chip">Deutsch</span><span class="chip">Bahasa Indonesia</span><span class="chip">Tiếng Việt</span><span class="chip">ไทย</span><span class="chip">Italiano</span><span class="chip">Türkçe</span></p>
         <div class="links">
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.alchanlabs.tabdeck&hl=ko" target="_blank" rel="noopener" data-i18n="viewPlay">Google Play에서 보기</a>
           <a class="btn" href="https://github.com/AlchanLabs/alchanlabs.github.io/releases/download/tabdeck-mac-1.0.0/TabDeck-Server-1.0.0.dmg" data-i18n="gnMac">맥 설치 파일 받기</a>
           <a class="btn" href="https://github.com/AlchanLabs/alchanlabs.github.io/releases/download/tabdeck-win-1.0.0/TabDeck-Server-Setup-1.0.0.exe" data-i18n="cgWin">윈도우 설치 파일 받기</a>
-          <a class="btn btn--secondary" href="https://sites.google.com/view/tabdeck/support-ko" target="_blank" rel="noopener" data-href-ko="https://sites.google.com/view/tabdeck/support-ko" data-href-en="https://sites.google.com/view/tabdeck/support-en" data-href-ja="https://sites.google.com/view/tabdeck/support-ja" data-href-zh="https://sites.google.com/view/tabdeck/support-zh-tw" data-i18n="cgGuide">설치 방법 보기</a>
+          <a class="btn btn--secondary" href="https://sites.google.com/view/tabdeck/support-ko" target="_blank" rel="noopener" data-href-ko="https://sites.google.com/view/tabdeck/support-ko" data-href-en="https://sites.google.com/view/tabdeck/support-en" data-href-ja="https://sites.google.com/view/tabdeck/support-ja" data-href-zh="https://sites.google.com/view/tabdeck/support-zh-tw" data-href-ru="https://sites.google.com/view/tabdeck/support-ru" data-href-es="https://sites.google.com/view/tabdeck/support-es" data-href-pt="https://sites.google.com/view/tabdeck/support-pt-br" data-href-fr="https://sites.google.com/view/tabdeck/support-fr" data-href-de="https://sites.google.com/view/tabdeck/support-de" data-href-id="https://sites.google.com/view/tabdeck/support-id" data-href-vi="https://sites.google.com/view/tabdeck/support-vi" data-href-th="https://sites.google.com/view/tabdeck/support-th" data-href-it="https://sites.google.com/view/tabdeck/support-it" data-href-tr="https://sites.google.com/view/tabdeck/support-tr" data-i18n="cgGuide">설치 방법 보기</a>
         </div>
       </div></article>
       <article class="panel well" id="panel-hubnote" data-app="hubnote" hidden><div class="panel-body">
@@ -251,9 +274,9 @@
       </div>
       <div class="doc-group">
         <span class="app-name" data-i18n="calName">근무일정 달력</span>
-        <a href="https://sites.google.com/view/work-schedule-privacy-kr" data-href-ko="https://sites.google.com/view/work-schedule-privacy-kr" data-href-en="https://sites.google.com/view/work-schedule-privacy-en" target="_blank" rel="noopener" data-i18n="privacy">개인정보처리방침</a>
+        <a href="https://sites.google.com/view/work-schedule-privacy-kr" data-href-ko="https://sites.google.com/view/work-schedule-privacy-kr" data-href-en="https://sites.google.com/view/work-schedule-privacy-en" data-href-ja="https://sites.google.com/view/work-schedule-privacy-ja" data-href-zh="https://sites.google.com/view/work-schedule-privacy-zh" data-href-ru="https://sites.google.com/view/work-schedule-privacy-ru" data-href-es="https://sites.google.com/view/work-schedule-privacy-es" data-href-pt="https://sites.google.com/view/work-schedule-privacy-pt" data-href-fr="https://sites.google.com/view/work-schedule-privacy-fr" data-href-de="https://sites.google.com/view/work-schedule-privacy-de" data-href-id="https://sites.google.com/view/work-schedule-privacy-id" data-href-vi="https://sites.google.com/view/work-schedule-privacy-vi" data-href-th="https://sites.google.com/view/work-schedule-privacy-th" data-href-it="https://sites.google.com/view/work-schedule-privacy-it" data-href-tr="https://sites.google.com/view/work-schedule-privacy-tr" target="_blank" rel="noopener" data-i18n="privacy">개인정보처리방침</a>
         
-        <a href="https://sites.google.com/view/work-schedule-notes-kr" data-href-ko="https://sites.google.com/view/work-schedule-notes-kr" data-href-en="https://sites.google.com/view/work-schedule-notes-en" target="_blank" rel="noopener" data-i18n="support">고객지원</a>
+        <a href="https://sites.google.com/view/work-schedule-notes-kr" data-href-ko="https://sites.google.com/view/work-schedule-notes-kr" data-href-en="https://sites.google.com/view/work-schedule-notes-en" data-href-ja="https://sites.google.com/view/work-schedule-notes-ja" data-href-zh="https://sites.google.com/view/work-schedule-notes-zh" data-href-ru="https://sites.google.com/view/work-schedule-notes-ru" data-href-es="https://sites.google.com/view/work-schedule-notes-es" data-href-pt="https://sites.google.com/view/work-schedule-notes-pt" data-href-fr="https://sites.google.com/view/work-schedule-notes-fr" data-href-de="https://sites.google.com/view/work-schedule-notes-de" data-href-id="https://sites.google.com/view/work-schedule-notes-id" data-href-vi="https://sites.google.com/view/work-schedule-notes-vi" data-href-th="https://sites.google.com/view/work-schedule-notes-th" data-href-it="https://sites.google.com/view/work-schedule-notes-it" data-href-tr="https://sites.google.com/view/work-schedule-notes-tr" target="_blank" rel="noopener" data-i18n="support">고객지원</a>
       </div>
       <div class="doc-group">
         <span class="app-name" data-i18n="sbName">스탠드보드</span>
@@ -272,6 +295,18 @@
         <a href="https://sites.google.com/view/geonne/privacy-ko" data-href-ko="https://sites.google.com/view/geonne/privacy-ko" data-href-en="https://sites.google.com/view/geonne/privacy-en" data-href-ja="https://sites.google.com/view/geonne/privacy-ja" data-href-zh="https://sites.google.com/view/geonne/privacy-zh-tw" target="_blank" rel="noopener" data-i18n="privacy">개인정보처리방침</a>
 
         <a href="https://sites.google.com/view/geonne" data-href-ko="https://sites.google.com/view/geonne" data-href-en="https://sites.google.com/view/geonne/support-en" data-href-ja="https://sites.google.com/view/geonne/support-ja" data-href-zh="https://sites.google.com/view/geonne/support-zh-tw" target="_blank" rel="noopener" data-i18n="support">고객지원</a>
+      </div>
+      <div class="doc-group">
+        <span class="app-name" data-i18n="cgName">산후관리사 스케쥴러</span>
+        <a href="https://sites.google.com/view/caregiverscheduler-privacy" target="_blank" rel="noopener" data-i18n="privacy">개인정보처리방침</a>
+
+        <a href="https://sites.google.com/view/caregiverscheduler-help" target="_blank" rel="noopener" data-i18n="support">고객지원</a>
+      </div>
+      <div class="doc-group">
+        <span class="app-name" data-i18n="tdName">TabDeck</span>
+        <a href="https://sites.google.com/view/tabdeck/privacy-ko" data-href-ko="https://sites.google.com/view/tabdeck/privacy-ko" data-href-en="https://sites.google.com/view/tabdeck/privacy-en" data-href-ja="https://sites.google.com/view/tabdeck/privacy-ja" data-href-zh="https://sites.google.com/view/tabdeck/privacy-zh-tw" data-href-ru="https://sites.google.com/view/tabdeck/privacy-ru" data-href-es="https://sites.google.com/view/tabdeck/privacy-es" data-href-pt="https://sites.google.com/view/tabdeck/privacy-pt-br" data-href-fr="https://sites.google.com/view/tabdeck/privacy-fr" data-href-de="https://sites.google.com/view/tabdeck/privacy-de" data-href-id="https://sites.google.com/view/tabdeck/privacy-id" data-href-vi="https://sites.google.com/view/tabdeck/privacy-vi" data-href-th="https://sites.google.com/view/tabdeck/privacy-th" data-href-it="https://sites.google.com/view/tabdeck/privacy-it" data-href-tr="https://sites.google.com/view/tabdeck/privacy-tr" target="_blank" rel="noopener" data-i18n="privacy">개인정보처리방침</a>
+
+        <a href="https://sites.google.com/view/tabdeck/support-ko" data-href-ko="https://sites.google.com/view/tabdeck/support-ko" data-href-en="https://sites.google.com/view/tabdeck/support-en" data-href-ja="https://sites.google.com/view/tabdeck/support-ja" data-href-zh="https://sites.google.com/view/tabdeck/support-zh-tw" data-href-ru="https://sites.google.com/view/tabdeck/support-ru" data-href-es="https://sites.google.com/view/tabdeck/support-es" data-href-pt="https://sites.google.com/view/tabdeck/support-pt-br" data-href-fr="https://sites.google.com/view/tabdeck/support-fr" data-href-de="https://sites.google.com/view/tabdeck/support-de" data-href-id="https://sites.google.com/view/tabdeck/support-id" data-href-vi="https://sites.google.com/view/tabdeck/support-vi" data-href-th="https://sites.google.com/view/tabdeck/support-th" data-href-it="https://sites.google.com/view/tabdeck/support-it" data-href-tr="https://sites.google.com/view/tabdeck/support-tr" target="_blank" rel="noopener" data-i18n="support">고객지원</a>
       </div>
     </div>
       <div class="copy" data-i18n="copyright" data-lines><span>© 2026 알찬랩스. All rights reserved.</span><span>대표 이알찬</span><span>사업자등록번호 453-03-03842</span><span>통신판매업신고 제2026-충남천안-2243호</span></div>
@@ -317,6 +352,12 @@
       });
     });
     window.addEventListener('resize', positionNotch);
+    window.addEventListener('hashchange', function () {
+      var id = (location.hash || '').replace('#', '');
+      if (!id || !document.getElementById('panel-' + id)) return;
+      selectApp(id, true);
+      document.getElementById('apps').scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth', block: 'start'});
+    });
     var wanted = (location.hash || '').replace('#', '');
     if (wanted && document.getElementById('panel-' + wanted)) selectApp(wanted, false);
     positionNotch();
@@ -325,11 +366,11 @@
     // 언어 전환 — 기본은 한국어, 고른 언어는 이 브라우저에 기억한다
     var I18N = {
       ko: {
-        langLabel: '지원 언어', galLangNote: '일본어·번체 중국어는 iOS에서 지원하며, Android는 업데이트를 준비 중입니다', gnLangNote: '새로 더한 8개 언어는 맥·윈도우용에 먼저 들어갔고, 아이폰·안드로이드는 다음 업데이트에서 지원합니다',
+        langLabel: '지원 언어', gnLangNote: '새로 더한 8개 언어는 맥·윈도우용에 먼저 들어갔고, 아이폰·안드로이드는 다음 업데이트에서 지원합니다',
         title: '알찬랩스',
         metaDesc: '알찬랩스 — 매일 쓰는 순간을 더 알차게. 갈피록, 근무일정 달력, 스탠드보드 등을 만듭니다.',
-        video: 'assets/hero.mp4?v=20261120b', poster: 'assets/hero-poster.jpg?v=20261102b',
-        videoLabel: '알찬랩스 소개 영상: 매일 쓰는 순간을 더 알차게, 갈피록, 근무일정 달력, 스탠드보드 등 일곱 앱',
+        video: 'assets/hero.mp4?v=20261127', poster: 'assets/hero-poster.jpg?v=20261102b',
+        videoLabel: "알찬랩스 소개 영상: 매일 쓰는 순간을 더 알차게, 갈피록, 근무일정 달력, 스탠드보드 등 여덟 앱",
         htmlLang: 'ko',
         brand: '알찬랩스', navApps: '만든 앱', navWay: '방식', navContact: '문의',
         h1a: '매일 쓰는 순간을', h1b: '더 알차게.',
@@ -338,10 +379,10 @@
         released: 'iOS · Android 출시',
         viewAppStore: 'App Store에서 보기', viewPlay: 'Google Play에서 보기',
         galName: '갈피록',
-        galDesc: '책과 책갈피로 메모와 일기를 책처럼 정리하는 노트 앱입니다. 무료로 책 3권, 책 한 권에 책갈피 3개까지 만들 수 있고, 한 번만 결제하는 무제한 플랜(구독 아님)에서는 제한 없이 쓰며 iCloud로 iPhone·iPad에 동기화할 수 있습니다. iPad를 가로로 두거나 접이식 iPhone을 펼치면 책처럼 두 쪽 화면이 됩니다. 로그인과 광고 없이 기록은 기기 안에 보관됩니다.',
-        galStatus: 'iOS 1.1 업데이트, Android 업데이트 준비 중',
+        galDesc: "책과 책갈피로 메모와 일기를 책처럼 정리하는 노트 앱입니다. 무료로 책 3권, 책 한 권에 책갈피 3개까지 만들 수 있고, 한 번만 결제하는 무제한 플랜(구독 아님)에서는 제한 없이 쓰며 iPhone·iPad는 iCloud로, Android는 Google Drive로 동기화할 수 있습니다. iPad를 가로로 두거나 접이식 iPhone을 펼치면 책처럼 두 쪽 화면이 됩니다. 로그인과 광고 없이 기록은 기기 안에 보관됩니다.",
+        galStatus: "iOS · Android 1.1 업데이트",
         calName: '근무일정 달력',
-        calDesc: '교대 근무·알바 팀의 근무표를 한 달 달력에 색으로 보여 주는 앱입니다. 초대 코드 하나로 팀을 만들면 관리자가 짠 근무표가 팀원에게 바로 공유되고, 바뀌면 알림이 옵니다. iOS와 Android 양쪽에서 같은 근무표를 함께 확인할 수 있습니다.',
+        calDesc: "교대 근무·알바 팀의 근무표를 한 달 달력에 색으로 보여 주는 앱입니다. 초대 코드 하나로 팀을 만들면 관리자가 짠 근무표가 팀원에게 바로 공유되고, 바뀌면 알림이 옵니다. 팀 공지사항, 사람별 색, 알람처럼 울리는 근무 알림(지원 기기)도 쓸 수 있습니다. iOS와 Android 양쪽에서 같은 근무표를 함께 확인할 수 있습니다.",
         wayH2: '알찬랩스가 일하는 방식', wayP: '작은 팀이라 지킬 수 있는 원칙을 지킵니다.',
         p1h: '작게 만든다', p1p: '한 번에 다 하려 하지 않고, 꼭 필요한 기능부터 제대로 만듭니다.',
         p2h: '꾸준히 고친다', p2p: '실제로 써 보면서 나온 문제를 그때그때 다듬어 갑니다.',
@@ -350,29 +391,35 @@
         copyright: '© 2026 알찬랩스. All rights reserved. · 대표 이알찬 · 사업자등록번호 453-03-03842 · 통신판매업신고 제2026-충남천안-2243호',
         soon: '준비 중',
         sbName: '스탠드보드',
-        sbDesc: '매장 카운터나 마켓 가판대에 태블릿·폰을 세워 두면 와이파이 QR과 공지, SNS 링크를 크게 보여 주는 안내판 앱입니다. 무료이고 광고·로그인 없이 기기 안에서만 동작합니다.',
+        sbDesc: "매장 카운터나 마켓 가판대에 태블릿·폰을 세워 두면 와이파이 QR과 공지, SNS 링크를 크게 보여 주는 안내판 앱입니다. QR을 최대 3개까지 나란히 띄우고, 영업 중·준비 중·곧 돌아옴·휴무를 큰 배지로 보여 주며, 백업으로 안내판을 새 기기에 옮길 수 있습니다. 무료이고 광고·로그인 없이 기기 안에서만 동작합니다.",
         cgName: '산후관리사 스케쥴러',
         cgDesc: '산후관리사 사무실의 관리자가 산후관리가 필요한 산모를 등록하고 관리사에게 배정하는 일정 관리 앱입니다. 관리사는 내 근무를 확인하고 변경을 신청할 수 있고, 신청은 관리자가 승인해야 일정에 반영됩니다. 아이폰·안드로이드 앱과 컴퓨터 브라우저(웹), 윈도우 프로그램에서 같은 계정으로 같은 일정을 볼 수 있습니다. 앱 설치는 무료이고, 사무실을 만들면 무료 체험 기간이 있으며 이후 관리사 수에 따라 요금제를 고릅니다. 한국어로 제공됩니다.',
         cgSlot: '웹·PC', cgStatus: '아이폰·안드로이드는 스토어에서, 컴퓨터는 웹과 윈도우 프로그램으로 쓸 수 있어요', cgWin: '윈도우 설치 파일 받기', cgWeb: '웹에서 열기', cgGuide: '설치 방법 보기',
         rfName: '방배치도',
-        rfDesc: '실제로 잰 치수대로 방과 가구를 평면도에 그려, 가구를 미리 놓아 보는 도면·배치도 앱입니다. 이사 전이나 새 가구를 사기 전, 가게·사무실을 꾸리기 전에 쓰기 좋고, 문과 창문을 달고 원하는 모양의 가구도 직접 만들 수 있습니다. 공간 문서 1개는 모든 편집 기능이 무료이고, 한 번 결제하면(구독 아님) 문서 무제한과 내보내기·인쇄를 쓸 수 있습니다. 로그인·광고 없이 자료는 기기 안에만 저장됩니다.',
+        rfDesc: "실제로 잰 치수대로 방과 가구를 평면도에 그려, 가구를 미리 놓아 보는 도면·배치도 앱입니다. 이사 전이나 새 가구를 사기 전, 가게·사무실을 꾸리기 전에 쓰기 좋고, 문(미닫이문 포함)과 창문을 달고 원하는 모양의 가구도 직접 만들 수 있으며, 예시 원룸으로 바로 둘러볼 수도 있습니다. 공간 문서 1개는 모든 편집 기능이 무료이고, 한 번 결제하면(구독 아님) 문서 무제한과 내보내기·인쇄를 쓸 수 있습니다. 로그인·광고 없이 자료는 기기 안에만 저장됩니다.",
         gnBannerTag: '새로 나왔어요', gnBannerTitle: '건네 — 같은 와이파이로 사진·문서·큰 파일을 바로', gnBannerDesc: '연달아 보내도 멈추지 않고, 서버도 계정도 없이. 아이폰·안드로이드·맥·윈도우에서 받아요', gnBannerCta: '건네 소개 보기 →',
         cgBannerTag: '새로 나왔어요', cgBannerTitle: '산후관리사 스케쥴러: 사무실 근무표를 한곳에서', cgBannerDesc: '산모 일정 등록과 관리사 배정을 앱으로. 아이폰·안드로이드는 스토어에서 받고, 컴퓨터는 윈도우 설치 파일을 받거나 웹에서 바로 쓸 수 있어요', cgBannerCta: '받는 방법 보기',
         gnName: '건네', gnSlot: '맥·PC', gnStatus: '아이폰·아이패드·안드로이드는 스토어에서, 맥·윈도우는 설치 파일로 받을 수 있어요', gnMac: '맥 설치 파일 받기',
         gnDesc: '같은 와이파이에 있는 내 기기끼리 사진·동영상, 문서, 수 GB 큰 파일을 선 없이 바로 주고받는 파일 전송 앱입니다. 여러 개를 연달아 보내도 멈추지 않고, 끊겨도 남은 파일만 이어서 보냅니다. 서버와 계정 없이 같은 네트워크 안에서 기기끼리 직접 오가고, 모든 연결은 암호화됩니다. 무료이고 로그인이 없으며, 폰·태블릿 앱에는 하단 광고가 표시됩니다(맥·윈도우 앱에는 없음).',
         tdName: 'TabDeck', tdSlot: '맥·PC',
-        tdStatus: '맥·윈도우용 PC 프로그램을 지금 받을 수 있어요. 아이폰·아이패드·안드로이드 앱은 준비 중이에요',
+        tdStatus: "안드로이드 앱은 Google Play에서, 맥·윈도우용 PC 프로그램은 설치 파일로 받을 수 있어요. 아이폰·아이패드 앱은 준비 중이에요",
         tdDesc: '안 쓰는 태블릿이나 폰을 PC의 단축키 패드로 바꿔 주는 앱입니다. 영상·사진 편집, 방송·화상회의, 업무용 단축키를 키 하나로 누르고, 시계·CPU·메모리 같은 PC 상태도 키에 띄워 볼 수 있어요. 휴대용 터치 모니터에 키 화면을 띄워 쓸 수도 있습니다. PC에 프로그램을 설치하고 같은 와이파이로 연결하면 되고, 시작할 때 가입은 필요 없습니다. 상태 표시 등 일부 기능은 한 번 결제하는 Pro로 쓸 수 있어요.',
         hnName: '허브노트',
         hnDesc: '수업 필기와 강의 녹음, 복습을 한곳에서 하는 태블릿 필기 앱입니다. 워드프로세서나 발표 자료 프로그램처럼 문서를 만드는 기능도 있어, 문서 작업에도 쓸 수 있습니다. Android 태블릿과 iPad(iPadOS)에서 쓸 수 있고, 파일로 내보내고 가져와서 두 기기 사이에 자료를 옮겨 쓸 수 있습니다. 사용자가 쉽게 쓰는 것을 가장 먼저 생각하며 만들고 있습니다.',
-        galIos: '갈피록 iOS', galAos: '갈피록 Android', privacy: '개인정보처리방침', support: '고객지원'
+        galIos: '갈피록 iOS', galAos: '갈피록 Android', privacy: '개인정보처리방침', support: '고객지원',
+        tdBannerTag: "새로 나왔어요",
+        tdBannerTitle: "TabDeck: 안 쓰는 태블릿·폰을 PC 단축키 패드로",
+        tdBannerDesc: "안드로이드 앱은 Google Play에서 받고, PC 프로그램은 맥·윈도우 설치 파일로 받아요. 가입 없이 같은 와이파이로 연결해요",
+        tdBannerCta: "TabDeck 보기",
+        langMenu: "언어",
+        shotAlt: " 앱 화면"
       },
       en: {
-        langLabel: 'Languages', galLangNote: 'Japanese and Traditional Chinese are available on iOS; Android is getting an update', gnLangNote: 'The 8 newly added languages come first to the Mac and Windows versions; iPhone and Android get them in the next update',
+        langLabel: 'Languages', gnLangNote: 'The 8 newly added languages come first to the Mac and Windows versions; iPhone and Android get them in the next update',
         title: 'AlchanLabs',
         metaDesc: 'AlchanLabs — making everyday moments more fulfilling. We build Galpirok, Work Schedule Calendar, Standboard and more.',
-        video: 'assets/hero-en.mp4?v=20261120b', poster: 'assets/hero-poster-en.jpg?v=20261102b',
-        videoLabel: 'AlchanLabs intro video: making everyday moments more fulfilling, with seven apps including Galpirok, Work Schedule Calendar and Standboard',
+        video: 'assets/hero-en.mp4?v=20261127', poster: 'assets/hero-poster-en.jpg?v=20261102b',
+        videoLabel: "AlchanLabs intro video: making everyday moments more fulfilling, with eight apps including Galpirok, Work Schedule Calendar and Standboard",
         htmlLang: 'en',
         brand: 'AlchanLabs', navApps: 'Apps', navWay: 'Approach', navContact: 'Contact',
         h1a: 'Make everyday moments', h1b: 'more fulfilling.',
@@ -381,10 +428,10 @@
         released: 'Out on iOS · Android',
         viewAppStore: 'View on App Store', viewPlay: 'View on Google Play',
         galName: 'Galpirok',
-        galDesc: 'A notes app that organizes your notes and journal like a book, with books and bookmarks. For free you can make 3 books with 3 bookmarks each; a one-time Unlimited plan (not a subscription) removes the limits and syncs across your iPhone and iPad with iCloud. On a landscape iPad or an unfolded foldable iPhone it opens like a book in two pages. No sign-in and no ads, and your writing stays on your device.',
-        galStatus: 'Updated on iOS, Android update in progress',
+        galDesc: "A notes app that organizes your notes and journal like a book, with books and bookmarks. For free you can make 3 books with 3 bookmarks each; a one-time Unlimited plan (not a subscription) removes the limits and syncs with iCloud on iPhone and iPad, and with Google Drive on Android. On a landscape iPad or an unfolded foldable iPhone it opens like a book in two pages. No sign-in and no ads, and your writing stays on your device.",
+        galStatus: "Version 1.1 on iOS · Android",
         calName: 'Work Schedule Calendar',
-        calDesc: 'Shows a shift-work or part-time team\u2019s roster on a monthly calendar in colors. Make a team with one invite code, and the schedule a manager builds reaches everyone right away, with a notification when it changes. The same schedule can be viewed together on both iOS and Android.',
+        calDesc: "Shows a shift-work or part-time team’s roster on a monthly calendar in colors. Make a team with one invite code, and the schedule a manager builds reaches everyone right away, with a notification when it changes. It also has team announcements, colors by person, and shift reminders that ring like an alarm (on supported devices). The same schedule can be viewed together on both iOS and Android.",
         wayH2: 'How AlchanLabs works', wayP: 'As a small team, we stick to principles we can actually keep.',
         p1h: 'Build small', p1p: 'We don\u2019t try to do everything at once \u2014 we build the features that matter first, and build them properly.',
         p2h: 'Keep improving', p2p: 'We fix problems as they come up from real use.',
@@ -393,29 +440,35 @@
         copyright: '\u00a9 2026 AlchanLabs. All rights reserved. \u00b7 CEO Alchan Lee \u00b7 Business Reg. No. 453-03-03842 \u00b7 Mail-order Business Report No. \uc81c2026-\ucda9\ub0a8\ucc9c\uc548-2243\ud638',
         soon: 'Coming soon',
         sbName: 'Standboard',
-        sbDesc: 'A signboard app: stand a tablet or phone on a shop counter or market stall and it shows your Wi-Fi QR, notices and social links in large type. Free, with no ads or login, and it works entirely on your device.',
+        sbDesc: "A signboard app: stand a tablet or phone on a shop counter or market stall and it shows your Wi-Fi QR, notices and social links in large type. Show up to 3 QR codes side by side, display Open, Getting ready, Back soon or Closed with a big badge, and move your board to a new device with a backup. Free, with no ads or login, and it works entirely on your device.",
         cgName: '산후관리사 스케쥴러',
         cgDesc: 'A scheduling app for postpartum-care agencies: the manager registers mothers who need postpartum care and assigns caregivers, and caregivers check their own shifts and request changes, which only take effect once the manager approves them. The same account and schedule work on the iPhone and Android apps, in a computer browser and in a Windows program. The app is free to install; an agency gets a free trial period after it is set up, then picks a plan by the number of caregivers it approves. The app is in Korean.',
         cgSlot: 'Web & PC', cgStatus: 'iPhone and Android from the stores; computers via the web or a Windows program', cgWin: 'Download for Windows', cgWeb: 'Open on the web', cgGuide: 'How to install',
         rfName: 'Room Layout',
-        rfDesc: 'An app that draws your rooms and furniture to real measurements on a floor plan, so you can try arrangements first. It suits planning a move, buying new furniture, or laying out a shop or office. Add doors and windows, and make furniture in any shape you need. One space document is free with every editing feature; a one-time purchase (not a subscription) unlocks unlimited documents plus export and printing. No sign-in and no ads, and everything stays on your device.',
+        rfDesc: "An app that draws your rooms and furniture to real measurements on a floor plan, so you can try arrangements first. It suits planning a move, buying new furniture, or laying out a shop or office. Add doors (sliding ones too) and windows, make furniture in any shape you need, and explore a sample studio right away. One space document is free with every editing feature; a one-time purchase (not a subscription) unlocks unlimited documents plus export and printing. No sign-in and no ads, and everything stays on your device.",
         gnBannerTag: 'New', gnBannerTitle: 'Geonne — photos, documents and big files over the same Wi-Fi', gnBannerDesc: 'Many in a row never stall, no server, no account. On iPhone, Android, Mac and Windows.', gnBannerCta: 'See Geonne →',
         cgBannerTag: 'New', cgBannerTitle: '산후관리사 스케쥴러: a postpartum-care office schedule in one place', cgBannerDesc: 'Register mothers and assign caregivers from the app. Get it on the App Store or Google Play, or use it on a computer with the Windows installer or straight in the browser. The app is in Korean.', cgBannerCta: 'See how to get it',
         gnName: 'Geonne', gnSlot: 'Mac · PC', gnStatus: 'iPhone, iPad and Android from the stores; Mac and Windows as installers', gnMac: 'Download for Mac',
         gnDesc: 'Geonne sends photos, videos, documents and multi-GB files between your own devices on the same Wi-Fi, no cables. Sending many in a row never stalls, and an interrupted transfer sends only what is left. Files go directly between devices on the local network with no server and no account, and every connection is encrypted. It is free and has no login; the phone and tablet apps show a banner ad at the bottom (the Mac and Windows apps have none).',
         tdName: 'TabDeck', tdSlot: 'Mac · PC',
-        tdStatus: 'The Mac and Windows PC programs are available now. The iPhone, iPad and Android apps are coming soon',
+        tdStatus: "The Android app is on Google Play, and the Mac and Windows PC programs are available as installers. The iPhone and iPad app is coming soon",
         tdDesc: 'An app that turns a tablet or phone you no longer use into a shortcut pad for your PC. Press one key for video and photo editing, streaming and video calls, or work shortcuts, and show PC status such as the clock, CPU and memory right on a key. You can also put the key screen on a portable touch monitor. Install the program on your PC and connect over the same Wi-Fi; no sign-up is needed to start. Some features, such as status display, come with Pro, a one-time purchase.',
         hnName: 'HubNote',
         hnDesc: 'A tablet note-taking app that brings class notes, lecture recordings and review together in one place. It also has document-making tools like a word processor or a presentation maker, so you can use it for document work too. It runs on Android tablets and iPad (iPadOS), and you can move your notes between the two by exporting and importing files. Built with the user\u2019s ease of use first.',
-        galIos: 'Galpirok iOS', galAos: 'Galpirok Android', privacy: 'Privacy Policy', support: 'Support'
+        galIos: 'Galpirok iOS', galAos: 'Galpirok Android', privacy: 'Privacy Policy', support: 'Support',
+        tdBannerTag: "New",
+        tdBannerTitle: "TabDeck: turn a spare tablet or phone into a shortcut pad for your PC",
+        tdBannerDesc: "Get the Android app on Google Play and the PC program as a Mac or Windows installer. Connects over the same Wi-Fi, no sign-up.",
+        tdBannerCta: "See TabDeck",
+        langMenu: "Language",
+        shotAlt: " app screen"
       },
       ja: {
-        langLabel: '対応言語', galLangNote: '日本語・繁体字中国語は iOS で対応済みで、Android はアップデートを準備中です', gnLangNote: '新たに追加した8言語は Mac・Windows 版に先行対応し、iPhone・Android は次回のアップデートで対応します',
+        langLabel: '対応言語', gnLangNote: '新たに追加した8言語は Mac・Windows 版に先行対応し、iPhone・Android は次回のアップデートで対応します',
         title: 'AlchanLabs',
         metaDesc: 'AlchanLabs \u2014 毎日使う瞬間を、もっと充実させる。Galpirok、Work Schedule Calendar、Standboard などを作っています。',
-        video: 'assets/hero-ja.mp4?v=20261120b', poster: 'assets/hero-poster-ja.jpg?v=20261102b',
-        videoLabel: 'AlchanLabs 紹介動画: 毎日使う瞬間をもっと充実させる、Galpirok、Work Schedule Calendar、Standboardなど7つのアプリ',
+        video: 'assets/hero-ja.mp4?v=20261127', poster: 'assets/hero-poster-ja.jpg?v=20261102b',
+        videoLabel: "AlchanLabs 紹介動画: 毎日使う瞬間をもっと充実させる、Galpirok、Work Schedule Calendar、Standboardなど8つのアプリ",
         htmlLang: 'ja',
         brand: 'AlchanLabs', navApps: 'アプリ', navWay: '方針', navContact: 'お問い合わせ',
         h1a: '毎日使う瞬間を', h1b: 'もっと充実させる。',
@@ -424,10 +477,10 @@
         released: 'iOS・Android 配信中',
         viewAppStore: 'App Storeで見る', viewPlay: 'Google Playで見る',
         galName: 'Galpirok',
-        galDesc: 'ブックとしおりで、メモや日記を本のように整理するノートアプリです。無料でブック3冊・各ブックにしおり3つまで作れ、一度だけ購入する無制限プラン（サブスクリプションではありません）なら制限なしで使え、iCloudでiPhoneとiPadに同期できます。横向きのiPadや開いた折りたたみ式iPhoneでは、本のような見開き表示になります。ログインも広告もなく、記録は端末の中に保存されます。',
-        galStatus: 'iOS はアップデート済み、Android はアップデート準備中',
+        galDesc: "ブックとしおりで、メモや日記を本のように整理するノートアプリです。無料でブック3冊、1冊につきしおり3つまで作れます。一度だけ購入する無制限プラン（サブスクリプションではありません）なら制限なく使え、iPhone・iPadはiCloud、AndroidはGoogle Driveで同期できます。iPadを横向きにしたり折りたたみiPhoneを開いたりすると、本のような見開き表示になります。ログインも広告もなく、記録は端末の中に保存されます。",
+        galStatus: "iOS · Android 1.1 アップデート",
         calName: 'Work Schedule Calendar',
-        calDesc: '交代勤務やアルバイトのチームのシフト表を、ひと月のカレンダーに色分けで表示するアプリです。招待コードひとつでチームを作れば、管理者が作ったシフト表がすぐに共有され、変更があると通知が届きます。iOSとAndroidのどちらでも同じシフト表を一緒に確認できます。',
+        calDesc: "交代勤務やアルバイトのチームのシフトを、月のカレンダーに色分けして表示するアプリです。招待コード1つでチームを作ると、管理者が組んだシフトがすぐにメンバーへ共有され、変更があると通知が届きます。チームのお知らせ、人ごとの色分け、アラームのように鳴るシフト通知（対応端末）も使えます。iOSとAndroidの両方で同じシフトを一緒に確認できます。",
         wayH2: 'AlchanLabs の働き方', wayP: '小さなチームだからこそ守れる原則を守ります。',
         p1h: '小さく作る', p1p: '一度にすべてをやろうとせず、本当に必要な機能から丁寧に作ります。',
         p2h: '続けて直す', p2p: '実際に使って見つかった問題を、その都度磨き上げていきます。',
@@ -437,28 +490,34 @@
         galIos: 'Galpirok iOS', galAos: 'Galpirok Android', privacy: 'プライバシーポリシー', support: 'サポート',
         soon: '準備中',
         sbName: 'Standboard',
-        sbDesc: 'お店のカウンターやマーケットの屋台にタブレットやスマホを立てておくと、Wi-Fi QR・お知らせ・SNSリンクを大きく表示する案内ボードアプリです。無料で、広告もログインもなく、端末の中だけで動作します。',
+        sbDesc: "お店のカウンターやマーケットの屋台にタブレットやスマホを立てておくと、Wi-Fi QR・お知らせ・SNSリンクを大きく表示する案内ボードアプリです。QRを最大3つ並べて表示でき、営業中・準備中・すぐ戻ります・休業を大きなバッジで示せ、バックアップで案内ボードを新しい端末へ移せます。無料で、広告もログインもなく、端末の中だけで動作します。",
         cgName: '산후관리사 스케쥴러',
         cgDesc: '産後ケア事業所の管理者が産後ケアを必要とする産婦さんを登録してケア担当者に割り当て、担当者は自分の勤務を確認して変更を申請できるスケジュール管理アプリです。申請は管理者が承認して初めてスケジュールに反映されます。iPhone・Androidアプリ、パソコンのブラウザ（Web）、Windowsプログラムで、同じアカウントで同じスケジュールを見られます。アプリのインストールは無料で、事業所を作ると無料体験期間があり、その後は承認するケア担当者の人数に応じてプランを選びます。アプリは韓国語で提供されます。',
         cgSlot: 'Web・PC', cgStatus: 'iPhone・Androidはストアで、パソコンはWebとWindowsプログラムで利用できます', cgWin: 'Windows版をダウンロード', cgWeb: 'Webで開く', cgGuide: 'インストール方法',
         rfName: '部屋レイアウト',
-        rfDesc: '実際に測った寸法どおりに部屋と家具を平面図に描き、家具を置いて配置を事前に確かめられるアプリです。引越しの前、家具を買う前、店舗やオフィスを整える前に役立ちます。ドアや窓をつけ、好きな形の家具も自分で作れます。空間の文書1つはすべての編集機能が無料で、一度の購入（サブスクリプションではありません）で文書が無制限になり、書き出しと印刷も使えます。ログインも広告もなく、データは端末の中にだけ保存されます。',
+        rfDesc: "実際に測った寸法どおりに部屋と家具を平面図に描き、家具の配置を事前に試せる図面・レイアウトアプリです。引っ越し前や新しい家具を買う前、お店やオフィスづくりに役立ちます。ドア（引き戸も）や窓を付け、好きな形の家具を自作でき、サンプルのワンルームですぐに試せます。空間ドキュメント1つはすべての編集機能が無料で、一度の購入（サブスクリプションではありません）でドキュメント無制限と書き出し・印刷が使えます。ログインも広告もなく、データは端末の中だけに保存されます。",
         gnBannerTag: '新登場', gnBannerTitle: 'Geonne — 写真も書類も大きなファイルも同じWi-Fiですぐ', gnBannerDesc: '続けて送っても止まらず、サーバーもアカウントも不要。iPhone・Android・Mac・Windowsで使えます。', gnBannerCta: 'Geonneを見る →',
         cgBannerTag: '新登場', cgBannerTitle: '산후관리사 스케쥴러: 産後ケア事業所のシフトを一か所で', cgBannerDesc: 'アプリで産婦さんの登録とケア担当者の割り当てができます。iPhone・Androidはストアで、パソコンはWindowsインストーラーをダウンロードするか、Webでそのまま使えます。アプリは韓国語で提供されます。', cgBannerCta: '入手方法を見る',
         gnName: 'Geonne', gnSlot: 'Mac・PC', gnStatus: 'iPhone・iPad・Androidはストアで、Mac・Windowsはインストーラーで入手できます', gnMac: 'Mac版をダウンロード',
         gnDesc: '同じWi-Fiにある自分のデバイス同士で、写真・動画、書類、数GBの大きなファイルをケーブルなしですぐにやり取りできるファイル転送アプリです。続けて何件送っても止まらず、途切れても残りのファイルだけを送ります。サーバーもアカウントも使わず、同じネットワーク内でデバイス同士が直接やり取りし、すべての接続は暗号化されます。無料でログインは不要、スマホ・タブレット版は画面下部に広告が表示されます（Mac・Windows版には広告はありません）。',
         tdName: 'TabDeck', tdSlot: 'Mac・PC',
-        tdStatus: 'Mac・Windows用のPCプログラムを今すぐ入手できます。iPhone・iPad・Androidアプリは準備中です',
+        tdStatus: "AndroidアプリはGoogle Playで、Mac・Windows用PCプログラムはインストーラーで入手できます。iPhone・iPadアプリは準備中です",
         tdDesc: '使わなくなったタブレットやスマホを、PCのショートカットパッドに変えるアプリです。動画・写真の編集、配信・ビデオ会議、仕事用ショートカットをキー1つで押せて、時計・CPU・メモリなどのPCの状態もキーに表示できます。携帯用タッチモニターにキー画面を表示して使うこともできます。PCにプログラムをインストールして同じWi-Fiでつなぐだけで、始めるときの登録は不要です。状態表示などの一部の機能は、1回だけ購入するProで使えます。',
         hnName: 'HubNote',
-        hnDesc: '授業のノート、講義の録音、復習をひとつにまとめたタブレット向けノートアプリです。ワープロやプレゼン資料のように文書を作る機能もあり、文書作成にも使えます。AndroidタブレットとiPad（iPadOS）で使え、ファイルの書き出しと読み込みで両方のあいだにデータを移せます。使う人が使いやすいことを最優先に作っています。'
+        hnDesc: '授業のノート、講義の録音、復習をひとつにまとめたタブレット向けノートアプリです。ワープロやプレゼン資料のように文書を作る機能もあり、文書作成にも使えます。AndroidタブレットとiPad（iPadOS）で使え、ファイルの書き出しと読み込みで両方のあいだにデータを移せます。使う人が使いやすいことを最優先に作っています。',
+        tdBannerTag: "新登場",
+        tdBannerTitle: "TabDeck：使っていないタブレットやスマホをPCのショートカットパッドに",
+        tdBannerDesc: "AndroidアプリはGoogle Playで、PCプログラムはMac・Windowsのインストーラーで。登録不要、同じWi-Fiで接続します。",
+        tdBannerCta: "TabDeckを見る",
+        langMenu: "言語",
+        shotAlt: " アプリ画面"
       },
       zh: {
-        langLabel: '支援語言', galLangNote: '日文與繁體中文已在 iOS 支援，Android 更新準備中', gnLangNote: '新增的 8 種語言已先在 Mac 與 Windows 版支援，iPhone 與 Android 將於下次更新支援',
+        langLabel: '支援語言', gnLangNote: '新增的 8 種語言已先在 Mac 與 Windows 版支援，iPhone 與 Android 將於下次更新支援',
         title: 'AlchanLabs',
         metaDesc: 'AlchanLabs \u2014 讓每天使用的時刻更充實。我們製作 Galpirok、Work Schedule Calendar、Standboard 等 App。',
-        video: 'assets/hero-zh.mp4?v=20261120b', poster: 'assets/hero-poster-zh.jpg?v=20261102b',
-        videoLabel: 'AlchanLabs 介紹影片：讓每天使用的時刻更加充實，Galpirok、Work Schedule Calendar、Standboard 等七款 App',
+        video: 'assets/hero-zh.mp4?v=20261127', poster: 'assets/hero-poster-zh.jpg?v=20261102b',
+        videoLabel: "AlchanLabs 介紹影片：讓每天使用的時刻更加充實，Galpirok、Work Schedule Calendar、Standboard 等八款 App",
         htmlLang: 'zh-Hant-TW',
         brand: 'AlchanLabs', navApps: '我們的 App', navWay: '做事方式', navContact: '聯絡我們',
         h1a: '讓每天使用的時刻', h1b: '更加充實。',
@@ -467,10 +526,10 @@
         released: 'iOS・Android 已上架',
         viewAppStore: '前往 App Store', viewPlay: '前往 Google Play',
         galName: 'Galpirok',
-        galDesc: '以書本與書籤，像書一樣整理筆記與日記的 App。免費即可建立 3 本書、每本書 3 個書籤；一次購買的無限制方案（非訂閱）可不受限制使用，並透過 iCloud 在 iPhone 與 iPad 之間同步。橫向的 iPad 與展開的摺疊式 iPhone 會像翻開一本書一樣分成左右兩頁。免登入、無廣告，紀錄保存在裝置內。',
-        galStatus: 'iOS 已更新，Android 更新準備中',
+        galDesc: "以書本與書籤，把筆記和日記整理得像一本書的筆記 App。免費可建立 3 本書、每本 3 個書籤；一次購買的無限方案（非訂閱）可無限制使用，iPhone、iPad 透過 iCloud 同步，Android 則透過 Google Drive 同步。iPad 橫放或展開摺疊 iPhone 時，會像書本一樣以跨頁顯示。不需登入、沒有廣告，紀錄保存在裝置中。",
+        galStatus: "iOS · Android 1.1 更新",
         calName: 'Work Schedule Calendar',
-        calDesc: '以月曆配色顯示輪班或打工團隊班表的 App。用一組邀請碼建立團隊，管理者排好的班表會立刻分享給大家，班表異動時也會收到通知。iOS 與 Android 兩邊都能一起查看同一份班表。',
+        calDesc: "以月曆和顏色呈現輪班或打工團隊班表的 App。用一組邀請碼建立團隊，管理者排好的班表會立刻分享給大家，班表異動時也會收到通知。還有團隊公告、依人員區分的顏色，以及像鬧鐘一樣響起的班表提醒（支援的裝置）。iOS 與 Android 兩邊都能一起查看同一份班表。",
         wayH2: 'AlchanLabs 的做事方式', wayP: '因為是小團隊，所以守住我們真正做得到的原則。',
         p1h: '做小而美', p1p: '不想一次做完所有事，先把真正必要的功能好好做出來。',
         p2h: '持續改進', p2p: '把實際使用中發現的問題隨時修正、打磨。',
@@ -480,25 +539,826 @@
         galIos: 'Galpirok iOS', galAos: 'Galpirok Android', privacy: '隱私權政策', support: '客戶支援',
         soon: '籌備中',
         sbName: 'Standboard',
-        sbDesc: '把平板或手機立在店家櫃檯或市集攤位上，就能放大顯示 Wi-Fi QR 碼、公告與社群連結的告示板 App。免費、無廣告、免登入，完全在裝置內運作。',
+        sbDesc: "把平板或手機立在店家櫃檯或市集攤位上，就能放大顯示 Wi-Fi QR 碼、公告與社群連結的告示板 App。最多可並排顯示 3 個 QR 碼，用大徽章標示營業中、準備中、馬上回來或休息中，也能透過備份把告示板搬到新裝置。免費、無廣告、免登入，完全在裝置內運作。",
         cgName: '산후관리사 스케쥴러',
         cgDesc: '由月子照護機構的管理者登錄需要產後照護的產婦並指派照護員，照護員可確認自己的班表並申請異動的排程管理 App。異動申請須經管理者核准後才會反映到班表。iPhone 與 Android App、電腦瀏覽器（網頁）及 Windows 程式皆可用同一個帳號查看同一份班表。App 可免費安裝，機構建立後有免費試用期，之後依核准的照護員人數選擇方案。App 以韓文提供。',
         cgSlot: '網頁・PC', cgStatus: 'iPhone 與 Android 可在商店下載，電腦可使用網頁與 Windows 版', cgWin: '下載 Windows 版', cgWeb: '在網頁開啟', cgGuide: '安裝說明',
         rfName: '房間配置圖',
-        rfDesc: '依實際量測的尺寸，把房間與家具畫成平面圖，先擺放看看再確認配置的 App。適合搬家前、買家具前，或佈置店面與辦公室之前使用。可加上門與窗，也能自己製作想要形狀的家具。一份空間文件可免費使用全部編輯功能，一次購買（非訂閱）即可使用無限份文件，並可匯出與列印。免登入、無廣告，資料只保存在裝置內。',
+        rfDesc: "依實際測量的尺寸，把房間和家具畫在平面圖上，事先試擺家具的平面配置 App。適合搬家前、買新家具前，或規劃店面與辦公室時使用。可加上門（包含拉門）與窗戶、自己做出任何形狀的家具，也能立即用範例套房試玩。1 份空間文件可免費使用所有編輯功能，一次購買（非訂閱）即可使用無限文件與匯出、列印。不需登入、沒有廣告，資料只存在裝置中。",
         gnBannerTag: '全新推出', gnBannerTitle: 'Geonne — 相片、文件、大型檔案，同一個 Wi-Fi 立即傳', gnBannerDesc: '連續傳送也不會卡住，不需伺服器與帳號。支援 iPhone、Android、Mac 與 Windows。', gnBannerCta: '查看 Geonne →',
         cgBannerTag: '全新推出', cgBannerTitle: '산후관리사 스케쥴러：月子照護機構的班表一次管理', cgBannerDesc: 'App 可登錄產婦並指派照護員。iPhone 與 Android 可在商店下載，電腦可下載 Windows 安裝檔，或直接在網頁使用。App 以韓文提供。', cgBannerCta: '查看取得方式',
         gnName: 'Geonne', gnSlot: 'Mac・PC', gnStatus: 'iPhone、iPad、Android 可在商店下載，Mac 與 Windows 提供安裝檔', gnMac: '下載 Mac 版',
         gnDesc: '在同一個 Wi-Fi 中，於自己的裝置之間無線傳送相片、影片、文件與數 GB 大型檔案的傳檔 App。連續傳送多筆也不會卡住，傳輸中斷時只會接著傳送剩下的檔案。不需伺服器與帳號，檔案在同一個網路內於裝置之間直接傳輸，所有連線皆經過加密。免費、不需登入，手機與平板 App 底部會顯示廣告（Mac 與 Windows 版沒有廣告）。',
         tdName: 'TabDeck', tdSlot: 'Mac・PC',
-        tdStatus: '現在可下載 Mac 與 Windows 版電腦程式。iPhone、iPad 與 Android 版 App 籌備中',
+        tdStatus: "Android App 可在 Google Play 下載，Mac 與 Windows 的 PC 程式提供安裝檔。iPhone 與 iPad App 籌備中",
         tdDesc: '把閒置的平板或手機變成電腦快捷鍵面板的 App。影片與照片編輯、直播與視訊會議、工作快捷鍵，一鍵就能按，時鐘、CPU、記憶體等電腦狀態也能顯示在按鍵上。也可以把按鍵畫面顯示在可攜式觸控螢幕上。在電腦安裝程式後，透過同一個 Wi-Fi 連線即可，開始使用不需要註冊。狀態顯示等部分功能可透過一次性購買的 Pro 使用。',
         hnName: 'HubNote',
-        hnDesc: '把課堂筆記、課程錄音與複習集中在一起的平板筆記 App。也具備類似文書處理與簡報的文件製作功能，可用於文書作業。可在 Android 平板與 iPad（iPadOS）使用，透過匯出與匯入檔案，就能在兩邊轉移資料。以使用者輕鬆好用為最優先來打造。'
+        hnDesc: '把課堂筆記、課程錄音與複習集中在一起的平板筆記 App。也具備類似文書處理與簡報的文件製作功能，可用於文書作業。可在 Android 平板與 iPad（iPadOS）使用，透過匯出與匯入檔案，就能在兩邊轉移資料。以使用者輕鬆好用為最優先來打造。',
+        tdBannerTag: "全新推出",
+        tdBannerTitle: "TabDeck：把閒置的平板或手機變成 PC 快捷鍵面板",
+        tdBannerDesc: "Android App 可在 Google Play 下載，PC 程式提供 Mac 與 Windows 安裝檔。同一個 Wi-Fi 即可連線，免註冊。",
+        tdBannerCta: "查看 TabDeck",
+        langMenu: "語言",
+        shotAlt: " App 畫面"
+      },
+      ru: {
+        langLabel: "Языки",
+        gnLangNote: "8 новых языков сначала появились в версиях для Mac и Windows; на iPhone и Android они придут со следующим обновлением",
+        title: "AlchanLabs",
+        metaDesc: "AlchanLabs — делаем каждый день насыщеннее. Мы создаём Galpirok, Календарь смен, Standboard и другие приложения.",
+        video: "assets/hero-ru.mp4?v=20261127",
+        poster: "assets/hero-poster-ru.jpg?v=20261127",
+        videoLabel: "Видео об AlchanLabs: делаем каждый день насыщеннее — восемь приложений, включая Galpirok, Календарь смен и Standboard",
+        htmlLang: "ru",
+        brand: "AlchanLabs",
+        navApps: "Приложения",
+        navWay: "Подход",
+        navContact: "Контакты",
+        h1a: "Делаем каждый день",
+        h1b: "насыщеннее.",
+        heroP: "AlchanLabs создаёт и поддерживает мобильные приложения, которые помогают легко навести порядок в насыщенной жизни.",
+        appsH2: "Наши приложения",
+        appsP: "Мы доводим их до ума по одному и только потом выпускаем.",
+        released: "Доступно для iOS · Android",
+        viewAppStore: "Открыть в App Store",
+        viewPlay: "Открыть в Google Play",
+        galName: "Galpirok",
+        galDesc: "Приложение для заметок, которое раскладывает заметки и дневник по книгам и закладкам, как в настоящей книге. Бесплатно можно создать 3 книги по 3 закладки в каждой; разовая покупка тарифа «Без ограничений» (не подписка) снимает лимиты и включает синхронизацию: через iCloud на iPhone и iPad, через Google Drive на Android. На iPad в горизонтальной ориентации или на раскрытом складном iPhone записи открываются разворотом, как книга. Без входа в аккаунт и без рекламы, записи хранятся на устройстве.",
+        galStatus: "Обновление 1.1 для iOS · Android",
+        calName: "Календарь смен",
+        calDesc: "Показывает график команды со сменной работой или подработкой на месячном календаре разными цветами. Создайте команду по одному коду приглашения: график, составленный руководителем, сразу видят все, а об изменениях приходит уведомление. Есть объявления для команды, цвета по сотрудникам и напоминания о сменах, которые звонят как будильник (на поддерживаемых устройствах). Один и тот же график можно смотреть вместе на iOS и Android.",
+        wayH2: "Как работает AlchanLabs",
+        wayP: "Мы небольшая команда и придерживаемся принципов, которые действительно можем соблюдать.",
+        p1h: "Делать небольшим",
+        p1p: "Мы не пытаемся сделать всё сразу: сначала делаем самое нужное и делаем это хорошо.",
+        p2h: "Постоянно улучшать",
+        p2p: "Исправляем проблемы по мере того, как они обнаруживаются в реальном использовании.",
+        p3h: "Не перегибать",
+        p3p: "Не собираем лишних данных и делаем приложения простыми и необременительными.",
+        contactLabel: "Связаться с нами",
+        contactP: "Принимаем вопросы о продуктах, сообщения об ошибках и обращения по персональным данным.",
+        copyright: "© 2026 AlchanLabs. Все права защищены. · Руководитель Alchan Lee · Рег. номер предприятия 453-03-03842 · Номер регистрации дистанционной торговли 제2026-충남천안-2243호",
+        soon: "Скоро",
+        sbName: "Standboard",
+        sbDesc: "Приложение-табличка: поставьте планшет или телефон на прилавок магазина или ярмарочный стенд, и оно крупно покажет QR-код Wi-Fi, объявления и ссылки на соцсети. Можно выводить до 3 QR-кодов рядом, показывать крупным значком статус «Открыто», «Готовимся», «Скоро вернёмся» или «Закрыто» и переносить табличку на новое устройство через резервную копию. Бесплатно, без рекламы и входа, работает только на устройстве.",
+        cgName: "산후관리사 스케쥴러",
+        cgDesc: "Приложение для планирования в агентствах послеродового ухода: руководитель регистрирует мам, которым нужен уход, и назначает помощниц, а помощницы видят свои смены и отправляют запросы на изменения, которые вступают в силу только после одобрения руководителя. Один аккаунт и одно расписание работают в приложениях для iPhone и Android, в браузере на компьютере и в программе для Windows. Установка бесплатна; после создания агентства есть бесплатный пробный период, затем тариф выбирается по числу одобренных помощниц. Приложение на корейском языке.",
+        cgSlot: "Веб и ПК",
+        cgStatus: "iPhone и Android — из магазинов приложений; на компьютере — в браузере или программе для Windows",
+        cgWin: "Скачать для Windows",
+        cgWeb: "Открыть в браузере",
+        cgGuide: "Как установить",
+        rfName: "Room Layout",
+        rfDesc: "Приложение, которое рисует комнаты и мебель на плане по реальным размерам, чтобы заранее примерить расстановку. Пригодится перед переездом, покупкой мебели или обустройством магазина и офиса. Добавляйте двери (в том числе раздвижные) и окна, создавайте мебель любой формы и сразу посмотрите пример квартиры-студии. Один документ со всеми функциями редактирования бесплатен; разовая покупка (не подписка) открывает неограниченное число документов, экспорт и печать. Без входа и рекламы, данные хранятся только на устройстве.",
+        gnBannerTag: "Новинка",
+        gnBannerTitle: "Geonne: фото, документы и большие файлы по одной сети Wi-Fi",
+        gnBannerDesc: "Много файлов подряд без зависаний, без сервера и аккаунта. Для iPhone, Android, Mac и Windows.",
+        gnBannerCta: "О Geonne",
+        cgBannerTag: "Новинка",
+        cgBannerTitle: "산후관리사 스케쥴러: график агентства послеродового ухода в одном месте",
+        cgBannerDesc: "Регистрируйте мам и назначайте помощниц в приложении. Скачайте его в App Store или Google Play, а на компьютере используйте программу для Windows или браузер. Приложение на корейском языке.",
+        cgBannerCta: "Как получить",
+        gnName: "Geonne",
+        gnSlot: "Mac · PC",
+        gnStatus: "iPhone, iPad и Android — из магазинов приложений; Mac и Windows — установщиками",
+        gnMac: "Скачать для Mac",
+        gnDesc: "Geonne передаёт фото, видео, документы и файлы размером в несколько ГБ между вашими устройствами в одной сети Wi-Fi без проводов. Много файлов подряд передаются без зависаний, а после обрыва досылается только оставшееся. Файлы идут напрямую между устройствами в локальной сети без сервера и аккаунта, все соединения зашифрованы. Бесплатно и без входа; в приложениях для телефона и планшета внизу показывается рекламный баннер (в версиях для Mac и Windows рекламы нет).",
+        tdName: "TabDeck",
+        tdSlot: "Mac · PC",
+        tdStatus: "Приложение для Android — в Google Play, программы для Mac и Windows — установщиками. Приложение для iPhone и iPad скоро появится",
+        tdDesc: "Приложение превращает ненужный планшет или телефон в панель горячих клавиш для ПК. Одна клавиша запускает сочетание для монтажа видео и фото, стриминга и видеозвонков или работы, а на клавишах можно выводить состояние ПК: часы, загрузку CPU и память. Экран клавиш можно открыть и на портативном сенсорном мониторе. Установите программу на ПК и подключитесь по одной сети Wi-Fi; регистрация для начала не нужна. Некоторые функции, например вывод состояния, доступны в Pro с разовой покупкой.",
+        hnName: "HubNote",
+        hnDesc: "Приложение для рукописных заметок на планшете, где конспекты, записи лекций и повторение собраны в одном месте. В нём есть и инструменты для создания документов, как в текстовом редакторе или программе для презентаций. Работает на планшетах Android и iPad (iPadOS), а заметки можно переносить между ними, экспортируя и импортируя файлы. Мы делаем его прежде всего простым в использовании.",
+        galIos: "Galpirok iOS",
+        galAos: "Galpirok Android",
+        privacy: "Политика конфиденциальности",
+        support: "Поддержка",
+        tdBannerTag: "Новинка",
+        tdBannerTitle: "TabDeck: ненужный планшет или телефон как панель горячих клавиш для ПК",
+        tdBannerDesc: "Приложение для Android — в Google Play, программа для ПК — установщики для Mac и Windows. Подключение по одной сети Wi-Fi, без регистрации.",
+        tdBannerCta: "Подробнее о TabDeck",
+        langMenu: "Язык",
+        shotAlt: " — экран приложения"
+      },
+      es: {
+        langLabel: "Idiomas",
+        gnLangNote: "Los 8 idiomas nuevos llegan primero a las versiones de Mac y Windows; iPhone y Android los recibirán en la próxima actualización",
+        title: "AlchanLabs",
+        metaDesc: "AlchanLabs: haz que cada día cuente más. Creamos Galpirok, Calendario de turnos, Standboard y más.",
+        video: "assets/hero-es.mp4?v=20261127",
+        poster: "assets/hero-poster-es.jpg?v=20261127",
+        videoLabel: "Vídeo de AlchanLabs: haz que cada día cuente más, con ocho apps como Galpirok, Calendario de turnos y Standboard",
+        htmlLang: "es",
+        brand: "AlchanLabs",
+        navApps: "Apps",
+        navWay: "Cómo trabajamos",
+        navContact: "Contacto",
+        h1a: "Haz que cada día",
+        h1b: "cuente más.",
+        heroP: "AlchanLabs crea y mantiene apps móviles que ayudan a poner orden, sin complicaciones, en una vida ajetreada.",
+        appsH2: "Nuestras apps",
+        appsP: "Las pulimos una a una antes de lanzarlas.",
+        released: "Disponible en iOS · Android",
+        viewAppStore: "Ver en App Store",
+        viewPlay: "Ver en Google Play",
+        galName: "Galpirok",
+        galDesc: "Una app de notas que organiza tus notas y tu diario como un libro, con libros y marcapáginas. Gratis puedes crear 3 libros con 3 marcapáginas cada uno; el plan Ilimitado de pago único (no es una suscripción) quita los límites y sincroniza con iCloud en iPhone y iPad, y con Google Drive en Android. En un iPad en horizontal o en un iPhone plegable abierto se ve a doble página, como un libro. Sin registro ni anuncios, y lo que escribes se queda en tu dispositivo.",
+        galStatus: "Actualización 1.1 en iOS · Android",
+        calName: "Calendario de turnos",
+        calDesc: "Muestra en colores, en un calendario mensual, los turnos de un equipo que trabaja por turnos o a tiempo parcial. Crea el equipo con un código de invitación y el horario que prepara el responsable llega al instante a todos, con un aviso cuando cambia. También hay avisos para el equipo, colores por persona y recordatorios de turno que suenan como una alarma (en dispositivos compatibles). Todos ven el mismo horario en iOS y Android.",
+        wayH2: "Cómo trabaja AlchanLabs",
+        wayP: "Somos un equipo pequeño y seguimos principios que de verdad podemos cumplir.",
+        p1h: "Construir en pequeño",
+        p1p: "No intentamos hacerlo todo a la vez: primero creamos lo esencial, y bien hecho.",
+        p2h: "Mejorar siempre",
+        p2p: "Corregimos los problemas a medida que aparecen con el uso real.",
+        p3h: "Sin excesos",
+        p3p: "No recogemos datos innecesarios y hacemos apps fáciles y cómodas de usar.",
+        contactLabel: "Contacto",
+        contactP: "Atendemos consultas sobre los productos, informes de errores y consultas sobre privacidad.",
+        copyright: "© 2026 AlchanLabs. Todos los derechos reservados. · Director: Alchan Lee · N.º de registro empresarial 453-03-03842 · N.º de registro de venta a distancia 제2026-충남천안-2243호",
+        soon: "Próximamente",
+        sbName: "Standboard",
+        sbDesc: "Una app de cartel: coloca una tablet o un teléfono en el mostrador de tu tienda o en un puesto de mercado y muestra en grande el QR del Wi-Fi, avisos y enlaces a redes sociales. Puede mostrar hasta 3 códigos QR uno al lado del otro, indicar con una etiqueta grande si está abierto, preparando, vuelve enseguida o cerrado, y pasar el cartel a otro dispositivo con una copia de seguridad. Gratis, sin anuncios ni registro, y funciona solo en tu dispositivo.",
+        cgName: "산후관리사 스케쥴러",
+        cgDesc: "Una app de planificación para agencias de cuidado posparto: el responsable registra a las madres que necesitan cuidados y asigna cuidadoras, y las cuidadoras consultan sus turnos y piden cambios, que solo se aplican cuando el responsable los aprueba. La misma cuenta y el mismo horario funcionan en las apps de iPhone y Android, en el navegador del ordenador y en un programa para Windows. La instalación es gratuita; al crear la agencia hay un periodo de prueba gratis y después se elige un plan según el número de cuidadoras aprobadas. La app está en coreano.",
+        cgSlot: "Web y PC",
+        cgStatus: "iPhone y Android desde las tiendas; en el ordenador, en la web o con el programa para Windows",
+        cgWin: "Descargar para Windows",
+        cgWeb: "Abrir en la web",
+        cgGuide: "Cómo instalar",
+        rfName: "Room Layout",
+        rfDesc: "Una app que dibuja tus habitaciones y muebles con medidas reales en un plano para probar la distribución antes. Es útil antes de una mudanza, de comprar muebles o de montar una tienda u oficina. Añade puertas (también correderas) y ventanas, crea muebles de cualquier forma y explora al instante un estudio de ejemplo. Un documento de espacio es gratis con todas las funciones de edición; un pago único (no es una suscripción) desbloquea documentos ilimitados, exportación e impresión. Sin registro ni anuncios, y todo se queda en tu dispositivo.",
+        gnBannerTag: "Novedad",
+        gnBannerTitle: "Geonne: fotos, documentos y archivos grandes por la misma Wi-Fi",
+        gnBannerDesc: "Muchos seguidos sin atascos, sin servidor ni cuenta. Para iPhone, Android, Mac y Windows.",
+        gnBannerCta: "Conoce Geonne",
+        cgBannerTag: "Novedad",
+        cgBannerTitle: "산후관리사 스케쥴러: los turnos de una agencia de cuidado posparto en un solo lugar",
+        cgBannerDesc: "Registra a las madres y asigna cuidadoras desde la app. Descárgala en App Store o Google Play, o úsala en el ordenador con el instalador de Windows o directamente en el navegador. La app está en coreano.",
+        cgBannerCta: "Cómo conseguirla",
+        gnName: "Geonne",
+        gnSlot: "Mac · PC",
+        gnStatus: "iPhone, iPad y Android desde las tiendas; Mac y Windows con instaladores",
+        gnMac: "Descargar para Mac",
+        gnDesc: "Geonne envía fotos, vídeos, documentos y archivos de varios GB entre tus propios dispositivos en la misma Wi-Fi, sin cables. Enviar muchos seguidos nunca se atasca, y si se corta solo envía lo que falta. Los archivos van directamente entre dispositivos en la red local, sin servidor ni cuenta, y todas las conexiones están cifradas. Es gratis y no requiere registro; las apps de teléfono y tablet muestran un anuncio en la parte inferior (las de Mac y Windows no).",
+        tdName: "TabDeck",
+        tdSlot: "Mac · PC",
+        tdStatus: "La app de Android está en Google Play y los programas para Mac y Windows, como instaladores. La app para iPhone y iPad llegará pronto",
+        tdDesc: "Una app que convierte una tablet o un teléfono que ya no usas en un panel de atajos para tu PC. Con una tecla lanzas atajos de edición de vídeo y foto, streaming y videollamadas o trabajo, y puedes ver el estado del PC, como la hora, la CPU y la memoria, en las propias teclas. También puedes mostrar las teclas en un monitor táctil portátil. Instala el programa en tu PC y conéctate por la misma Wi-Fi; no hace falta registrarse para empezar. Algunas funciones, como la visualización del estado, forman parte de Pro, de pago único.",
+        hnName: "HubNote",
+        hnDesc: "Una app de notas a mano para tablet que reúne apuntes de clase, grabaciones y repaso en un solo lugar. También tiene herramientas para crear documentos, como un procesador de textos o un programa de presentaciones. Funciona en tablets Android y en iPad (iPadOS), y puedes pasar tus notas entre ambos exportando e importando archivos. La creamos pensando primero en que sea fácil de usar.",
+        galIos: "Galpirok iOS",
+        galAos: "Galpirok Android",
+        privacy: "Política de privacidad",
+        support: "Soporte",
+        tdBannerTag: "Novedad",
+        tdBannerTitle: "TabDeck: convierte una tablet o un teléfono que no usas en un panel de atajos para tu PC",
+        tdBannerDesc: "La app de Android está en Google Play y el programa para PC, en instaladores para Mac y Windows. Se conecta por la misma Wi-Fi, sin registro.",
+        tdBannerCta: "Conoce TabDeck",
+        langMenu: "Idioma",
+        shotAlt: ": pantalla de la app"
+      },
+      pt: {
+        langLabel: "Idiomas",
+        gnLangNote: "Os 8 novos idiomas chegam primeiro às versões para Mac e Windows; iPhone e Android vão recebê-los na próxima atualização",
+        title: "AlchanLabs",
+        metaDesc: "AlchanLabs: faça cada dia render mais. Criamos Galpirok, Calendário de Turnos, Standboard e mais.",
+        video: "assets/hero-pt.mp4?v=20261127",
+        poster: "assets/hero-poster-pt.jpg?v=20261127",
+        videoLabel: "Vídeo da AlchanLabs: faça cada dia render mais, com oito apps, entre eles Galpirok, Calendário de Turnos e Standboard",
+        htmlLang: "pt-BR",
+        brand: "AlchanLabs",
+        navApps: "Apps",
+        navWay: "Como trabalhamos",
+        navContact: "Contato",
+        h1a: "Faça cada dia",
+        h1b: "render mais.",
+        heroP: "A AlchanLabs cria e mantém apps para celular que ajudam a organizar com leveza uma rotina corrida.",
+        appsH2: "Nossos apps",
+        appsP: "Lapidamos um de cada vez antes de lançar.",
+        released: "Disponível para iOS · Android",
+        viewAppStore: "Ver na App Store",
+        viewPlay: "Ver no Google Play",
+        galName: "Galpirok",
+        galDesc: "Um app de notas que organiza suas anotações e seu diário como um livro, com livros e marcadores. De graça, você cria 3 livros com 3 marcadores cada; o plano Ilimitado, com pagamento único (não é assinatura), remove os limites e sincroniza pelo iCloud no iPhone e no iPad e pelo Google Drive no Android. No iPad na horizontal ou num iPhone dobrável aberto, ele abre em duas páginas, como um livro. Sem login e sem anúncios, e o que você escreve fica no seu aparelho.",
+        galStatus: "Atualização 1.1 no iOS · Android",
+        calName: "Calendário de Turnos",
+        calDesc: "Mostra em cores, num calendário mensal, a escala de uma equipe que trabalha em turnos ou meio período. Crie a equipe com um código de convite e a escala montada pelo gestor chega na hora a todos, com aviso quando muda. Há também avisos para a equipe, cores por pessoa e lembretes de turno que tocam como alarme (em aparelhos compatíveis). Todos veem a mesma escala no iOS e no Android.",
+        wayH2: "Como a AlchanLabs trabalha",
+        wayP: "Somos uma equipe pequena e seguimos princípios que conseguimos cumprir de verdade.",
+        p1h: "Começar pequeno",
+        p1p: "Não tentamos fazer tudo de uma vez: primeiro criamos o essencial, e bem feito.",
+        p2h: "Melhorar sempre",
+        p2p: "Corrigimos os problemas conforme aparecem no uso real.",
+        p3h: "Sem exageros",
+        p3p: "Não coletamos dados desnecessários e fazemos apps fáceis e tranquilos de usar.",
+        contactLabel: "Fale conosco",
+        contactP: "Recebemos dúvidas sobre os produtos, relatos de erros e questões de privacidade.",
+        copyright: "© 2026 AlchanLabs. Todos os direitos reservados. · Diretor: Alchan Lee · Registro empresarial nº 453-03-03842 · Registro de venda a distância nº 제2026-충남천안-2243호",
+        soon: "Em breve",
+        sbName: "Standboard",
+        sbDesc: "Um app de placa: coloque um tablet ou celular no balcão da loja ou numa barraca de feira e ele mostra em tamanho grande o QR do Wi-Fi, avisos e links de redes sociais. Mostra até 3 QR codes lado a lado, exibe com um selo grande se está aberto, preparando, volto já ou fechado, e permite levar a placa para outro aparelho com backup. Grátis, sem anúncios nem login, e funciona só no seu aparelho.",
+        cgName: "산후관리사 스케쥴러",
+        cgDesc: "Um app de escalas para agências de cuidados pós-parto: o gestor cadastra as mães que precisam de cuidados e atribui cuidadoras, e as cuidadoras veem seus turnos e pedem alterações, que só valem depois que o gestor aprova. A mesma conta e a mesma escala funcionam nos apps para iPhone e Android, no navegador do computador e num programa para Windows. A instalação é grátis; ao criar a agência há um período de teste grátis e depois se escolhe um plano pelo número de cuidadoras aprovadas. O app está em coreano.",
+        cgSlot: "Web e PC",
+        cgStatus: "iPhone e Android pelas lojas; no computador, pela web ou pelo programa para Windows",
+        cgWin: "Baixar para Windows",
+        cgWeb: "Abrir na web",
+        cgGuide: "Como instalar",
+        rfName: "Room Layout",
+        rfDesc: "Um app que desenha seus cômodos e móveis em medidas reais numa planta, para você testar a disposição antes. Ajuda antes de uma mudança, da compra de móveis ou da montagem de uma loja ou escritório. Adicione portas (inclusive de correr) e janelas, crie móveis de qualquer formato e explore na hora um estúdio de exemplo. Um documento de espaço é grátis com todos os recursos de edição; um pagamento único (não é assinatura) libera documentos ilimitados, exportação e impressão. Sem login e sem anúncios, e tudo fica no seu aparelho.",
+        gnBannerTag: "Novidade",
+        gnBannerTitle: "Geonne: fotos, documentos e arquivos grandes pelo mesmo Wi-Fi",
+        gnBannerDesc: "Vários em sequência sem travar, sem servidor nem conta. Para iPhone, Android, Mac e Windows.",
+        gnBannerCta: "Conheça o Geonne",
+        cgBannerTag: "Novidade",
+        cgBannerTitle: "산후관리사 스케쥴러: a escala de uma agência de cuidados pós-parto num só lugar",
+        cgBannerDesc: "Cadastre mães e atribua cuidadoras pelo app. Baixe na App Store ou no Google Play, ou use no computador com o instalador para Windows ou direto no navegador. O app está em coreano.",
+        cgBannerCta: "Como baixar",
+        gnName: "Geonne",
+        gnSlot: "Mac · PC",
+        gnStatus: "iPhone, iPad e Android pelas lojas; Mac e Windows por instaladores",
+        gnMac: "Baixar para Mac",
+        gnDesc: "O Geonne envia fotos, vídeos, documentos e arquivos de vários GB entre seus próprios aparelhos no mesmo Wi-Fi, sem cabos. Enviar vários em sequência nunca trava, e se a conexão cair ele envia só o que falta. Os arquivos vão direto entre os aparelhos na rede local, sem servidor nem conta, e todas as conexões são criptografadas. É grátis e não exige login; os apps de celular e tablet mostram um anúncio na parte de baixo (os de Mac e Windows não têm).",
+        tdName: "TabDeck",
+        tdSlot: "Mac · PC",
+        tdStatus: "O app para Android está no Google Play e os programas para Mac e Windows, como instaladores. O app para iPhone e iPad chega em breve",
+        tdDesc: "Um app que transforma um tablet ou celular que você não usa mais num painel de atalhos para o PC. Com uma tecla você aciona atalhos de edição de vídeo e foto, transmissões e videochamadas ou trabalho, e pode ver o estado do PC, como relógio, CPU e memória, nas próprias teclas. Também dá para mostrar as teclas num monitor touch portátil. Instale o programa no PC e conecte pelo mesmo Wi-Fi; não precisa de cadastro para começar. Alguns recursos, como a exibição de estado, fazem parte do Pro, com pagamento único.",
+        hnName: "HubNote",
+        hnDesc: "Um app de anotações à mão para tablet que reúne anotações de aula, gravações e revisão num só lugar. Também tem ferramentas para criar documentos, como um editor de texto ou um programa de apresentações. Funciona em tablets Android e no iPad (iPadOS), e você pode levar suas notas de um para o outro exportando e importando arquivos. Estamos fazendo pensando primeiro em ser fácil de usar.",
+        galIos: "Galpirok iOS",
+        galAos: "Galpirok Android",
+        privacy: "Política de privacidade",
+        support: "Suporte",
+        tdBannerTag: "Novidade",
+        tdBannerTitle: "TabDeck: transforme um tablet ou celular parado num painel de atalhos para o PC",
+        tdBannerDesc: "O app para Android está no Google Play e o programa para PC, em instaladores para Mac e Windows. Conecta pelo mesmo Wi-Fi, sem cadastro.",
+        tdBannerCta: "Conheça o TabDeck",
+        langMenu: "Idioma",
+        shotAlt: ": tela do app"
+      },
+      fr: {
+        langLabel: "Langues",
+        gnLangNote: "Les 8 nouvelles langues arrivent d’abord sur les versions Mac et Windows ; iPhone et Android suivront avec la prochaine mise à jour",
+        title: "AlchanLabs",
+        metaDesc: "AlchanLabs : des moments du quotidien plus riches. Nous créons Galpirok, Planning de travail, Standboard et d’autres apps.",
+        video: "assets/hero-fr.mp4?v=20261127",
+        poster: "assets/hero-poster-fr.jpg?v=20261127",
+        videoLabel: "Vidéo AlchanLabs : des moments du quotidien plus riches, avec huit apps dont Galpirok, Planning de travail et Standboard",
+        htmlLang: "fr",
+        brand: "AlchanLabs",
+        navApps: "Apps",
+        navWay: "Notre approche",
+        navContact: "Contact",
+        h1a: "Des moments du quotidien",
+        h1b: "plus riches.",
+        heroP: "AlchanLabs crée et fait vivre des apps mobiles qui aident à mettre de l’ordre, simplement, dans une vie bien remplie.",
+        appsH2: "Nos apps",
+        appsP: "Nous les peaufinons une par une avant de les publier.",
+        released: "Disponible sur iOS · Android",
+        viewAppStore: "Voir sur l’App Store",
+        viewPlay: "Voir sur Google Play",
+        galName: "Galpirok",
+        galDesc: "Une app de notes qui range vos notes et votre journal comme un livre, avec des livres et des marque-pages. Gratuitement, vous créez 3 livres de 3 marque-pages chacun ; le forfait Illimité, en achat unique (pas un abonnement), lève les limites et synchronise via iCloud sur iPhone et iPad, et via Google Drive sur Android. Sur un iPad à l’horizontale ou un iPhone pliable ouvert, il s’affiche en double page, comme un livre. Sans connexion ni publicité, et vos écrits restent sur votre appareil.",
+        galStatus: "Mise à jour 1.1 sur iOS · Android",
+        calName: "Planning de travail",
+        calDesc: "Affiche en couleurs, sur un calendrier mensuel, le planning d’une équipe en horaires décalés ou à temps partiel. Créez l’équipe avec un code d’invitation : le planning préparé par le responsable arrive aussitôt chez tout le monde, avec une notification à chaque changement. On y trouve aussi des annonces d’équipe, des couleurs par personne et des rappels de service qui sonnent comme une alarme (sur les appareils compatibles). Tout le monde voit le même planning sur iOS et Android.",
+        wayH2: "Comment travaille AlchanLabs",
+        wayP: "Petite équipe, nous suivons des principes que nous pouvons vraiment tenir.",
+        p1h: "Faire petit",
+        p1p: "Nous ne voulons pas tout faire d’un coup : nous créons d’abord l’essentiel, et nous le faisons bien.",
+        p2h: "Améliorer sans cesse",
+        p2p: "Nous corrigeons les problèmes au fur et à mesure qu’ils apparaissent à l’usage.",
+        p3h: "Ne pas en faire trop",
+        p3p: "Nous ne collectons pas de données inutiles et rendons nos apps simples et agréables à utiliser.",
+        contactLabel: "Nous contacter",
+        contactP: "Questions sur les produits, signalements de bugs et demandes liées aux données personnelles sont les bienvenus.",
+        copyright: "© 2026 AlchanLabs. Tous droits réservés. · Dirigeant : Alchan Lee · N° d’enregistrement de l’entreprise 453-03-03842 · N° de déclaration de vente à distance 제2026-충남천안-2243호",
+        soon: "Bientôt",
+        sbName: "Standboard",
+        sbDesc: "Une app d’affichage : posez une tablette ou un téléphone sur le comptoir d’une boutique ou un stand de marché, et il affiche en grand le QR du Wi-Fi, des annonces et des liens vers vos réseaux sociaux. Il peut montrer jusqu’à 3 QR codes côte à côte, indiquer en gros si c’est ouvert, en préparation, de retour bientôt ou fermé, et transférer l’affiche vers un autre appareil grâce à une sauvegarde. Gratuit, sans publicité ni connexion, et tout fonctionne sur l’appareil.",
+        cgName: "산후관리사 스케쥴러",
+        cgDesc: "Une app de planning pour les agences d’aide post-partum : le responsable enregistre les mamans qui ont besoin d’aide et attribue les aides à domicile, qui consultent leurs services et demandent des changements, appliqués seulement après validation du responsable. Le même compte et le même planning fonctionnent dans les apps iPhone et Android, dans le navigateur d’un ordinateur et dans un programme Windows. L’installation est gratuite ; une fois l’agence créée, une période d’essai gratuite est offerte, puis on choisit une formule selon le nombre d’aides validées. L’app est en coréen.",
+        cgSlot: "Web et PC",
+        cgStatus: "iPhone et Android via les stores ; sur ordinateur, sur le web ou avec le programme Windows",
+        cgWin: "Télécharger pour Windows",
+        cgWeb: "Ouvrir sur le web",
+        cgGuide: "Installation",
+        rfName: "Room Layout",
+        rfDesc: "Une app qui dessine vos pièces et vos meubles à leurs vraies dimensions sur un plan, pour tester l’aménagement avant. Idéale avant un déménagement, l’achat de meubles ou l’installation d’une boutique ou d’un bureau. Ajoutez des portes (y compris coulissantes) et des fenêtres, créez des meubles de n’importe quelle forme et explorez tout de suite un studio d’exemple. Un document d’espace est gratuit avec toutes les fonctions d’édition ; un achat unique (pas un abonnement) débloque les documents illimités, l’export et l’impression. Sans connexion ni publicité, et tout reste sur votre appareil.",
+        gnBannerTag: "Nouveau",
+        gnBannerTitle: "Geonne : photos, documents et gros fichiers sur le même Wi-Fi",
+        gnBannerDesc: "Plusieurs à la suite sans blocage, sans serveur ni compte. Sur iPhone, Android, Mac et Windows.",
+        gnBannerCta: "Découvrir Geonne",
+        cgBannerTag: "Nouveau",
+        cgBannerTitle: "산후관리사 스케쥴러 : le planning d’une agence post-partum au même endroit",
+        cgBannerDesc: "Enregistrez les mamans et attribuez les aides depuis l’app. Téléchargez-la sur l’App Store ou Google Play, ou utilisez-la sur ordinateur avec l’installateur Windows ou directement dans le navigateur. L’app est en coréen.",
+        cgBannerCta: "Comment l’obtenir",
+        gnName: "Geonne",
+        gnSlot: "Mac · PC",
+        gnStatus: "iPhone, iPad et Android via les stores ; Mac et Windows via des installateurs",
+        gnMac: "Télécharger pour Mac",
+        gnDesc: "Geonne envoie photos, vidéos, documents et fichiers de plusieurs Go entre vos propres appareils sur le même Wi-Fi, sans câble. Envoyer beaucoup de fichiers à la suite ne bloque jamais, et un transfert interrompu ne renvoie que ce qui manque. Les fichiers passent directement d’un appareil à l’autre sur le réseau local, sans serveur ni compte, et toutes les connexions sont chiffrées. Gratuit et sans connexion ; les apps pour téléphone et tablette affichent une bannière publicitaire en bas (les versions Mac et Windows n’en ont pas).",
+        tdName: "TabDeck",
+        tdSlot: "Mac · PC",
+        tdStatus: "L’app Android est sur Google Play, les programmes Mac et Windows en installateurs. L’app iPhone et iPad arrive bientôt",
+        tdDesc: "Une app qui transforme une tablette ou un téléphone dont vous ne vous servez plus en pavé de raccourcis pour votre PC. Une touche suffit pour vos raccourcis de montage vidéo et photo, de streaming et de visio ou de travail, et l’état du PC (heure, CPU, mémoire) peut s’afficher sur les touches. Vous pouvez aussi afficher les touches sur un écran tactile portable. Installez le programme sur votre PC et connectez-vous sur le même Wi-Fi ; aucune inscription n’est nécessaire pour commencer. Certaines fonctions, comme l’affichage de l’état, font partie de Pro, en achat unique.",
+        hnName: "HubNote",
+        hnDesc: "Une app de prise de notes manuscrites pour tablette qui réunit notes de cours, enregistrements et révisions au même endroit. Elle offre aussi des outils de création de documents, comme un traitement de texte ou un logiciel de présentation. Elle fonctionne sur les tablettes Android et l’iPad (iPadOS), et vos notes passent de l’un à l’autre par export et import de fichiers. Nous la concevons avant tout pour qu’elle soit simple à utiliser.",
+        galIos: "Galpirok iOS",
+        galAos: "Galpirok Android",
+        privacy: "Politique de confidentialité",
+        support: "Assistance",
+        tdBannerTag: "Nouveau",
+        tdBannerTitle: "TabDeck : une tablette ou un téléphone inutilisé devient un pavé de raccourcis pour votre PC",
+        tdBannerDesc: "L’app Android est sur Google Play, le programme PC en installateurs Mac et Windows. Connexion sur le même Wi-Fi, sans inscription.",
+        tdBannerCta: "Découvrir TabDeck",
+        langMenu: "Langue",
+        shotAlt: " : écran de l’app"
+      },
+      de: {
+        langLabel: "Sprachen",
+        gnLangNote: "Die 8 neuen Sprachen kommen zuerst in die Mac- und Windows-Versionen; iPhone und Android folgen mit dem nächsten Update",
+        title: "AlchanLabs",
+        metaDesc: "AlchanLabs – mehr aus jedem Tag machen. Wir entwickeln Galpirok, Schichtkalender, Standboard und mehr.",
+        video: "assets/hero-de.mp4?v=20261127",
+        poster: "assets/hero-poster-de.jpg?v=20261127",
+        videoLabel: "AlchanLabs-Video: mehr aus jedem Tag machen – mit acht Apps, darunter Galpirok, Schichtkalender und Standboard",
+        htmlLang: "de",
+        brand: "AlchanLabs",
+        navApps: "Apps",
+        navWay: "Arbeitsweise",
+        navContact: "Kontakt",
+        h1a: "Mehr aus jedem",
+        h1b: "Tag machen.",
+        heroP: "AlchanLabs entwickelt und betreibt mobile Apps, mit denen sich ein voller Alltag leicht ordnen lässt.",
+        appsH2: "Unsere Apps",
+        appsP: "Wir feilen an jeder einzeln, bevor wir sie veröffentlichen.",
+        released: "Erhältlich für iOS · Android",
+        viewAppStore: "Im App Store ansehen",
+        viewPlay: "Bei Google Play ansehen",
+        galName: "Galpirok",
+        galDesc: "Eine Notiz-App, die Notizen und Tagebuch wie ein Buch ordnet – mit Büchern und Lesezeichen. Kostenlos lassen sich 3 Bücher mit je 3 Lesezeichen anlegen; der Unbegrenzt-Plan mit Einmalkauf (kein Abo) hebt die Grenzen auf und synchronisiert per iCloud auf iPhone und iPad sowie per Google Drive auf Android. Auf einem iPad im Querformat oder einem aufgeklappten faltbaren iPhone öffnet es sich wie ein Buch auf zwei Seiten. Ohne Anmeldung und ohne Werbung, und deine Einträge bleiben auf deinem Gerät.",
+        galStatus: "Update 1.1 für iOS · Android",
+        calName: "Schichtkalender",
+        calDesc: "Zeigt den Dienstplan eines Schicht- oder Aushilfsteams farbig in einem Monatskalender. Mit einem Einladungscode ist das Team angelegt: Der Plan der Leitung kommt sofort bei allen an, und bei Änderungen gibt es eine Benachrichtigung. Dazu gibt es Teamankündigungen, Farben pro Person und Schichterinnerungen, die wie ein Wecker klingeln (auf unterstützten Geräten). Alle sehen denselben Plan auf iOS und Android.",
+        wayH2: "So arbeitet AlchanLabs",
+        wayP: "Als kleines Team halten wir uns an Grundsätze, die wir wirklich einhalten können.",
+        p1h: "Klein anfangen",
+        p1p: "Wir wollen nicht alles auf einmal: Zuerst bauen wir das Wichtigste, und zwar richtig.",
+        p2h: "Stetig verbessern",
+        p2p: "Wir beheben Probleme, sobald sie im echten Einsatz auftauchen.",
+        p3h: "Nicht übertreiben",
+        p3p: "Wir sammeln keine unnötigen Daten und halten die Apps einfach und unaufdringlich.",
+        contactLabel: "Kontakt",
+        contactP: "Wir freuen uns über Fragen zu den Produkten, Fehlermeldungen und Anfragen zum Datenschutz.",
+        copyright: "© 2026 AlchanLabs. Alle Rechte vorbehalten. · Inhaber: Alchan Lee · Unternehmensregisternr. 453-03-03842 · Fernabsatz-Registriernr. 제2026-충남천안-2243호",
+        soon: "Demnächst",
+        sbName: "Standboard",
+        sbDesc: "Eine Schild-App: Stell ein Tablet oder Handy auf die Ladentheke oder an den Marktstand, und es zeigt den WLAN-QR-Code, Hinweise und Social-Media-Links groß an. Bis zu 3 QR-Codes passen nebeneinander, ein großes Abzeichen zeigt Geöffnet, In Vorbereitung, Gleich zurück oder Geschlossen, und per Backup lässt sich das Schild auf ein neues Gerät mitnehmen. Kostenlos, ohne Werbung und Anmeldung, und alles läuft nur auf dem Gerät.",
+        cgName: "산후관리사 스케쥴러",
+        cgDesc: "Eine Planungs-App für Wochenbett-Betreuungsdienste: Die Leitung erfasst Mütter, die Betreuung brauchen, und teilt Betreuerinnen zu; die Betreuerinnen sehen ihre Einsätze und beantragen Änderungen, die erst nach Freigabe durch die Leitung gelten. Dasselbe Konto und derselbe Plan funktionieren in den Apps für iPhone und Android, im Browser am Computer und in einem Windows-Programm. Die Installation ist kostenlos; nach dem Anlegen des Dienstes gibt es eine kostenlose Testphase, danach wird ein Tarif nach der Zahl der freigegebenen Betreuerinnen gewählt. Die App ist auf Koreanisch.",
+        cgSlot: "Web & PC",
+        cgStatus: "iPhone und Android aus den Stores; am Computer im Web oder mit dem Windows-Programm",
+        cgWin: "Für Windows herunterladen",
+        cgWeb: "Im Web öffnen",
+        cgGuide: "Installation",
+        rfName: "Room Layout",
+        rfDesc: "Eine App, die Räume und Möbel maßstabsgetreu in einen Grundriss zeichnet, damit du die Einrichtung vorher ausprobieren kannst. Praktisch vor einem Umzug, einem Möbelkauf oder beim Einrichten von Laden oder Büro. Füge Türen (auch Schiebetüren) und Fenster hinzu, entwirf Möbel in jeder Form und sieh dir sofort ein Beispiel-Apartment an. Ein Raumdokument ist mit allen Bearbeitungsfunktionen kostenlos; ein Einmalkauf (kein Abo) schaltet unbegrenzte Dokumente, Export und Druck frei. Ohne Anmeldung und Werbung, und alles bleibt auf deinem Gerät.",
+        gnBannerTag: "Neu",
+        gnBannerTitle: "Geonne: Fotos, Dokumente und große Dateien im selben WLAN",
+        gnBannerDesc: "Viele hintereinander ohne Hänger, ohne Server und Konto. Für iPhone, Android, Mac und Windows.",
+        gnBannerCta: "Geonne entdecken",
+        cgBannerTag: "Neu",
+        cgBannerTitle: "산후관리사 스케쥴러: der Plan eines Wochenbett-Betreuungsdienstes an einem Ort",
+        cgBannerDesc: "Mütter erfassen und Betreuerinnen zuteilen per App. Lade sie im App Store oder bei Google Play, oder nutze sie am Computer mit dem Windows-Installer oder direkt im Browser. Die App ist auf Koreanisch.",
+        cgBannerCta: "So bekommst du sie",
+        gnName: "Geonne",
+        gnSlot: "Mac · PC",
+        gnStatus: "iPhone, iPad und Android aus den Stores; Mac und Windows per Installer",
+        gnMac: "Für Mac herunterladen",
+        gnDesc: "Geonne schickt Fotos, Videos, Dokumente und mehrere GB große Dateien kabellos zwischen deinen eigenen Geräten im selben WLAN. Viele Dateien hintereinander laufen ohne Hänger, und nach einem Abbruch wird nur der Rest gesendet. Die Dateien gehen direkt von Gerät zu Gerät im lokalen Netz, ohne Server und Konto, und jede Verbindung ist verschlüsselt. Kostenlos und ohne Anmeldung; die Apps für Handy und Tablet zeigen unten ein Werbebanner (die Mac- und Windows-Versionen nicht).",
+        tdName: "TabDeck",
+        tdSlot: "Mac · PC",
+        tdStatus: "Die Android-App gibt es bei Google Play, die Programme für Mac und Windows als Installer. Die App für iPhone und iPad folgt bald",
+        tdDesc: "Eine App, die ein ungenutztes Tablet oder Handy in ein Shortcut-Pad für deinen PC verwandelt. Mit einer Taste löst du Tastenkürzel für Video- und Fotobearbeitung, Streaming und Videocalls oder die Arbeit aus, und PC-Werte wie Uhrzeit, CPU und Arbeitsspeicher erscheinen direkt auf den Tasten. Die Tasten lassen sich auch auf einem tragbaren Touch-Monitor anzeigen. Installiere das Programm auf dem PC und verbinde dich über dasselbe WLAN; zum Start ist keine Registrierung nötig. Manche Funktionen, etwa die Statusanzeige, gehören zu Pro mit Einmalkauf.",
+        hnName: "HubNote",
+        hnDesc: "Eine Handschrift-App für Tablets, die Mitschriften, Vorlesungsaufnahmen und Wiederholung an einem Ort vereint. Sie hat auch Werkzeuge zum Erstellen von Dokumenten wie eine Textverarbeitung oder ein Präsentationsprogramm. Sie läuft auf Android-Tablets und dem iPad (iPadOS), und Notizen lassen sich per Export und Import zwischen beiden übertragen. Einfache Bedienung steht für uns an erster Stelle.",
+        galIos: "Galpirok iOS",
+        galAos: "Galpirok Android",
+        privacy: "Datenschutzerklärung",
+        support: "Support",
+        tdBannerTag: "Neu",
+        tdBannerTitle: "TabDeck: ein ungenutztes Tablet oder Handy als Shortcut-Pad für den PC",
+        tdBannerDesc: "Die Android-App gibt es bei Google Play, das PC-Programm als Installer für Mac und Windows. Verbindung über dasselbe WLAN, ohne Registrierung.",
+        tdBannerCta: "TabDeck entdecken",
+        langMenu: "Sprache",
+        shotAlt: " – App-Ansicht"
+      },
+      id: {
+        langLabel: "Bahasa",
+        gnLangNote: "8 bahasa baru hadir lebih dulu di versi Mac dan Windows; iPhone dan Android menyusul di pembaruan berikutnya",
+        title: "AlchanLabs",
+        metaDesc: "AlchanLabs: buat setiap hari lebih bermakna. Kami membuat Galpirok, Kalender Shift Kerja, Standboard, dan lainnya.",
+        video: "assets/hero-id.mp4?v=20261127",
+        poster: "assets/hero-poster-id.jpg?v=20261127",
+        videoLabel: "Video AlchanLabs: buat setiap hari lebih bermakna, dengan delapan aplikasi termasuk Galpirok, Kalender Shift Kerja, dan Standboard",
+        htmlLang: "id",
+        brand: "AlchanLabs",
+        navApps: "Aplikasi",
+        navWay: "Cara kerja",
+        navContact: "Kontak",
+        h1a: "Buat setiap hari",
+        h1b: "lebih bermakna.",
+        heroP: "AlchanLabs membuat dan mengelola aplikasi seluler yang membantu merapikan hidup yang sibuk dengan mudah.",
+        appsH2: "Aplikasi kami",
+        appsP: "Kami menyempurnakannya satu per satu sebelum dirilis.",
+        released: "Tersedia di iOS · Android",
+        viewAppStore: "Lihat di App Store",
+        viewPlay: "Lihat di Google Play",
+        galName: "Galpirok",
+        galDesc: "Aplikasi catatan yang menata catatan dan jurnal seperti buku, dengan buku dan pembatas buku. Gratis, kamu bisa membuat 3 buku dengan masing-masing 3 pembatas; paket Tanpa Batas dengan sekali bayar (bukan langganan) menghapus batasan dan menyinkronkan lewat iCloud di iPhone dan iPad serta lewat Google Drive di Android. Di iPad dalam posisi mendatar atau iPhone lipat yang dibuka, tampilannya terbuka dua halaman seperti buku. Tanpa login dan tanpa iklan, dan tulisanmu tetap di perangkatmu.",
+        galStatus: "Pembaruan 1.1 di iOS · Android",
+        calName: "Kalender Shift Kerja",
+        calDesc: "Menampilkan jadwal tim shift atau paruh waktu dalam warna di kalender bulanan. Buat tim dengan satu kode undangan, dan jadwal yang disusun pengelola langsung sampai ke semua anggota, dengan notifikasi saat berubah. Ada juga pengumuman tim, warna per orang, dan pengingat shift yang berbunyi seperti alarm (di perangkat yang didukung). Semua melihat jadwal yang sama di iOS dan Android.",
+        wayH2: "Cara AlchanLabs bekerja",
+        wayP: "Sebagai tim kecil, kami memegang prinsip yang benar-benar bisa kami jalankan.",
+        p1h: "Mulai dari kecil",
+        p1p: "Kami tidak mencoba melakukan semuanya sekaligus: fitur terpenting kami buat lebih dulu, dan kami buat dengan baik.",
+        p2h: "Terus memperbaiki",
+        p2p: "Kami memperbaiki masalah begitu muncul dari pemakaian nyata.",
+        p3h: "Tidak berlebihan",
+        p3p: "Kami tidak mengumpulkan data yang tidak perlu dan membuat aplikasi yang mudah dan nyaman dipakai.",
+        contactLabel: "Hubungi kami",
+        contactP: "Kami menerima pertanyaan produk, laporan bug, dan pertanyaan seputar privasi.",
+        copyright: "© 2026 AlchanLabs. Hak cipta dilindungi. · Pimpinan: Alchan Lee · No. Registrasi Usaha 453-03-03842 · No. Laporan Penjualan Jarak Jauh 제2026-충남천안-2243호",
+        soon: "Segera hadir",
+        sbName: "Standboard",
+        sbDesc: "Aplikasi papan informasi: letakkan tablet atau ponsel di meja kasir toko atau lapak pasar, dan aplikasi menampilkan QR Wi-Fi, pengumuman, serta tautan media sosial dalam ukuran besar. Bisa menampilkan hingga 3 kode QR berdampingan, menunjukkan status Buka, Persiapan, Segera kembali, atau Tutup dengan lencana besar, dan memindahkan papan ke perangkat baru lewat cadangan. Gratis, tanpa iklan dan login, dan hanya berjalan di perangkat.",
+        cgName: "산후관리사 스케쥴러",
+        cgDesc: "Aplikasi penjadwalan untuk agen perawatan pascapersalinan: pengelola mendaftarkan ibu yang membutuhkan perawatan dan menugaskan perawat, lalu perawat melihat jadwalnya dan mengajukan perubahan, yang baru berlaku setelah disetujui pengelola. Akun dan jadwal yang sama berfungsi di aplikasi iPhone dan Android, di peramban komputer, dan di program Windows. Pemasangan gratis; setelah agen dibuat ada masa uji coba gratis, lalu paket dipilih berdasarkan jumlah perawat yang disetujui. Aplikasi ini berbahasa Korea.",
+        cgSlot: "Web & PC",
+        cgStatus: "iPhone dan Android dari toko aplikasi; di komputer lewat web atau program Windows",
+        cgWin: "Unduh untuk Windows",
+        cgWeb: "Buka di web",
+        cgGuide: "Cara memasang",
+        rfName: "Room Layout",
+        rfDesc: "Aplikasi yang menggambar ruangan dan perabot sesuai ukuran asli di denah, sehingga kamu bisa mencoba tata letak lebih dulu. Cocok sebelum pindahan, membeli perabot, atau menata toko dan kantor. Tambahkan pintu (termasuk pintu geser) dan jendela, buat perabot dengan bentuk apa pun, dan langsung jelajahi contoh studio. Satu dokumen ruang gratis dengan semua fitur edit; sekali bayar (bukan langganan) membuka dokumen tanpa batas, ekspor, dan cetak. Tanpa login dan tanpa iklan, dan semuanya tetap di perangkatmu.",
+        gnBannerTag: "Baru",
+        gnBannerTitle: "Geonne: foto, dokumen, dan file besar lewat Wi-Fi yang sama",
+        gnBannerDesc: "Banyak file berturut-turut tanpa macet, tanpa server dan akun. Untuk iPhone, Android, Mac, dan Windows.",
+        gnBannerCta: "Kenali Geonne",
+        cgBannerTag: "Baru",
+        cgBannerTitle: "산후관리사 스케쥴러: jadwal agen perawatan pascapersalinan di satu tempat",
+        cgBannerDesc: "Daftarkan ibu dan tugaskan perawat lewat aplikasi. Unduh di App Store atau Google Play, atau gunakan di komputer dengan penginstal Windows atau langsung di peramban. Aplikasi ini berbahasa Korea.",
+        cgBannerCta: "Cara mendapatkannya",
+        gnName: "Geonne",
+        gnSlot: "Mac · PC",
+        gnStatus: "iPhone, iPad, dan Android dari toko aplikasi; Mac dan Windows lewat penginstal",
+        gnMac: "Unduh untuk Mac",
+        gnDesc: "Geonne mengirim foto, video, dokumen, dan file berukuran beberapa GB antarperangkatmu sendiri di Wi-Fi yang sama, tanpa kabel. Mengirim banyak file berturut-turut tidak pernah macet, dan jika terputus hanya sisanya yang dikirim. File berpindah langsung antarperangkat di jaringan lokal tanpa server dan akun, dan setiap koneksi dienkripsi. Gratis dan tanpa login; aplikasi ponsel dan tablet menampilkan iklan banner di bagian bawah (versi Mac dan Windows tidak).",
+        tdName: "TabDeck",
+        tdSlot: "Mac · PC",
+        tdStatus: "Aplikasi Android ada di Google Play, program Mac dan Windows tersedia sebagai penginstal. Aplikasi iPhone dan iPad segera hadir",
+        tdDesc: "Aplikasi yang mengubah tablet atau ponsel yang tak terpakai menjadi panel pintasan untuk PC. Dengan satu tombol kamu menjalankan pintasan untuk edit video dan foto, siaran dan rapat video, atau pekerjaan, dan status PC seperti jam, CPU, dan memori bisa tampil di tombol. Layar tombol juga bisa ditampilkan di monitor sentuh portabel. Pasang program di PC dan hubungkan lewat Wi-Fi yang sama; tidak perlu daftar untuk mulai. Beberapa fitur, seperti tampilan status, tersedia di Pro dengan sekali bayar.",
+        hnName: "HubNote",
+        hnDesc: "Aplikasi catatan tulisan tangan untuk tablet yang menyatukan catatan kuliah, rekaman, dan pengulangan materi di satu tempat. Ada juga alat pembuat dokumen seperti pengolah kata atau program presentasi. Berjalan di tablet Android dan iPad (iPadOS), dan catatan bisa dipindahkan antarkeduanya dengan ekspor dan impor file. Kami membuatnya dengan kemudahan pemakaian sebagai yang utama.",
+        galIos: "Galpirok iOS",
+        galAos: "Galpirok Android",
+        privacy: "Kebijakan privasi",
+        support: "Dukungan",
+        tdBannerTag: "Baru",
+        tdBannerTitle: "TabDeck: ubah tablet atau ponsel yang tak terpakai jadi panel pintasan PC",
+        tdBannerDesc: "Aplikasi Android ada di Google Play, program PC tersedia sebagai penginstal Mac dan Windows. Terhubung lewat Wi-Fi yang sama, tanpa daftar.",
+        tdBannerCta: "Kenali TabDeck",
+        langMenu: "Bahasa",
+        shotAlt: " — layar aplikasi"
+      },
+      vi: {
+        langLabel: "Ngôn ngữ",
+        gnLangNote: "8 ngôn ngữ mới có trước trên bản Mac và Windows; iPhone và Android sẽ có trong bản cập nhật tới",
+        title: "AlchanLabs",
+        metaDesc: "AlchanLabs: giúp mỗi ngày thêm trọn vẹn. Chúng tôi làm Galpirok, Lịch ca làm việc, Standboard và nhiều ứng dụng khác.",
+        video: "assets/hero-vi.mp4?v=20261127",
+        poster: "assets/hero-poster-vi.jpg?v=20261127",
+        videoLabel: "Video giới thiệu AlchanLabs: giúp mỗi ngày thêm trọn vẹn, với tám ứng dụng gồm Galpirok, Lịch ca làm việc và Standboard",
+        htmlLang: "vi",
+        brand: "AlchanLabs",
+        navApps: "Ứng dụng",
+        navWay: "Cách làm việc",
+        navContact: "Liên hệ",
+        h1a: "Giúp mỗi ngày",
+        h1b: "thêm trọn vẹn.",
+        heroP: "AlchanLabs tạo và vận hành các ứng dụng di động giúp sắp xếp cuộc sống bận rộn một cách nhẹ nhàng.",
+        appsH2: "Ứng dụng của chúng tôi",
+        appsP: "Chúng tôi chăm chút từng ứng dụng một trước khi phát hành.",
+        released: "Có trên iOS · Android",
+        viewAppStore: "Xem trên App Store",
+        viewPlay: "Xem trên Google Play",
+        galName: "Galpirok",
+        galDesc: "Ứng dụng ghi chú sắp xếp ghi chú và nhật ký như một cuốn sách, với sách và dấu trang. Miễn phí, bạn tạo được 3 cuốn sách, mỗi cuốn 3 dấu trang; gói Không giới hạn trả một lần (không phải gói đăng ký) bỏ mọi giới hạn và đồng bộ qua iCloud trên iPhone, iPad và qua Google Drive trên Android. Trên iPad xoay ngang hoặc iPhone gập khi mở ra, ứng dụng hiện hai trang như một cuốn sách. Không cần đăng nhập, không quảng cáo, và ghi chép của bạn ở lại trên thiết bị.",
+        galStatus: "Cập nhật 1.1 trên iOS · Android",
+        calName: "Lịch ca làm việc",
+        calDesc: "Hiển thị lịch làm việc của nhóm làm theo ca hoặc bán thời gian bằng màu sắc trên lịch tháng. Tạo nhóm bằng một mã mời, lịch do quản lý lập sẽ đến ngay với mọi người, kèm thông báo khi có thay đổi. Ngoài ra còn có thông báo chung cho nhóm, màu theo từng người và nhắc ca đổ chuông như báo thức (trên thiết bị hỗ trợ). Mọi người cùng xem một lịch trên iOS và Android.",
+        wayH2: "Cách AlchanLabs làm việc",
+        wayP: "Là một nhóm nhỏ, chúng tôi giữ những nguyên tắc mà mình thật sự làm được.",
+        p1h: "Làm nhỏ",
+        p1p: "Chúng tôi không cố làm mọi thứ cùng lúc: trước tiên làm những tính năng cần thiết nhất, và làm cho thật tốt.",
+        p2h: "Luôn cải thiện",
+        p2p: "Chúng tôi sửa lỗi ngay khi chúng xuất hiện trong quá trình sử dụng thực tế.",
+        p3h: "Không quá đà",
+        p3p: "Chúng tôi không thu thập dữ liệu không cần thiết và giữ ứng dụng dễ dùng, nhẹ nhàng.",
+        contactLabel: "Liên hệ",
+        contactP: "Chúng tôi nhận câu hỏi về sản phẩm, báo lỗi và các yêu cầu liên quan đến quyền riêng tư.",
+        copyright: "© 2026 AlchanLabs. Bảo lưu mọi quyền. · Người đại diện: Alchan Lee · Số đăng ký kinh doanh 453-03-03842 · Số đăng ký bán hàng từ xa 제2026-충남천안-2243호",
+        soon: "Sắp ra mắt",
+        sbName: "Standboard",
+        sbDesc: "Ứng dụng biển thông báo: đặt máy tính bảng hoặc điện thoại trên quầy cửa hàng hay sạp chợ, ứng dụng sẽ hiển thị lớn mã QR Wi-Fi, thông báo và liên kết mạng xã hội. Có thể hiện tối đa 3 mã QR cạnh nhau, báo trạng thái Đang mở cửa, Đang chuẩn bị, Quay lại ngay hoặc Đóng cửa bằng huy hiệu lớn, và chuyển biển sang thiết bị mới bằng bản sao lưu. Miễn phí, không quảng cáo, không đăng nhập và chỉ chạy trên thiết bị.",
+        cgName: "산후관리사 스케쥴러",
+        cgDesc: "Ứng dụng xếp lịch cho các trung tâm chăm sóc sau sinh: quản lý đăng ký các bà mẹ cần chăm sóc và phân công người chăm sóc; người chăm sóc xem ca của mình và gửi yêu cầu thay đổi, chỉ có hiệu lực khi quản lý duyệt. Cùng một tài khoản và lịch hoạt động trên ứng dụng iPhone và Android, trên trình duyệt máy tính và trong chương trình Windows. Cài đặt miễn phí; sau khi tạo trung tâm có thời gian dùng thử miễn phí, sau đó chọn gói theo số người chăm sóc được duyệt. Ứng dụng bằng tiếng Hàn.",
+        cgSlot: "Web và PC",
+        cgStatus: "iPhone và Android từ cửa hàng ứng dụng; trên máy tính dùng web hoặc chương trình Windows",
+        cgWin: "Tải cho Windows",
+        cgWeb: "Mở trên web",
+        cgGuide: "Cách cài đặt",
+        rfName: "Room Layout",
+        rfDesc: "Ứng dụng vẽ phòng và đồ nội thất theo kích thước thật trên mặt bằng để bạn thử cách bố trí trước. Hữu ích trước khi chuyển nhà, mua nội thất mới hay sắp xếp cửa hàng, văn phòng. Thêm cửa (kể cả cửa trượt) và cửa sổ, tự tạo đồ nội thất hình dạng bất kỳ và khám phá ngay một căn hộ mẫu. Một tài liệu không gian miễn phí với mọi tính năng chỉnh sửa; trả một lần (không phải gói đăng ký) để mở khóa tài liệu không giới hạn, xuất và in. Không cần đăng nhập, không quảng cáo, mọi thứ ở lại trên thiết bị.",
+        gnBannerTag: "Mới",
+        gnBannerTitle: "Geonne: ảnh, tài liệu và tệp lớn qua cùng mạng Wi-Fi",
+        gnBannerDesc: "Gửi nhiều tệp liên tục không bị kẹt, không cần máy chủ hay tài khoản. Dành cho iPhone, Android, Mac và Windows.",
+        gnBannerCta: "Tìm hiểu Geonne",
+        cgBannerTag: "Mới",
+        cgBannerTitle: "산후관리사 스케쥴러: lịch của trung tâm chăm sóc sau sinh ở một nơi",
+        cgBannerDesc: "Đăng ký bà mẹ và phân công người chăm sóc ngay trong ứng dụng. Tải trên App Store hoặc Google Play, hoặc dùng trên máy tính với bộ cài Windows hay ngay trên trình duyệt. Ứng dụng bằng tiếng Hàn.",
+        cgBannerCta: "Cách tải về",
+        gnName: "Geonne",
+        gnSlot: "Mac · PC",
+        gnStatus: "iPhone, iPad và Android từ cửa hàng ứng dụng; Mac và Windows bằng bộ cài",
+        gnMac: "Tải cho Mac",
+        gnDesc: "Geonne gửi ảnh, video, tài liệu và tệp dung lượng vài GB giữa các thiết bị của bạn trên cùng mạng Wi-Fi mà không cần cáp. Gửi nhiều tệp liên tục không bao giờ bị kẹt, và nếu bị ngắt thì chỉ gửi tiếp phần còn lại. Tệp đi thẳng giữa các thiết bị trong mạng nội bộ, không qua máy chủ hay tài khoản, và mọi kết nối đều được mã hóa. Miễn phí và không cần đăng nhập; ứng dụng trên điện thoại và máy tính bảng có quảng cáo banner ở cuối màn hình (bản Mac và Windows thì không).",
+        tdName: "TabDeck",
+        tdSlot: "Mac · PC",
+        tdStatus: "Ứng dụng Android có trên Google Play, chương trình cho Mac và Windows có bộ cài. Ứng dụng iPhone và iPad sắp ra mắt",
+        tdDesc: "Ứng dụng biến máy tính bảng hoặc điện thoại không còn dùng thành bảng phím tắt cho PC. Chỉ một phím là chạy phím tắt dựng video, chỉnh ảnh, phát trực tiếp, họp video hay công việc, và có thể hiện trạng thái PC như đồng hồ, CPU, bộ nhớ ngay trên phím. Bạn cũng có thể hiển thị màn hình phím trên màn hình cảm ứng di động. Cài chương trình trên PC rồi kết nối qua cùng mạng Wi-Fi; không cần đăng ký để bắt đầu. Một số tính năng như hiển thị trạng thái thuộc bản Pro trả một lần.",
+        hnName: "HubNote",
+        hnDesc: "Ứng dụng ghi chép viết tay trên máy tính bảng, gom ghi chép bài học, ghi âm bài giảng và ôn tập vào một nơi. Ứng dụng còn có công cụ tạo tài liệu như trình soạn thảo văn bản hay chương trình trình chiếu. Chạy trên máy tính bảng Android và iPad (iPadOS), và có thể chuyển ghi chú giữa hai thiết bị bằng cách xuất và nhập tệp. Chúng tôi đặt sự dễ dùng lên hàng đầu.",
+        galIos: "Galpirok iOS",
+        galAos: "Galpirok Android",
+        privacy: "Chính sách quyền riêng tư",
+        support: "Hỗ trợ",
+        tdBannerTag: "Mới",
+        tdBannerTitle: "TabDeck: biến máy tính bảng hay điện thoại không dùng thành bảng phím tắt cho PC",
+        tdBannerDesc: "Ứng dụng Android có trên Google Play, chương trình PC có bộ cài cho Mac và Windows. Kết nối qua cùng mạng Wi-Fi, không cần đăng ký.",
+        tdBannerCta: "Tìm hiểu TabDeck",
+        langMenu: "Ngôn ngữ",
+        shotAlt: " — màn hình ứng dụng"
+      },
+      th: {
+        langLabel: "ภาษา",
+        gnLangNote: "8 ภาษาใหม่มาถึงเวอร์ชัน Mac และ Windows ก่อน ส่วน iPhone และ Android จะรองรับในอัปเดตครั้งถัดไป",
+        title: "AlchanLabs",
+        metaDesc: "AlchanLabs ทำให้ทุกวันมีคุณค่ามากขึ้น เราสร้าง Galpirok, ปฏิทินกะงาน, Standboard และแอปอื่นๆ",
+        video: "assets/hero-th.mp4?v=20261127",
+        poster: "assets/hero-poster-th.jpg?v=20261127",
+        videoLabel: "วิดีโอแนะนำ AlchanLabs: ทำให้ทุกวันมีคุณค่ามากขึ้น กับแปดแอป เช่น Galpirok, ปฏิทินกะงาน และ Standboard",
+        htmlLang: "th",
+        brand: "AlchanLabs",
+        navApps: "แอป",
+        navWay: "วิธีทำงาน",
+        navContact: "ติดต่อ",
+        h1a: "ทำให้ทุกวัน",
+        h1b: "มีคุณค่ามากขึ้น",
+        heroP: "AlchanLabs สร้างและดูแลแอปมือถือที่ช่วยจัดระเบียบชีวิตที่วุ่นวายได้อย่างง่ายดาย",
+        appsH2: "แอปของเรา",
+        appsP: "เราขัดเกลาทีละแอปก่อนปล่อยออกมา",
+        released: "มีบน iOS · Android",
+        viewAppStore: "ดูใน App Store",
+        viewPlay: "ดูใน Google Play",
+        galName: "Galpirok",
+        galDesc: "แอปจดบันทึกที่จัดเก็บโน้ตและไดอารี่เหมือนหนังสือ ด้วยหนังสือและที่คั่นหน้า ใช้ฟรีได้ 3 เล่ม เล่มละ 3 ที่คั่น แพ็กเกจไม่จำกัดแบบจ่ายครั้งเดียว (ไม่ใช่การสมัครสมาชิก) จะปลดล็อกข้อจำกัดและซิงก์ผ่าน iCloud บน iPhone และ iPad และผ่าน Google Drive บน Android เมื่อวาง iPad แนวนอนหรือกาง iPhone แบบพับได้ จะแสดงเป็นสองหน้าเหมือนหนังสือ ไม่ต้องล็อกอิน ไม่มีโฆษณา และบันทึกของคุณอยู่ในเครื่อง",
+        galStatus: "อัปเดต 1.1 บน iOS · Android",
+        calName: "ปฏิทินกะงาน",
+        calDesc: "แสดงตารางงานของทีมที่ทำงานเป็นกะหรือพาร์ทไทม์ด้วยสีบนปฏิทินรายเดือน สร้างทีมด้วยรหัสเชิญเพียงรหัสเดียว ตารางที่ผู้ดูแลจัดไว้จะส่งถึงทุกคนทันที พร้อมการแจ้งเตือนเมื่อมีการเปลี่ยนแปลง นอกจากนี้ยังมีประกาศของทีม สีแยกตามบุคคล และการเตือนกะที่ดังเหมือนนาฬิกาปลุก (ในอุปกรณ์ที่รองรับ) ทุกคนเห็นตารางเดียวกันทั้งบน iOS และ Android",
+        wayH2: "วิธีทำงานของ AlchanLabs",
+        wayP: "เราเป็นทีมเล็ก จึงยึดหลักที่ทำได้จริง",
+        p1h: "ทำให้เล็ก",
+        p1p: "เราไม่พยายามทำทุกอย่างพร้อมกัน แต่ทำฟีเจอร์ที่จำเป็นก่อนและทำให้ดี",
+        p2h: "ปรับปรุงต่อเนื่อง",
+        p2p: "เราแก้ปัญหาที่พบจากการใช้งานจริงทันทีที่เจอ",
+        p3h: "ไม่เกินตัว",
+        p3p: "เราไม่เก็บข้อมูลที่ไม่จำเป็น และทำให้แอปใช้ง่ายไม่เป็นภาระ",
+        contactLabel: "ติดต่อเรา",
+        contactP: "ยินดีรับคำถามเกี่ยวกับผลิตภัณฑ์ การแจ้งข้อผิดพลาด และคำถามเรื่องข้อมูลส่วนบุคคล",
+        copyright: "© 2026 AlchanLabs สงวนลิขสิทธิ์ · ผู้แทน: Alchan Lee · เลขทะเบียนธุรกิจ 453-03-03842 · เลขทะเบียนการขายทางไกล 제2026-충남천안-2243호",
+        soon: "เร็วๆ นี้",
+        sbName: "Standboard",
+        sbDesc: "แอปป้ายประกาศ วางแท็บเล็ตหรือโทรศัพท์ไว้บนเคาน์เตอร์ร้านหรือแผงตลาด แล้วแอปจะแสดง QR Wi-Fi ประกาศ และลิงก์โซเชียลมีเดียขนาดใหญ่ แสดง QR ได้สูงสุด 3 อันเรียงกัน บอกสถานะเปิดอยู่ กำลังเตรียม เดี๋ยวกลับมา หรือปิดด้วยป้ายขนาดใหญ่ และย้ายป้ายไปเครื่องใหม่ได้ด้วยการสำรองข้อมูล ใช้ฟรี ไม่มีโฆษณา ไม่ต้องล็อกอิน และทำงานในเครื่องเท่านั้น",
+        cgName: "산후관리사 스케쥴러",
+        cgDesc: "แอปจัดตารางสำหรับศูนย์ดูแลหลังคลอด ผู้ดูแลระบบลงทะเบียนคุณแม่ที่ต้องการการดูแลและมอบหมายผู้ช่วยดูแล ผู้ช่วยดูแลดูกะของตนและขอเปลี่ยนแปลงได้ ซึ่งจะมีผลเมื่อผู้ดูแลระบบอนุมัติแล้วเท่านั้น ใช้บัญชีและตารางเดียวกันได้ทั้งในแอป iPhone และ Android เบราว์เซอร์บนคอมพิวเตอร์ และโปรแกรม Windows ติดตั้งฟรี เมื่อสร้างศูนย์แล้วจะมีช่วงทดลองใช้ฟรี จากนั้นเลือกแพ็กเกจตามจำนวนผู้ช่วยดูแลที่อนุมัติ แอปนี้เป็นภาษาเกาหลี",
+        cgSlot: "เว็บและ PC",
+        cgStatus: "iPhone และ Android จากร้านค้าแอป บนคอมพิวเตอร์ใช้เว็บหรือโปรแกรม Windows",
+        cgWin: "ดาวน์โหลดสำหรับ Windows",
+        cgWeb: "เปิดบนเว็บ",
+        cgGuide: "วิธีติดตั้ง",
+        rfName: "Room Layout",
+        rfDesc: "แอปที่วาดห้องและเฟอร์นิเจอร์ตามขนาดจริงลงบนแปลนห้อง เพื่อทดลองจัดวางก่อน เหมาะก่อนย้ายบ้าน ซื้อเฟอร์นิเจอร์ใหม่ หรือจัดร้านและสำนักงาน เพิ่มประตู (รวมถึงประตูบานเลื่อน) และหน้าต่าง สร้างเฟอร์นิเจอร์รูปทรงใดก็ได้ และลองดูห้องตัวอย่างได้ทันที เอกสารพื้นที่ 1 ฉบับใช้ฟรีพร้อมฟีเจอร์แก้ไขทั้งหมด จ่ายครั้งเดียว (ไม่ใช่การสมัครสมาชิก) เพื่อปลดล็อกเอกสารไม่จำกัด การส่งออก และการพิมพ์ ไม่ต้องล็อกอิน ไม่มีโฆษณา และทุกอย่างอยู่ในเครื่อง",
+        gnBannerTag: "ใหม่",
+        gnBannerTitle: "Geonne: รูป เอกสาร และไฟล์ใหญ่ ผ่าน Wi-Fi เดียวกัน",
+        gnBannerDesc: "ส่งหลายไฟล์ติดกันไม่สะดุด ไม่ต้องมีเซิร์ฟเวอร์หรือบัญชี ใช้ได้บน iPhone, Android, Mac และ Windows",
+        gnBannerCta: "รู้จัก Geonne",
+        cgBannerTag: "ใหม่",
+        cgBannerTitle: "산후관리사 스케쥴러: ตารางของศูนย์ดูแลหลังคลอดในที่เดียว",
+        cgBannerDesc: "ลงทะเบียนคุณแม่และมอบหมายผู้ช่วยดูแลผ่านแอป ดาวน์โหลดได้ที่ App Store หรือ Google Play หรือใช้บนคอมพิวเตอร์ด้วยตัวติดตั้ง Windows หรือผ่านเบราว์เซอร์ แอปนี้เป็นภาษาเกาหลี",
+        cgBannerCta: "วิธีดาวน์โหลด",
+        gnName: "Geonne",
+        gnSlot: "Mac · PC",
+        gnStatus: "iPhone, iPad และ Android จากร้านค้าแอป ส่วน Mac และ Windows ใช้ตัวติดตั้ง",
+        gnMac: "ดาวน์โหลดสำหรับ Mac",
+        gnDesc: "Geonne ส่งรูป วิดีโอ เอกสาร และไฟล์ขนาดหลาย GB ระหว่างอุปกรณ์ของคุณเองใน Wi-Fi เดียวกันโดยไม่ต้องใช้สาย ส่งหลายไฟล์ติดกันก็ไม่สะดุด และถ้าขาดตอนจะส่งเฉพาะส่วนที่เหลือ ไฟล์วิ่งตรงระหว่างอุปกรณ์ในเครือข่ายท้องถิ่น ไม่ผ่านเซิร์ฟเวอร์หรือบัญชี และทุกการเชื่อมต่อเข้ารหัส ใช้ฟรีและไม่ต้องล็อกอิน แอปบนโทรศัพท์และแท็บเล็ตมีโฆษณาแบนเนอร์ด้านล่าง (เวอร์ชัน Mac และ Windows ไม่มี)",
+        tdName: "TabDeck",
+        tdSlot: "Mac · PC",
+        tdStatus: "แอป Android อยู่ใน Google Play ส่วนโปรแกรม Mac และ Windows มีตัวติดตั้ง แอป iPhone และ iPad กำลังจะมา",
+        tdDesc: "แอปที่เปลี่ยนแท็บเล็ตหรือโทรศัพท์ที่ไม่ได้ใช้แล้วให้เป็นแผงปุ่มลัดสำหรับ PC กดปุ่มเดียวเพื่อใช้ปุ่มลัดตัดต่อวิดีโอและรูป สตรีมและประชุมวิดีโอ หรืองานต่างๆ และแสดงสถานะ PC เช่น นาฬิกา CPU และหน่วยความจำบนปุ่มได้ แสดงหน้าปุ่มบนจอสัมผัสแบบพกพาก็ได้ ติดตั้งโปรแกรมบน PC แล้วเชื่อมต่อผ่าน Wi-Fi เดียวกัน ไม่ต้องสมัครก่อนเริ่มใช้ ฟีเจอร์บางอย่าง เช่น การแสดงสถานะ อยู่ใน Pro แบบจ่ายครั้งเดียว",
+        hnName: "HubNote",
+        hnDesc: "แอปจดโน้ตด้วยลายมือบนแท็บเล็ต ที่รวมการจดเลกเชอร์ การบันทึกเสียง และการทบทวนไว้ในที่เดียว มีเครื่องมือสร้างเอกสารแบบโปรแกรมพิมพ์งานหรือโปรแกรมนำเสนอด้วย ใช้ได้บนแท็บเล็ต Android และ iPad (iPadOS) และย้ายโน้ตระหว่างสองเครื่องได้ด้วยการส่งออกและนำเข้าไฟล์ เราสร้างโดยคำนึงถึงความง่ายในการใช้งานเป็นอันดับแรก",
+        galIos: "Galpirok iOS",
+        galAos: "Galpirok Android",
+        privacy: "นโยบายความเป็นส่วนตัว",
+        support: "ฝ่ายสนับสนุน",
+        tdBannerTag: "ใหม่",
+        tdBannerTitle: "TabDeck: เปลี่ยนแท็บเล็ตหรือโทรศัพท์ที่ไม่ได้ใช้เป็นแผงปุ่มลัดสำหรับ PC",
+        tdBannerDesc: "แอป Android อยู่ใน Google Play ส่วนโปรแกรม PC มีตัวติดตั้งสำหรับ Mac และ Windows เชื่อมต่อผ่าน Wi-Fi เดียวกัน ไม่ต้องสมัคร",
+        tdBannerCta: "รู้จัก TabDeck",
+        langMenu: "ภาษา",
+        shotAlt: " หน้าจอแอป"
+      },
+      it: {
+        langLabel: "Lingue",
+        gnLangNote: "Le 8 nuove lingue arrivano prima nelle versioni per Mac e Windows; iPhone e Android le riceveranno con il prossimo aggiornamento",
+        title: "AlchanLabs",
+        metaDesc: "AlchanLabs: rendi ogni giorno più pieno. Creiamo Galpirok, Calendario turni, Standboard e altro.",
+        video: "assets/hero-it.mp4?v=20261127",
+        poster: "assets/hero-poster-it.jpg?v=20261127",
+        videoLabel: "Video di AlchanLabs: rendi ogni giorno più pieno, con otto app tra cui Galpirok, Calendario turni e Standboard",
+        htmlLang: "it",
+        brand: "AlchanLabs",
+        navApps: "App",
+        navWay: "Come lavoriamo",
+        navContact: "Contatti",
+        h1a: "Rendi ogni giorno",
+        h1b: "più pieno.",
+        heroP: "AlchanLabs crea e gestisce app mobili che aiutano a mettere ordine con leggerezza in una vita piena di impegni.",
+        appsH2: "Le nostre app",
+        appsP: "Le rifiniamo una alla volta prima di pubblicarle.",
+        released: "Disponibile su iOS · Android",
+        viewAppStore: "Vedi su App Store",
+        viewPlay: "Vedi su Google Play",
+        galName: "Galpirok",
+        galDesc: "Un’app di note che organizza appunti e diario come un libro, con libri e segnalibri. Gratis puoi creare 3 libri con 3 segnalibri ciascuno; il piano Illimitato con acquisto unico (non è un abbonamento) toglie i limiti e sincronizza con iCloud su iPhone e iPad e con Google Drive su Android. Su un iPad in orizzontale o su un iPhone pieghevole aperto si apre a doppia pagina, come un libro. Senza accesso e senza pubblicità, e ciò che scrivi resta sul tuo dispositivo.",
+        galStatus: "Aggiornamento 1.1 su iOS · Android",
+        calName: "Calendario turni",
+        calDesc: "Mostra a colori, su un calendario mensile, i turni di un team che lavora a turni o part-time. Crea il team con un codice d’invito e il programma preparato dal responsabile arriva subito a tutti, con una notifica quando cambia. Ci sono anche avvisi per il team, colori per persona e promemoria dei turni che suonano come una sveglia (sui dispositivi compatibili). Tutti vedono gli stessi turni su iOS e Android.",
+        wayH2: "Come lavora AlchanLabs",
+        wayP: "Siamo un piccolo team e seguiamo principi che possiamo davvero rispettare.",
+        p1h: "Partire in piccolo",
+        p1p: "Non cerchiamo di fare tutto subito: prima creiamo l’essenziale, e lo facciamo bene.",
+        p2h: "Migliorare sempre",
+        p2p: "Correggiamo i problemi man mano che emergono nell’uso reale.",
+        p3h: "Senza esagerare",
+        p3p: "Non raccogliamo dati inutili e rendiamo le app semplici e leggere da usare.",
+        contactLabel: "Contattaci",
+        contactP: "Accettiamo domande sui prodotti, segnalazioni di errori e richieste sulla privacy.",
+        copyright: "© 2026 AlchanLabs. Tutti i diritti riservati. · Titolare: Alchan Lee · N. registrazione impresa 453-03-03842 · N. registrazione vendita a distanza 제2026-충남천안-2243호",
+        soon: "In arrivo",
+        sbName: "Standboard",
+        sbDesc: "Un’app cartello: appoggia un tablet o un telefono sul bancone del negozio o su una bancarella e mostra in grande il QR del Wi-Fi, avvisi e link ai social. Può mostrare fino a 3 codici QR affiancati, indicare con un grande badge se è aperto, in preparazione, torno subito o chiuso, e trasferire il cartello su un nuovo dispositivo con un backup. Gratis, senza pubblicità né accesso, e funziona solo sul dispositivo.",
+        cgName: "산후관리사 스케쥴러",
+        cgDesc: "Un’app di pianificazione per le agenzie di assistenza post-parto: il responsabile registra le mamme che hanno bisogno di assistenza e assegna le assistenti, che vedono i propri turni e chiedono modifiche, valide solo dopo l’approvazione del responsabile. Lo stesso account e gli stessi turni funzionano nelle app per iPhone e Android, nel browser del computer e in un programma per Windows. L’installazione è gratuita; dopo aver creato l’agenzia c’è un periodo di prova gratuito, poi si sceglie un piano in base al numero di assistenti approvate. L’app è in coreano.",
+        cgSlot: "Web e PC",
+        cgStatus: "iPhone e Android dagli store; sul computer via web o con il programma per Windows",
+        cgWin: "Scarica per Windows",
+        cgWeb: "Apri sul web",
+        cgGuide: "Come installare",
+        rfName: "Room Layout",
+        rfDesc: "Un’app che disegna stanze e mobili con le misure reali su una pianta, per provare la disposizione prima. Utile prima di un trasloco, dell’acquisto di mobili o dell’allestimento di un negozio o di un ufficio. Aggiungi porte (anche scorrevoli) e finestre, crea mobili di qualsiasi forma ed esplora subito un monolocale di esempio. Un documento di spazio è gratuito con tutte le funzioni di modifica; un acquisto unico (non è un abbonamento) sblocca documenti illimitati, esportazione e stampa. Senza accesso né pubblicità, e tutto resta sul tuo dispositivo.",
+        gnBannerTag: "Novità",
+        gnBannerTitle: "Geonne: foto, documenti e file grandi sulla stessa Wi-Fi",
+        gnBannerDesc: "Tanti di fila senza blocchi, senza server né account. Per iPhone, Android, Mac e Windows.",
+        gnBannerCta: "Scopri Geonne",
+        cgBannerTag: "Novità",
+        cgBannerTitle: "산후관리사 스케쥴러: i turni di un’agenzia post-parto in un unico posto",
+        cgBannerDesc: "Registra le mamme e assegna le assistenti dall’app. Scaricala da App Store o Google Play, oppure usala sul computer con il programma di installazione per Windows o direttamente nel browser. L’app è in coreano.",
+        cgBannerCta: "Come ottenerla",
+        gnName: "Geonne",
+        gnSlot: "Mac · PC",
+        gnStatus: "iPhone, iPad e Android dagli store; Mac e Windows con installer",
+        gnMac: "Scarica per Mac",
+        gnDesc: "Geonne invia foto, video, documenti e file di diversi GB tra i tuoi dispositivi sulla stessa Wi-Fi, senza cavi. Inviare tanti file di fila non si blocca mai, e se si interrompe invia solo ciò che manca. I file passano direttamente tra i dispositivi nella rete locale, senza server né account, e ogni connessione è cifrata. È gratis e senza accesso; le app per telefono e tablet mostrano un banner pubblicitario in basso (le versioni per Mac e Windows no).",
+        tdName: "TabDeck",
+        tdSlot: "Mac · PC",
+        tdStatus: "L’app Android è su Google Play, i programmi per Mac e Windows come installer. L’app per iPhone e iPad arriverà presto",
+        tdDesc: "Un’app che trasforma un tablet o un telefono che non usi più in un pannello di scorciatoie per il PC. Con un tasto avvii scorciatoie per montaggio video e foto, streaming e videochiamate o lavoro, e lo stato del PC, come ora, CPU e memoria, compare direttamente sui tasti. Puoi anche mostrare i tasti su un monitor touch portatile. Installa il programma sul PC e collegati sulla stessa Wi-Fi; per iniziare non serve registrarsi. Alcune funzioni, come la visualizzazione dello stato, fanno parte di Pro, con acquisto unico.",
+        hnName: "HubNote",
+        hnDesc: "Un’app per appunti a mano su tablet che riunisce appunti di lezione, registrazioni e ripasso in un unico posto. Ha anche strumenti per creare documenti, come un elaboratore di testi o un programma di presentazioni. Funziona sui tablet Android e su iPad (iPadOS), e puoi spostare gli appunti tra i due esportando e importando file. La stiamo realizzando mettendo al primo posto la facilità d’uso.",
+        galIos: "Galpirok iOS",
+        galAos: "Galpirok Android",
+        privacy: "Informativa sulla privacy",
+        support: "Assistenza",
+        tdBannerTag: "Novità",
+        tdBannerTitle: "TabDeck: un tablet o un telefono inutilizzato diventa un pannello di scorciatoie per il PC",
+        tdBannerDesc: "L’app Android è su Google Play, il programma per PC come installer per Mac e Windows. Si collega sulla stessa Wi-Fi, senza registrazione.",
+        tdBannerCta: "Scopri TabDeck",
+        langMenu: "Lingua",
+        shotAlt: ": schermata dell’app"
+      },
+      tr: {
+        langLabel: "Diller",
+        gnLangNote: "8 yeni dil önce Mac ve Windows sürümlerine geldi; iPhone ve Android bir sonraki güncellemede alacak",
+        title: "AlchanLabs",
+        metaDesc: "AlchanLabs: her günü daha dolu kılın. Galpirok, Vardiya Takvimi, Standboard ve daha fazlasını geliştiriyoruz.",
+        video: "assets/hero-tr.mp4?v=20261127",
+        poster: "assets/hero-poster-tr.jpg?v=20261127",
+        videoLabel: "AlchanLabs tanıtım videosu: her günü daha dolu kılın; Galpirok, Vardiya Takvimi ve Standboard dahil sekiz uygulama",
+        htmlLang: "tr",
+        brand: "AlchanLabs",
+        navApps: "Uygulamalar",
+        navWay: "Yaklaşımımız",
+        navContact: "İletişim",
+        h1a: "Her günü",
+        h1b: "daha dolu kılın.",
+        heroP: "AlchanLabs, yoğun bir hayatı kolayca düzenlemeye yardım eden mobil uygulamalar geliştirir ve işletir.",
+        appsH2: "Uygulamalarımız",
+        appsP: "Her birini tek tek olgunlaştırıp öyle yayınlıyoruz.",
+        released: "iOS · Android’de yayında",
+        viewAppStore: "App Store’da görüntüle",
+        viewPlay: "Google Play’de görüntüle",
+        galName: "Galpirok",
+        galDesc: "Notlarınızı ve günlüğünüzü kitaplar ve ayraçlarla bir kitap gibi düzenleyen not uygulaması. Ücretsiz olarak her biri 3 ayraçlı 3 kitap oluşturabilirsiniz; tek seferlik ödemeli Sınırsız plan (abonelik değil) sınırları kaldırır ve iPhone ile iPad’de iCloud, Android’de Google Drive üzerinden eşitler. Yatay tutulan bir iPad’de veya açılmış katlanabilir bir iPhone’da kitap gibi iki sayfa açılır. Giriş yok, reklam yok; yazdıklarınız cihazınızda kalır.",
+        galStatus: "iOS · Android için 1.1 güncellemesi",
+        calName: "Vardiya Takvimi",
+        calDesc: "Vardiyalı ya da yarı zamanlı çalışan bir ekibin çalışma planını aylık takvimde renklerle gösterir. Tek bir davet koduyla ekibi kurun; yöneticinin hazırladığı plan anında herkese ulaşır, değiştiğinde bildirim gelir. Ekip duyuruları, kişiye göre renkler ve alarm gibi çalan vardiya hatırlatmaları da var (desteklenen cihazlarda). Herkes iOS ve Android’de aynı planı görür.",
+        wayH2: "AlchanLabs nasıl çalışır",
+        wayP: "Küçük bir ekip olarak gerçekten tutabileceğimiz ilkelere bağlı kalıyoruz.",
+        p1h: "Küçük yap",
+        p1p: "Her şeyi aynı anda yapmaya çalışmıyoruz; önce gerçekten gereken özellikleri yapıyor ve onları iyi yapıyoruz.",
+        p2h: "Sürekli iyileştir",
+        p2p: "Gerçek kullanımda ortaya çıkan sorunları hemen düzeltiyoruz.",
+        p3h: "Abartma",
+        p3p: "Gereksiz veri toplamıyor, uygulamaları kolay ve rahat kullanılır tutuyoruz.",
+        contactLabel: "Bize ulaşın",
+        contactP: "Ürün soruları, hata bildirimleri ve gizlilikle ilgili talepleri kabul ediyoruz.",
+        copyright: "© 2026 AlchanLabs. Tüm hakları saklıdır. · Yetkili: Alchan Lee · İşletme Sicil No. 453-03-03842 · Mesafeli Satış Kayıt No. 제2026-충남천안-2243호",
+        soon: "Yakında",
+        sbName: "Standboard",
+        sbDesc: "Bir tabela uygulaması: tablet veya telefonu dükkân ya da pazar tezgâhına koyun; Wi-Fi QR kodunu, duyuruları ve sosyal medya bağlantılarını büyük gösterir. Yan yana en fazla 3 QR kod gösterebilir, açık, hazırlanıyor, birazdan dönerim veya kapalı durumunu büyük bir rozetle belirtebilir ve yedekle tabelayı yeni bir cihaza taşıyabilirsiniz. Ücretsiz, reklamsız, girişsiz ve yalnızca cihazda çalışır.",
+        cgName: "산후관리사 스케쥴러",
+        cgDesc: "Doğum sonrası bakım ajansları için planlama uygulaması: yönetici bakıma ihtiyacı olan anneleri kaydeder ve bakıcıları atar; bakıcılar vardiyalarını görür ve değişiklik ister, bu istekler yalnızca yönetici onayladıktan sonra geçerli olur. Aynı hesap ve aynı plan iPhone ve Android uygulamalarında, bilgisayar tarayıcısında ve bir Windows programında çalışır. Kurulum ücretsizdir; ajans oluşturulduktan sonra ücretsiz deneme süresi vardır, ardından onaylanan bakıcı sayısına göre plan seçilir. Uygulama Korecedir.",
+        cgSlot: "Web ve PC",
+        cgStatus: "iPhone ve Android mağazalardan; bilgisayarda web veya Windows programıyla",
+        cgWin: "Windows için indir",
+        cgWeb: "Web’de aç",
+        cgGuide: "Nasıl kurulur",
+        rfName: "Room Layout",
+        rfDesc: "Odalarınızı ve mobilyalarınızı gerçek ölçüleriyle bir plana çizen, yerleşimi önceden denemenizi sağlayan uygulama. Taşınmadan, mobilya almadan ya da bir dükkân veya ofis düzenlemeden önce işe yarar. Kapı (sürgülü kapı dahil) ve pencere ekleyin, istediğiniz şekilde mobilya oluşturun ve örnek bir stüdyo daireyi hemen inceleyin. Bir mekân belgesi tüm düzenleme özellikleriyle ücretsizdir; tek seferlik ödeme (abonelik değil) sınırsız belge, dışa aktarma ve yazdırmayı açar. Giriş ve reklam yok; her şey cihazınızda kalır.",
+        gnBannerTag: "Yeni",
+        gnBannerTitle: "Geonne: aynı Wi-Fi üzerinden fotoğraf, belge ve büyük dosyalar",
+        gnBannerDesc: "Art arda çok dosya, takılmadan; sunucu ve hesap gerekmez. iPhone, Android, Mac ve Windows için.",
+        gnBannerCta: "Geonne hakkında",
+        cgBannerTag: "Yeni",
+        cgBannerTitle: "산후관리사 스케쥴러: doğum sonrası bakım ajansının planı tek yerde",
+        cgBannerDesc: "Anneleri kaydedin ve bakıcıları uygulamadan atayın. App Store veya Google Play’den indirin ya da bilgisayarda Windows yükleyicisiyle veya doğrudan tarayıcıda kullanın. Uygulama Korecedir.",
+        cgBannerCta: "Nasıl edinilir",
+        gnName: "Geonne",
+        gnSlot: "Mac · PC",
+        gnStatus: "iPhone, iPad ve Android mağazalardan; Mac ve Windows yükleyiciyle",
+        gnMac: "Mac için indir",
+        gnDesc: "Geonne; fotoğraf, video, belge ve birkaç GB’lık dosyaları aynı Wi-Fi’deki kendi cihazlarınız arasında kablosuz gönderir. Art arda çok dosya göndermek asla takılmaz, bağlantı koparsa yalnızca kalan kısım gönderilir. Dosyalar yerel ağda sunucu ve hesap olmadan doğrudan cihazlar arasında gider ve tüm bağlantılar şifrelenir. Ücretsizdir ve giriş gerektirmez; telefon ve tablet uygulamaları altta bir banner reklam gösterir (Mac ve Windows sürümlerinde yoktur).",
+        tdName: "TabDeck",
+        tdSlot: "Mac · PC",
+        tdStatus: "Android uygulaması Google Play’de, Mac ve Windows programları yükleyici olarak hazır. iPhone ve iPad uygulaması yakında",
+        tdDesc: "Kullanmadığınız bir tablet veya telefonu PC’niz için kısayol paneline dönüştüren uygulama. Tek tuşla video ve fotoğraf düzenleme, yayın ve görüntülü görüşme ya da iş kısayollarını çalıştırın; saat, CPU ve bellek gibi PC durumunu tuşların üzerinde görün. Tuş ekranını taşınabilir bir dokunmatik monitörde de açabilirsiniz. Programı PC’ye kurun ve aynı Wi-Fi üzerinden bağlanın; başlamak için kayıt gerekmez. Durum gösterimi gibi bazı özellikler tek seferlik ödemeli Pro’ya dahildir.",
+        hnName: "HubNote",
+        hnDesc: "Ders notlarını, ders kayıtlarını ve tekrarı tek yerde toplayan, tablet için el yazısı not uygulaması. Kelime işlemci veya sunum programı gibi belge oluşturma araçları da var. Android tabletlerde ve iPad’de (iPadOS) çalışır; notlarınızı dosya dışa ve içe aktararak ikisi arasında taşıyabilirsiniz. Önceliğimiz kolay kullanım.",
+        galIos: "Galpirok iOS",
+        galAos: "Galpirok Android",
+        privacy: "Gizlilik politikası",
+        support: "Destek",
+        tdBannerTag: "Yeni",
+        tdBannerTitle: "TabDeck: kullanmadığınız tablet veya telefonu PC kısayol paneline dönüştürün",
+        tdBannerDesc: "Android uygulaması Google Play’de, PC programı Mac ve Windows yükleyicisi olarak sunuluyor. Aynı Wi-Fi üzerinden bağlanır, kayıt gerekmez.",
+        tdBannerCta: "TabDeck hakkında",
+        langMenu: "Dil",
+        shotAlt: " uygulama ekranı"
       }
     };
-    var langSwitch = document.getElementById('langSwitch');
+    var langMenu = document.getElementById('langMenu');
+    var langToggle = document.getElementById('langToggle');
+    var langCurrent = document.getElementById('langCurrent');
     var currentLang = 'ko';
+    // 스토어 주소: 애플은 나라 가게, 구글은 화면 언어(hl)를 고른 언어에 맞춘다
+    var APPLE_CC = {ko: 'kr', en: 'us', ja: 'jp', zh: 'tw', ru: 'ru', es: 'es', pt: 'br', fr: 'fr', de: 'de', id: 'id', vi: 'vn', th: 'th', it: 'it', tr: 'tr'};
+    var PLAY_HL = {ko: 'ko', en: 'en', ja: 'ja', zh: 'zh-TW', ru: 'ru', es: 'es', pt: 'pt-BR', fr: 'fr', de: 'de', id: 'id', vi: 'vi', th: 'th', it: 'it', tr: 'tr'};
 
     function applyLang(lang) {
       var dict = I18N[lang];
@@ -526,17 +1386,26 @@
       });
       document.querySelectorAll('img[data-src-en]').forEach(function (img) {
         img.setAttribute('src', img.getAttribute('data-src-' + lang) || img.getAttribute('data-src-en'));
-        img.setAttribute('alt', dict[img.getAttribute('data-alt-key')] + ({ko: ' 앱 화면', en: ' app screen', ja: ' アプリ画面', zh: ' App 畫面'}[lang] || ''));
+        img.setAttribute('alt', dict[img.getAttribute('data-alt-key')] + dict.shotAlt);
       });
       // 그 언어 주소가 없으면 영어, 그것도 없으면 한국어 주소를 쓴다(예: 일본어·번체 개인정보처리방침은 영어 문서)
       document.querySelectorAll('[data-href-ko]').forEach(function (a) {
         a.setAttribute('href', a.getAttribute('data-href-' + lang) || a.getAttribute('data-href-en') || a.getAttribute('data-href-ko'));
       });
-      langSwitch.setAttribute('data-lang', lang);
-      positionNotch();
-      langSwitch.querySelectorAll('[data-set-lang]').forEach(function (b) {
-        b.setAttribute('aria-pressed', b.getAttribute('data-set-lang') === lang ? 'true' : 'false');
+      document.querySelectorAll('a[href*="apps.apple.com/"]').forEach(function (a) {
+        if (a.hasAttribute('data-fixed-store')) return;
+        a.setAttribute('href', a.getAttribute('href').replace(/apps\.apple\.com\/[a-z]{2}\//, 'apps.apple.com/' + APPLE_CC[lang] + '/'));
       });
+      document.querySelectorAll('a[href*="play.google.com/store/apps/details"]').forEach(function (a) {
+        a.setAttribute('href', a.getAttribute('href').replace(/([?&]hl=)[^&]*/, '$1' + PLAY_HL[lang]));
+      });
+      var picked = langMenu.querySelector('[data-set-lang="' + lang + '"]');
+      langCurrent.textContent = picked.textContent;
+      langToggle.setAttribute('aria-label', dict.langMenu + ': ' + picked.textContent);
+      langMenu.querySelectorAll('[data-set-lang]').forEach(function (b) {
+        b.setAttribute('aria-pressed', b === picked ? 'true' : 'false');
+      });
+      positionNotch();
     }
 
     function setLang(lang, remember) {
@@ -553,8 +1422,25 @@
       }, 190);
     }
 
-    langSwitch.querySelectorAll('[data-set-lang]').forEach(function (b) {
-      b.addEventListener('click', function () { setLang(b.getAttribute('data-set-lang'), true); });
+    function setMenuOpen(open) {
+      langMenu.classList.toggle('open', open);
+      langToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    langToggle.addEventListener('click', function () {
+      var open = !langMenu.classList.contains('open');
+      setMenuOpen(open);
+      if (open) langMenu.querySelector('[aria-pressed="true"]').focus();
+    });
+    document.addEventListener('click', function (e) { if (!langMenu.contains(e.target)) setMenuOpen(false); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && langMenu.classList.contains('open')) { setMenuOpen(false); langToggle.focus(); }
+    });
+    langMenu.querySelectorAll('[data-set-lang]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        setMenuOpen(false);
+        langToggle.focus();
+        setLang(b.getAttribute('data-set-lang'), true);
+      });
     });
 
     var savedLang = null;

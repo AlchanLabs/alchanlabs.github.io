@@ -24,3 +24,5 @@
 }
 :root:lang(ja) { --font-display: "Yeseva One", "Noto Serif JP", ui-serif, serif; --font-body: "Archivo", "Pretendard Variable", "Hiragino Sans", "Noto Sans JP", ui-sans-serif, sans-serif; --font-outlier: "Archivo Narrow", "Hiragino Sans", "Noto Sans JP", ui-sans-serif, sans-serif; }
 :root:lang(zh-Hant-TW) { --font-display: "Yeseva One", "Noto Serif TC", ui-serif, serif; --font-body: "Archivo", "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", ui-sans-serif, sans-serif; --font-outlier: "Archivo Narrow", "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", ui-sans-serif, sans-serif; }
+:root:lang(ru) { --font-body: "Noto Sans", "Pretendard Variable", ui-sans-serif, sans-serif; --font-outlier: "Noto Sans", "Pretendard Variable", ui-sans-serif, sans-serif; }
+:root:lang(th) { --font-display: "Noto Serif Thai", ui-serif, serif; --font-body: "Archivo", "Noto Sans Thai", "Pretendard Variable", ui-sans-serif, sans-serif; --font-outlier: "Archivo Narrow", "Noto Sans Thai", ui-sans-serif, sans-serif; }
